@@ -1,0 +1,7 @@
+language: python
+
+script: bash ./deploy.sh
+env:
+  global:
+  - ENCRYPTION_LABEL: fd34632e5cc7
+  
