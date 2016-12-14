@@ -1,5 +1,5 @@
 language: python
-
+install: pip install --user mkdocs
 script: bash ./deploy.sh
 env:
   global:
