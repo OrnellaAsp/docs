@@ -1,6 +1,5 @@
 site_name: Asperato developers
 theme_dir: customtheme
-use_directory_urls: false
 docs_dir: docsrc
 pages:
 - 'index.md'
