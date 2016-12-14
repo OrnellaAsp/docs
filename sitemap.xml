@@ -3,7 +3,7 @@
 
     
     <url>
-     <loc>/index.html</loc>
+     <loc>/</loc>
      <lastmod>2016-12-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -11,7 +11,7 @@
 
     
     <url>
-     <loc>/sf/index.html</loc>
+     <loc>/sf/</loc>
      <lastmod>2016-12-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -19,7 +19,7 @@
 
     
     <url>
-     <loc>/templates/index.html</loc>
+     <loc>/templates/</loc>
      <lastmod>2016-12-14</lastmod>
      <changefreq>daily</changefreq>
     </url>

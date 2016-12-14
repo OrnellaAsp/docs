@@ -1,347 +1,347 @@
 {
     "docs": [
         {
-            "location": "/index.html", 
+            "location": "/", 
             "text": "Asperato developer documentation\n\n\nThis documentation is designed for developers who are performing an Asperato integration.\n\n\nTemplate documentation\n\n\nThis page\n covers customising a template to work with Asperato.\n\n\nSalesforce documentation\n\n\nThis page\n covers the creation of a custom Salesforce package to work with Asperato.\n\n\nNeed help?\n\n\nIf you requrie any assistance with your integration then please contact support@asperato.com, we'll aim to get back to you in a couple of working days.", 
             "title": "Home"
         }, 
         {
-            "location": "/index.html#asperato-developer-documentation", 
+            "location": "/#asperato-developer-documentation", 
             "text": "This documentation is designed for developers who are performing an Asperato integration.", 
             "title": "Asperato developer documentation"
         }, 
         {
-            "location": "/index.html#template-documentation", 
+            "location": "/#template-documentation", 
             "text": "This page  covers customising a template to work with Asperato.", 
             "title": "Template documentation"
         }, 
         {
-            "location": "/index.html#salesforce-documentation", 
+            "location": "/#salesforce-documentation", 
             "text": "This page  covers the creation of a custom Salesforce package to work with Asperato.", 
             "title": "Salesforce documentation"
         }, 
         {
-            "location": "/index.html#need-help", 
+            "location": "/#need-help", 
             "text": "If you requrie any assistance with your integration then please contact support@asperato.com, we'll aim to get back to you in a couple of working days.", 
             "title": "Need help?"
         }, 
         {
-            "location": "/sf/index.html", 
+            "location": "/sf/", 
             "text": "Salesforce package\n\n\nThe core package consists of three custom objects and a set of web services that communicate between Asperato and Salesforce.  The web services are all managed through Apex classes.  The package is designed to be extensible so that the package web service classes can be replaced by custom Apex code if that is required.  \n\n\nThere are simple VisualForce pages to support each of the data objects and tabs accessing these are grouped together into an Asperato application.\n\n\nThe configuration of the package is managed via Custom Metadata.  There are two Metadata Types, Asperato Settings and Service Handler.  The options available for these settings are described below.\n\n\nThe data objects\n\n\nThe package data objects are called \nPayment\n, \nSubscription\n and \nAuthorisation\n and they are related to each other as per the diagram below.\n\n\n\n\nAuthorisation\n\n\nAuthorisation contains data relating to an authority to collect payments.  This can take the form of either a Direct Debit mandate or a card continuous payment authority.\n\n\nThe fields are their usage are described below: \n\n\n\n  \n\n    \nField\n\n    \nUsage\n\n  \n\n  \n\n    \nAccount Name\n\n    \nRecords the name on the bank account or the cardholder name for future reference.\n\n  \n\n  \n\n    \nAccount Reference\n\n    \nA partially obscured record of the bank account or credit card number for future reference.\n\n  \n\n  \n\n    \nAuthorisation Type\n\n    \nOne of:\nCard        Credit or debit card\nBACS        UK Direct Debit\neCheck  US Bank payment\nSEPA        European Direct Debit\nWallet      PayPal, etc.\n\n  \n\n  \n\n    \nCard Type\n\n    \nThe type of credit or debit card, or \u2018Not Applicable\u2019 for the other Authorisation Types\n\n  \n\n  \n\n    \nCPA Granted\n\n    \nIndicates that the customer has given permission for card details to be used to collect automatic payments.\n\n  \n\n  \n\n    \nExpiry Date\n\n    \nThe date on the which the authorisation will expire (if applicable)\n\n  \n\n  \n\n    \nMandate Reference\n\n    \nThe reference for a Direct Debit mandate that will need to be displayed to the end customer in emails and other communication.\n\n  \n\n  \n\n    \nRepeat Cross Reference\n\n    \nOne of a pair of fields needed to make a repeat payment request.\n\n  \n\n  \n\n    \nRepeat Order ID\n\n    \nOne of a pair of fields needed to make a repeat payment request.\n\n  \n\n  \n\n    \nStatus\n\n    \nThe status of the authorisation.  Can be one of:\nPending Has been created but is not yet active\nIn Force    In force and ready to use\nCancelled   Has been stopped\nFailed      Has failed for some reason\n\n  \n\n  \n\n    \nStatus Description\n\n    \nA descriptive text showing the reason related to the current status.  Might contain the reason for cancellation or failure for example.\n\n  \n\n\n\n\n\nSubscription\n\n\nSubscription contains the information needed to drive the creation of payments where they need to recur automatically.\n\n\nSubscription has a master/detail relationship with Authorisation.\n\n\nThe fields are their usage are described below: \n\n\n\n  \n\n    \nField\n\n    \nUsage\n\n  \n\n  \n\n    \nAuthorisation\n\n    \nA link to the related Authorisation object.  A subscription must have and entry here in order to process a payment.\n\n  \n\n  \n\n    \nAuthorisation Status\n\n    \nA formula reflecting the status of the associated Authorisation.\n\n  \n\n  \n\n    \nAuthorisation Type\n\n    \nA formula reflecting the type of the associated Authorisation.\n\n  \n\n  \n\n    \nDay of the Month\n\n    \nThe day of the month on which the subscription payment should be taken.\n\n  \n\n  \n\n    \nFrequency\n\n    \nThe payment frequency for the subscription.\n\n  \n\n  \n\n    \nLast Payment Date\n\n    \nThe date on which the subscription payment request was last raised.\n\n  \n\n  \n\n    \nNext Payment Date\n\n    \nThe date on which the next payment request will be raised.\n\n  \n\n  \n\n    \nRegular Amount\n\n    \nThe amount of the subscription charge.  The currency will be determined based on the currency of the Subscription record in a multi-currency org or from the org default currency for a single currency org.\n\n  \n\n  \n\n    \nStart Date\n\n    \nDate of which the subscription come into force.\n\n  \n\n  \n\n    \nStatus\n\n    \nThe status of the subscription.  Can be one of:\nIn Force    In force and ready to use\nCancelled   Has been stopped\n\n  \n\n  \n\n    \nStatus Description\n\n    \nA descriptive text showing the reason related to the current status.  Might contain the reason for cancellation for example.\n\n  \n\n\n\n\n\nPayment\n\n\nPayment contains both the request for a payment to occur and also the response once it has been processed.\n\n\nPayment has a lookup relationship to both Authorisation and Subscription.\n\n\nThe fields are their usage are described below: \n\n\n\n  \n\n    \nField\n\n    \nUsage\n\n  \n\n  \n\n    \nAccount Name\n\n    \nRecords the name on the bank account or the cardholder name for future reference.\n\n  \n\n  \n\n    \nAccount Reference\n\n    \nA partially obscured record of the bank account or credit card number for future reference.\n\n  \n\n  \n\n    \nAmount\n\n    \nThe amount of the payment.  Will contain either the requested amount of the amount actually collected depending on the status of the payment.\n\n  \n\n  \n\n    \nAuthorisation\n\n    \nA link to the related Authorisation object if appropriate.\n\n  \n\n  \n\n    \nCard Type\n\n    \nThe type of credit or debit card, or \u2018Not Applicable\u2019 for the other Payment Types\n\n  \n\n  \n\n    \nCross Reference\n\n    \nA reference to the payment generated by the payment gateway.\n\n  \n\n  \n\n    \nFrequency\n\n    \nA formula reflecting the payment frequency from the associated subscription if appropriate.\n\n  \n\n  \n\n    \nOrder ID\n\n    \nA unique reference to the payment transaction generated by Asperato and reflected through to the payment gateway.\n\n  \n\n  \n\n    \nOriginal Payment\n\n    \nA way of cross relating payments, for example where one transaction is a refund of another.\n\n  \n\n  \n\n    \nPayment Date\n\n    \nThe date on which the payment was made.\n\n  \n\n  \n\n    \nPayment Type\n\n    \nOne of:\nCard        Credit or debit card\nBACS        UK Direct Debit\neCheck  US Bank payment\nSEPA        European Direct Debit\nWallet      PayPal, etc.\n\n  \n\n  \n\n    \nScheduled Date\n\n    \nDate on which a payment is scheduled to be processed.  Can be used to set up payments that are due in the future.\n\n  \n\n  \n\n    \nSent Date\n\n    \nDate on which an automatic payment was sent to Asperato for processing.\n\n  \n\n  \n\n    \nSource\n\n    \nPayment source.  Can be one of:\nWeb\nHolder not present\nRepeat\n\n  \n\n  \n\n    \nStatus\n\n    \nThe status of the payment.  Can be one of:\nPending     Has been created but is not yet active\nSent            Has been set to Asperato for processing.\nPaid            Has been paid.\nRefunded        Has been refunded.\nFailed          Has failed for some reason\nPayment Scheduled   Is ready for collection by the next batch run.\n\n  \n\n  \n\n    \nStatus Description\n\n    \nA descriptive text showing the reason related to the current status.  Might contain the reason for cancellation or failure for example.\n\n  \n\n  \n\n    \nSubscription\n\n    \nA link to the related Subscription record if appropriate.\n\n  \n\n  \n\n    \nType\n\n    \nOne of:\nPayment\nRefund\n\n  \n\n\n\n\n\nThe Custom Metadata Type settings\n\n\nThere are two Custom Metadata Types that affect the way that the Asperato Phoenix package operates.\n\n\nAsperato Settings\n\n\nThere is a single record in this Metadata Type with the Label of Default.  When managing this record there are three fields available.\n\n\nThe first of these field is labeled \npmRef\n.  The value for this field is provided by Asperato and relates the Salesforce organisation to the equivalent configurations within the Asperato databases.  You must set this value before using the package to take payments etc.\n\n\nThe second field is labeled \nOperating Mode\n.  This is a select box with two options, Test and Live.  Switching this value will automatically switch Asperato server endpoints between the sandbox test environment and the live server environment.  Leave this setting as \u2018Test\u2019 until such time as the live configuration has been established with Asperato.\n\n\nThe third field is labelled \nDirect Debit Lead Time\n.  This is a numeric field with a default value of 4 and this represents the number of days before a payment is due that the process of collecting that payment will start.  This is to compensation for the inherent delays in the UK BACS payment system.  This value can be tuned if needed. Under normal circumstances you should leave this value at the default.\n\n\nService Handlers\n\n\nThere are five records in the Service Handlers Metadata Type and these are used to implement overrides to standard package service handlers.  A service handler is an Apex class that processes the data provided in a web service call and builds the appropriate response.  The full details for each of the web services available and how to create the Apex needed is described in the Web Services section.\n\n\nThe only field you can edit for each record is the Handler Name.  This is the name of the Apex class that will be executed for the relevant handler.  The complete list of the Service Handlers and their default values is shown in the table below.  The Interface Name is the name of the interface that the service handler implements.\n\n\n\n  \n\n    \nLabel\n\n    \nDefault Handler\n\n    \nInterface Name\n\n  \n\n  \n\n    \nGetAuthorisations\n\n    \nGetAuthorisationsService\n\n    \nIGetAuthorisationsService\n\n  \n\n  \n\n    \nGetPayments\n\n    \nGetPaymentsService\n\n    \nIGetPaymentsService\n\n  \n\n  \n\n    \nPutAuthorisations\n\n    \nPutAuthorisationsService\n\n    \nIPutAuthorisationsService\n\n  \n\n  \n\n    \nPutMessages\n\n    \nPutMessagesService\n\n    \nIPutMessagesService\n\n  \n\n  \n\n    \nPutPayments\n\n    \nPutPaymentsService\n\n    \nIPutPaymentsService\n\n  \n\n\n\n\n\nWeb Services\n\n\nEach web service consists of an Apex REST endpoint and an associated Apex class that processes the REST request object and builds the relevant response object.  The Apex class that processes the REST data exchange is called a service handler and the actual name of the service handler is driven by Custom Metadata.\n\n\nSo in simple terms to create a new Apex service handler you create a new Apex class that implements the relevant interface and update the Custom Metadata to point to the new class.  Next time that the web service fires, the service handler that executes would be your code rather than that supplied by the Asperato Phoenix package.\n\n\nThere are three sets of web services relating to payments, authorisations and message updates.\n\n\nPayments\n\n\nThe two web services that relate to payments are labelled GetPayments and PutPayments.\n\n\nGetPayments\n\n\nThis gets data from the Payment object and passes this to Asperato so that it can be used to prepopulate the payment page web screen.  The web service has a simple request of a single Salesforce ID and returns a single set of response data.  The field names and usage are shown in the table below.\n\n\nRequest\n\n\n\n  \n\n    \nField Name\n\n    \nType\n\n    \nUsage\n\n  \n\n  \n\n    \nRecordID\n\n    \nString (ID)\n\n    \nContains the Salesforce ID to a row in the payment object.\n\n  \n\n  \n\n    \nUrlParameters\n\n    \nList of\nUrlParameter\n\n    \nAny additional parameters included into the URL that invokes the Asperato pay page are passed to Salesforce in this list.\n\n  \n\n\n\n\n\nResponse\n\n\n\n  \n\n    \nField Name\n\n    \nType\n\n    \nUsage\n\n  \n\n  \n\n    \nSuccess\n\n    \nBoolean\n\n    \nWhen true means the record was located correctly.\n\n  \n\n  \n\n    \nUseHostedPage\n\n    \nBoolean\n\n    \nWhen true means that where a gateway offers a hosted page option that will be invoked in preference to the Asperato template.\n\n  \n\n  \n\n    \nDueDate\n\n    \nDate\n\n    \nThe date on which the payment is due.\n\n  \n\n  \n\n    \nAmount\n\n    \nLong\n\n    \nAmount due in the lowest denomination for the the currency. For GBP this would be pence, for USD this would be cents, for EUR this would be cents, etc.\n\n  \n\n  \n\n    \nCurrencyCode\n\n    \nString\n\n    \nThree character ISO 4217 currency code.\n\n  \n\n  \n\n    \nErrorMessage\n\n    \nString\n\n    \nIf the Success field is false this will contain an indication of why the call failed.\n\n  \n\n  \n\n    \nPaymentFrequency\n\n    \nString\n\n    \nOne of:\nSingle\nDaily\nWeekly\nMonthly\nQuarterly\nSemi-annual\nAnnual\n\n  \n\n  \n\n    \nPaymentType\n\n    \nString\n\n    \nOne of:\nCard\nBACS\neCheck\nSEPA\nWallet\n\n  \n\n  \n\n    \nUrlCancel\n\n    \nString\n\n    \nURL that the payment page will link to if the end customer chooses to cancel the payment process.\n\n  \n\n  \n\n    \nUrlError\n\n    \nString\n\n    \nURL that the result page will go to in the event that the transaction fails\n\n  \n\n  \n\n    \nUrlExit\n\n    \nString\n\n    \nURL that the result page will go to after a successful transaction\n\n  \n\n  \n\n    \nPassThroughParameters\n\n    \nList of\nPassThroughParameter\n\n    \nThis is a list of name value pairs that can be passed from Salesforce, updated in the paypage and then passed back to Salesforce.\n\n  \n\n\n\n\n\nThese are the list parameters mentioned above\n\n\nUrlParameter\n\n\n\n  \n\n    \nField Name\n\n    \nType\n\n    \nUsage\n\n  \n\n  \n\n    \nKey\n\n    \nString\n\n    \nThe name of the parameter as it appeared in the URL.\n\n  \n\n  \n\n    \nValue\n\n    \nString\n\n    \nThe content of the parameter as it appeared in the URL.\n\n  \n\n\n\n\n\nPassThroughParameter\n\n\n\n  \n\n    \nField Name\n\n    \nType\n\n    \nUsage\n\n  \n\n  \n\n    \nKey\n\n    \nString\n\n    \nThe desired name of the parameter to be passed to Asperato.\nNote that there are certain names that have significance to the web templates and these are documented in the templates chapter.\n\n  \n\n  \n\n    \nValue\n\n    \nString\n\n    \nThe desired content of the parameter to be passed to Asperato.\n\n  \n\n  \n\n    \nIsDisplayOnly\n\n    \nBoolean\n\n    \nWhen true the parameter will appear in the template and not be passed back to Salesforce.\nBy default all parameters are passed into Asperato and back out again.\n\n  \n\n\n\n\n\nWhen implementing a service handler override class this new class should implement the interface called \nasp03__IGetPaymentsService\n.\n\n\nPutPayments\n\n\nThis puts data back into Salesforce after a payment attempt has been made irrespective of whether that attempt succeeded or failed.  This web service can be bulked up so is capable of sending multiple rows in a single request.\n\n\nRequest\n\n\n\n  \n\n    \nField Name\n\n    \nType\n\n    \nUsage\n\n  \n\n  \n\n    \nPutPaymentRequestDetails\n\n    \nList of\nPutPaymentRequestDetail\n\n    \nA list of outcomes from payment attempts.\n\n  \n\n\n\n\n\nPutPaymentRequestDetail\n\n\n\n  \n\n    \nField Name\n\n    \nType\n\n    \nUsage\n\n  \n\n  \n\n    \nPaymentDate\n\n    \nDate\n\n    \nThe date the payment was attempted.\n\n  \n\n  \n\n    \nAmount\n\n    \nLong\n\n    \nAmount transacted in the lowest denomination for the the currency. For GBP this would be pence, for USD this would be cents, for EUR this would be cents, etc.\n\n  \n\n  \n\n    \nAccountReference\n\n    \nString\n\n    \nAn obscured reference to the card or the bank account.\n\n  \n\n  \n\n    \nAccountName\n\n    \nString\n\n    \nThe name on the card or the bank account\n\n  \n\n  \n\n    \nCardType\n\n    \nString\n\n    \nIf a card this will say what type of card was used otherwise will say \u2018Not Applicable\u2019.\n\n  \n\n  \n\n    \nCrossReference\n\n    \nString\n\n    \nThe cross reference value obtained from the payment gateway.\n\n  \n\n  \n\n    \nCurrencyCode\n\n    \nString\n\n    \nThree character ISO 4217 currency code.\n\n  \n\n  \n\n    \nOrderId\n\n    \nString\n\n    \nAn Asperato generated order reference for the transaction.\n\n  \n\n  \n\n    \nPaymentType\n\n    \nString\n\n    \nOne of:\nCard\nBACS\neCheck\nSEPA\nWallet\n\n  \n\n  \n\n    \nSalesforceId\n\n    \nString\n\n    \nID of the payment object row\n\n  \n\n  \n\n    \nSource\n\n    \nString\n\n    \nHow the transaction was generated.  One of:\nHolder not present\nRepeat\nWeb\n\n  \n\n  \n\n    \nStatus\n\n    \nString\n\n    \nOne of:\nFailed\nSent\n\n  \n\n  \n\n    \nStatusDescription\n\n    \nString\n\n    \nText relating to the Status.  This will show either some form of transaction reference or the reason why the payment failed as appropriate.\n\n  \n\n  \n\n    \nPassThroughParameters\n\n    \nList of\nPassThroughParameter\n\n    \nThis is a list of name value pairs that were passed from Salesforce, updated in the paypage and then passed back to Salesforce.\n\n  \n\n\n\n\n\nPassThroughParameter\n\n\n\n  \n\n    \nField Name\n\n    \nType\n\n    \nUsage\n\n  \n\n  \n\n    \nKey\n\n    \nString\n\n    \nThe name of the parameter passed from Asperato.\n\n  \n\n  \n\n    \nValue\n\n    \nString\n\n    \nThe content of the parameter passed from Asperato.\n\n  \n\n\n\n\n\nResponse\n\n\n\n  \n\n    \nField Name\n\n    \nType\n\n    \nUsage\n\n  \n\n  \n\n    \nSuccess\n\n    \nBoolean\n\n    \nWhen true indicates that the overall request was successful.\n\n  \n\n  \n\n    \nErrorMessage\n\n    \nString\n\n    \nIf the Success field is false this indicates the reason why.\n\n  \n\n  \n\n    \nPutPaymentResponseDetails\n\n    \nList of \nPutPaymentResponseDetail\n\n    \n\n  \n\n\n\n\n\nPutPaymentResponseDetail\n\n\n\n  \n\n    \nField Name\n\n    \nType\n\n    \nUsage\n\n  \n\n  \n\n    \nSuccess\n\n    \nBoolean\n\n    \nWhen true indicates that the request was successful for this row.\n\n  \n\n  \n\n    \nErrorMessage\n\n    \nString\n\n    \nIf the Success field is false this indicates the reason why.\n\n  \n\n  \n\n    \nSalesforceId\n\n    \nString\n\n    \nThe ID of the row that was updated.\n\n  \n\n\n\n\n\nMessages\n\n\nThe message web service is used to send messages from Asperato to Salesforce.  These messages affect the status of existing payments or authorisations.\n\n\nAt the moment these messages all relate to UK Direct Debits, though in future this will include SEPA direct debits and card updates.\n\n\nThis web service can be bulked up so is capable of sending multiple rows in a single request.\n\n\nRequest\n\n\n\n  \n\n    \nField Name\n\n    \nType\n\n    \nUsage\n\n  \n\n  \n\n    \nPutMessagesRequest\n\n    \nList of\nPutMessageRequestDetail\n\n    \nA list of messages.\n\n  \n\n\n\n\n\nPutMessageRequestDetail\n\n\n\n  \n\n    \nField Name\n\n    \nType\n\n    \nUsage\n\n  \n\n  \n\n    \nSuccess\n\n    \nBoolean\n\n    \nWhen true means the message has a positive implication, when false indicates a failure of some sort.\n\n  \n\n  \n\n    \nEventReference\n\n    \nString\n\n    \nA unique reference to the message.\n\n  \n\n  \n\n    \nMessageText\n\n    \nString\n\n    \nTextural content of the message truncated to 250 characters so as not cause insert failures in the standard objects.\n\n  \n\n  \n\n    \nReasonCode\n\n    \nString\n\n    \nThe raw reason code from either BACS or SEPA\n\n  \n\n  \n\n    \nResource\n\n    \nString\n\n    \nCan be one of \nmandates\npayments\nrefunds\nPayouts (not currently sent)\nsubscriptions (not currently sent)\n\n  \n\n  \n\n    \nStatus\n\n    \nString\n\n    \nThe action that the message implies.  Typical values are\ncreated\nactive\ncancelled\nfailed\netc.\n\n  \n\n  \n\n    \nTransactionReference\n\n    \nString\n\n    \nA reference needed to locate the item to which the message refers (see below)\n\n  \n\n\n\n\n\nLocating the data to which a message refers.\n\n\nWhen the resource has the text content \u2018mandates\u2019 the message relates to an Authorisation.  To locate the correct row search for where the Repeat Cross Reference on the Authorisation row equals the TransactionReference on the request.\n\n\nWhen the resource has the text content of either \u2018payments\u2019 or \u2018refunds\u2019 then the message relates to the Payment object.\n\n\nTo locate the correct row search for where the Cross Reference on the Payment row equals the TransactionReference on the request.\n\n\nResponse\n\n\n\n  \n\n    \nField Name\n\n    \nType\n\n    \nUsage\n\n  \n\n  \n\n    \nSuccess\n\n    \nBoolean\n\n    \nWhen true indicates that the overall request was successful.\n\n  \n\n  \n\n    \nErrorMessage\n\n    \nString\n\n    \nIf the Success field is false this indicates the reason why.", 
             "title": "Salesforce package"
         }, 
         {
-            "location": "/sf/index.html#salesforce-package", 
+            "location": "/sf/#salesforce-package", 
             "text": "The core package consists of three custom objects and a set of web services that communicate between Asperato and Salesforce.  The web services are all managed through Apex classes.  The package is designed to be extensible so that the package web service classes can be replaced by custom Apex code if that is required.    There are simple VisualForce pages to support each of the data objects and tabs accessing these are grouped together into an Asperato application.  The configuration of the package is managed via Custom Metadata.  There are two Metadata Types, Asperato Settings and Service Handler.  The options available for these settings are described below.", 
             "title": "Salesforce package"
         }, 
         {
-            "location": "/sf/index.html#the-data-objects", 
+            "location": "/sf/#the-data-objects", 
             "text": "The package data objects are called  Payment ,  Subscription  and  Authorisation  and they are related to each other as per the diagram below.", 
             "title": "The data objects"
         }, 
         {
-            "location": "/sf/index.html#authorisation", 
+            "location": "/sf/#authorisation", 
             "text": "Authorisation contains data relating to an authority to collect payments.  This can take the form of either a Direct Debit mandate or a card continuous payment authority.  The fields are their usage are described below:   \n   \n     Field \n     Usage \n   \n   \n     Account Name \n     Records the name on the bank account or the cardholder name for future reference. \n   \n   \n     Account Reference \n     A partially obscured record of the bank account or credit card number for future reference. \n   \n   \n     Authorisation Type \n     One of:\nCard        Credit or debit card\nBACS        UK Direct Debit\neCheck  US Bank payment\nSEPA        European Direct Debit\nWallet      PayPal, etc. \n   \n   \n     Card Type \n     The type of credit or debit card, or \u2018Not Applicable\u2019 for the other Authorisation Types \n   \n   \n     CPA Granted \n     Indicates that the customer has given permission for card details to be used to collect automatic payments. \n   \n   \n     Expiry Date \n     The date on the which the authorisation will expire (if applicable) \n   \n   \n     Mandate Reference \n     The reference for a Direct Debit mandate that will need to be displayed to the end customer in emails and other communication. \n   \n   \n     Repeat Cross Reference \n     One of a pair of fields needed to make a repeat payment request. \n   \n   \n     Repeat Order ID \n     One of a pair of fields needed to make a repeat payment request. \n   \n   \n     Status \n     The status of the authorisation.  Can be one of:\nPending Has been created but is not yet active\nIn Force    In force and ready to use\nCancelled   Has been stopped\nFailed      Has failed for some reason \n   \n   \n     Status Description \n     A descriptive text showing the reason related to the current status.  Might contain the reason for cancellation or failure for example.", 
             "title": "Authorisation"
         }, 
         {
-            "location": "/sf/index.html#subscription", 
+            "location": "/sf/#subscription", 
             "text": "Subscription contains the information needed to drive the creation of payments where they need to recur automatically.  Subscription has a master/detail relationship with Authorisation.  The fields are their usage are described below:   \n   \n     Field \n     Usage \n   \n   \n     Authorisation \n     A link to the related Authorisation object.  A subscription must have and entry here in order to process a payment. \n   \n   \n     Authorisation Status \n     A formula reflecting the status of the associated Authorisation. \n   \n   \n     Authorisation Type \n     A formula reflecting the type of the associated Authorisation. \n   \n   \n     Day of the Month \n     The day of the month on which the subscription payment should be taken. \n   \n   \n     Frequency \n     The payment frequency for the subscription. \n   \n   \n     Last Payment Date \n     The date on which the subscription payment request was last raised. \n   \n   \n     Next Payment Date \n     The date on which the next payment request will be raised. \n   \n   \n     Regular Amount \n     The amount of the subscription charge.  The currency will be determined based on the currency of the Subscription record in a multi-currency org or from the org default currency for a single currency org. \n   \n   \n     Start Date \n     Date of which the subscription come into force. \n   \n   \n     Status \n     The status of the subscription.  Can be one of:\nIn Force    In force and ready to use\nCancelled   Has been stopped \n   \n   \n     Status Description \n     A descriptive text showing the reason related to the current status.  Might contain the reason for cancellation for example.", 
             "title": "Subscription"
         }, 
         {
-            "location": "/sf/index.html#payment", 
+            "location": "/sf/#payment", 
             "text": "Payment contains both the request for a payment to occur and also the response once it has been processed.  Payment has a lookup relationship to both Authorisation and Subscription.  The fields are their usage are described below:   \n   \n     Field \n     Usage \n   \n   \n     Account Name \n     Records the name on the bank account or the cardholder name for future reference. \n   \n   \n     Account Reference \n     A partially obscured record of the bank account or credit card number for future reference. \n   \n   \n     Amount \n     The amount of the payment.  Will contain either the requested amount of the amount actually collected depending on the status of the payment. \n   \n   \n     Authorisation \n     A link to the related Authorisation object if appropriate. \n   \n   \n     Card Type \n     The type of credit or debit card, or \u2018Not Applicable\u2019 for the other Payment Types \n   \n   \n     Cross Reference \n     A reference to the payment generated by the payment gateway. \n   \n   \n     Frequency \n     A formula reflecting the payment frequency from the associated subscription if appropriate. \n   \n   \n     Order ID \n     A unique reference to the payment transaction generated by Asperato and reflected through to the payment gateway. \n   \n   \n     Original Payment \n     A way of cross relating payments, for example where one transaction is a refund of another. \n   \n   \n     Payment Date \n     The date on which the payment was made. \n   \n   \n     Payment Type \n     One of:\nCard        Credit or debit card\nBACS        UK Direct Debit\neCheck  US Bank payment\nSEPA        European Direct Debit\nWallet      PayPal, etc. \n   \n   \n     Scheduled Date \n     Date on which a payment is scheduled to be processed.  Can be used to set up payments that are due in the future. \n   \n   \n     Sent Date \n     Date on which an automatic payment was sent to Asperato for processing. \n   \n   \n     Source \n     Payment source.  Can be one of:\nWeb\nHolder not present\nRepeat \n   \n   \n     Status \n     The status of the payment.  Can be one of:\nPending     Has been created but is not yet active\nSent            Has been set to Asperato for processing.\nPaid            Has been paid.\nRefunded        Has been refunded.\nFailed          Has failed for some reason\nPayment Scheduled   Is ready for collection by the next batch run. \n   \n   \n     Status Description \n     A descriptive text showing the reason related to the current status.  Might contain the reason for cancellation or failure for example. \n   \n   \n     Subscription \n     A link to the related Subscription record if appropriate. \n   \n   \n     Type \n     One of:\nPayment\nRefund", 
             "title": "Payment"
         }, 
         {
-            "location": "/sf/index.html#the-custom-metadata-type-settings", 
+            "location": "/sf/#the-custom-metadata-type-settings", 
             "text": "There are two Custom Metadata Types that affect the way that the Asperato Phoenix package operates.", 
             "title": "The Custom Metadata Type settings"
         }, 
         {
-            "location": "/sf/index.html#asperato-settings", 
+            "location": "/sf/#asperato-settings", 
             "text": "There is a single record in this Metadata Type with the Label of Default.  When managing this record there are three fields available.  The first of these field is labeled  pmRef .  The value for this field is provided by Asperato and relates the Salesforce organisation to the equivalent configurations within the Asperato databases.  You must set this value before using the package to take payments etc.  The second field is labeled  Operating Mode .  This is a select box with two options, Test and Live.  Switching this value will automatically switch Asperato server endpoints between the sandbox test environment and the live server environment.  Leave this setting as \u2018Test\u2019 until such time as the live configuration has been established with Asperato.  The third field is labelled  Direct Debit Lead Time .  This is a numeric field with a default value of 4 and this represents the number of days before a payment is due that the process of collecting that payment will start.  This is to compensation for the inherent delays in the UK BACS payment system.  This value can be tuned if needed. Under normal circumstances you should leave this value at the default.", 
             "title": "Asperato Settings"
         }, 
         {
-            "location": "/sf/index.html#service-handlers", 
+            "location": "/sf/#service-handlers", 
             "text": "There are five records in the Service Handlers Metadata Type and these are used to implement overrides to standard package service handlers.  A service handler is an Apex class that processes the data provided in a web service call and builds the appropriate response.  The full details for each of the web services available and how to create the Apex needed is described in the Web Services section.  The only field you can edit for each record is the Handler Name.  This is the name of the Apex class that will be executed for the relevant handler.  The complete list of the Service Handlers and their default values is shown in the table below.  The Interface Name is the name of the interface that the service handler implements.  \n   \n     Label \n     Default Handler \n     Interface Name \n   \n   \n     GetAuthorisations \n     GetAuthorisationsService \n     IGetAuthorisationsService \n   \n   \n     GetPayments \n     GetPaymentsService \n     IGetPaymentsService \n   \n   \n     PutAuthorisations \n     PutAuthorisationsService \n     IPutAuthorisationsService \n   \n   \n     PutMessages \n     PutMessagesService \n     IPutMessagesService \n   \n   \n     PutPayments \n     PutPaymentsService \n     IPutPaymentsService", 
             "title": "Service Handlers"
         }, 
         {
-            "location": "/sf/index.html#web-services", 
+            "location": "/sf/#web-services", 
             "text": "Each web service consists of an Apex REST endpoint and an associated Apex class that processes the REST request object and builds the relevant response object.  The Apex class that processes the REST data exchange is called a service handler and the actual name of the service handler is driven by Custom Metadata.  So in simple terms to create a new Apex service handler you create a new Apex class that implements the relevant interface and update the Custom Metadata to point to the new class.  Next time that the web service fires, the service handler that executes would be your code rather than that supplied by the Asperato Phoenix package.  There are three sets of web services relating to payments, authorisations and message updates.", 
             "title": "Web Services"
         }, 
         {
-            "location": "/sf/index.html#payments", 
+            "location": "/sf/#payments", 
             "text": "The two web services that relate to payments are labelled GetPayments and PutPayments.", 
             "title": "Payments"
         }, 
         {
-            "location": "/sf/index.html#getpayments", 
+            "location": "/sf/#getpayments", 
             "text": "This gets data from the Payment object and passes this to Asperato so that it can be used to prepopulate the payment page web screen.  The web service has a simple request of a single Salesforce ID and returns a single set of response data.  The field names and usage are shown in the table below.  Request  \n   \n     Field Name \n     Type \n     Usage \n   \n   \n     RecordID \n     String (ID) \n     Contains the Salesforce ID to a row in the payment object. \n   \n   \n     UrlParameters \n     List of\nUrlParameter \n     Any additional parameters included into the URL that invokes the Asperato pay page are passed to Salesforce in this list. \n     Response  \n   \n     Field Name \n     Type \n     Usage \n   \n   \n     Success \n     Boolean \n     When true means the record was located correctly. \n   \n   \n     UseHostedPage \n     Boolean \n     When true means that where a gateway offers a hosted page option that will be invoked in preference to the Asperato template. \n   \n   \n     DueDate \n     Date \n     The date on which the payment is due. \n   \n   \n     Amount \n     Long \n     Amount due in the lowest denomination for the the currency. For GBP this would be pence, for USD this would be cents, for EUR this would be cents, etc. \n   \n   \n     CurrencyCode \n     String \n     Three character ISO 4217 currency code. \n   \n   \n     ErrorMessage \n     String \n     If the Success field is false this will contain an indication of why the call failed. \n   \n   \n     PaymentFrequency \n     String \n     One of:\nSingle\nDaily\nWeekly\nMonthly\nQuarterly\nSemi-annual\nAnnual \n   \n   \n     PaymentType \n     String \n     One of:\nCard\nBACS\neCheck\nSEPA\nWallet \n   \n   \n     UrlCancel \n     String \n     URL that the payment page will link to if the end customer chooses to cancel the payment process. \n   \n   \n     UrlError \n     String \n     URL that the result page will go to in the event that the transaction fails \n   \n   \n     UrlExit \n     String \n     URL that the result page will go to after a successful transaction \n   \n   \n     PassThroughParameters \n     List of\nPassThroughParameter \n     This is a list of name value pairs that can be passed from Salesforce, updated in the paypage and then passed back to Salesforce. \n     These are the list parameters mentioned above  UrlParameter  \n   \n     Field Name \n     Type \n     Usage \n   \n   \n     Key \n     String \n     The name of the parameter as it appeared in the URL. \n   \n   \n     Value \n     String \n     The content of the parameter as it appeared in the URL. \n     PassThroughParameter  \n   \n     Field Name \n     Type \n     Usage \n   \n   \n     Key \n     String \n     The desired name of the parameter to be passed to Asperato.\nNote that there are certain names that have significance to the web templates and these are documented in the templates chapter. \n   \n   \n     Value \n     String \n     The desired content of the parameter to be passed to Asperato. \n   \n   \n     IsDisplayOnly \n     Boolean \n     When true the parameter will appear in the template and not be passed back to Salesforce.\nBy default all parameters are passed into Asperato and back out again. \n     When implementing a service handler override class this new class should implement the interface called  asp03__IGetPaymentsService .", 
             "title": "GetPayments"
         }, 
         {
-            "location": "/sf/index.html#putpayments", 
+            "location": "/sf/#putpayments", 
             "text": "This puts data back into Salesforce after a payment attempt has been made irrespective of whether that attempt succeeded or failed.  This web service can be bulked up so is capable of sending multiple rows in a single request.  Request  \n   \n     Field Name \n     Type \n     Usage \n   \n   \n     PutPaymentRequestDetails \n     List of\nPutPaymentRequestDetail \n     A list of outcomes from payment attempts. \n     PutPaymentRequestDetail  \n   \n     Field Name \n     Type \n     Usage \n   \n   \n     PaymentDate \n     Date \n     The date the payment was attempted. \n   \n   \n     Amount \n     Long \n     Amount transacted in the lowest denomination for the the currency. For GBP this would be pence, for USD this would be cents, for EUR this would be cents, etc. \n   \n   \n     AccountReference \n     String \n     An obscured reference to the card or the bank account. \n   \n   \n     AccountName \n     String \n     The name on the card or the bank account \n   \n   \n     CardType \n     String \n     If a card this will say what type of card was used otherwise will say \u2018Not Applicable\u2019. \n   \n   \n     CrossReference \n     String \n     The cross reference value obtained from the payment gateway. \n   \n   \n     CurrencyCode \n     String \n     Three character ISO 4217 currency code. \n   \n   \n     OrderId \n     String \n     An Asperato generated order reference for the transaction. \n   \n   \n     PaymentType \n     String \n     One of:\nCard\nBACS\neCheck\nSEPA\nWallet \n   \n   \n     SalesforceId \n     String \n     ID of the payment object row \n   \n   \n     Source \n     String \n     How the transaction was generated.  One of:\nHolder not present\nRepeat\nWeb \n   \n   \n     Status \n     String \n     One of:\nFailed\nSent \n   \n   \n     StatusDescription \n     String \n     Text relating to the Status.  This will show either some form of transaction reference or the reason why the payment failed as appropriate. \n   \n   \n     PassThroughParameters \n     List of\nPassThroughParameter \n     This is a list of name value pairs that were passed from Salesforce, updated in the paypage and then passed back to Salesforce. \n     PassThroughParameter  \n   \n     Field Name \n     Type \n     Usage \n   \n   \n     Key \n     String \n     The name of the parameter passed from Asperato. \n   \n   \n     Value \n     String \n     The content of the parameter passed from Asperato. \n     Response  \n   \n     Field Name \n     Type \n     Usage \n   \n   \n     Success \n     Boolean \n     When true indicates that the overall request was successful. \n   \n   \n     ErrorMessage \n     String \n     If the Success field is false this indicates the reason why. \n   \n   \n     PutPaymentResponseDetails \n     List of \nPutPaymentResponseDetail \n     \n     PutPaymentResponseDetail  \n   \n     Field Name \n     Type \n     Usage \n   \n   \n     Success \n     Boolean \n     When true indicates that the request was successful for this row. \n   \n   \n     ErrorMessage \n     String \n     If the Success field is false this indicates the reason why. \n   \n   \n     SalesforceId \n     String \n     The ID of the row that was updated.", 
             "title": "PutPayments"
         }, 
         {
-            "location": "/sf/index.html#messages", 
+            "location": "/sf/#messages", 
             "text": "The message web service is used to send messages from Asperato to Salesforce.  These messages affect the status of existing payments or authorisations.  At the moment these messages all relate to UK Direct Debits, though in future this will include SEPA direct debits and card updates.  This web service can be bulked up so is capable of sending multiple rows in a single request.  Request  \n   \n     Field Name \n     Type \n     Usage \n   \n   \n     PutMessagesRequest \n     List of\nPutMessageRequestDetail \n     A list of messages. \n     PutMessageRequestDetail  \n   \n     Field Name \n     Type \n     Usage \n   \n   \n     Success \n     Boolean \n     When true means the message has a positive implication, when false indicates a failure of some sort. \n   \n   \n     EventReference \n     String \n     A unique reference to the message. \n   \n   \n     MessageText \n     String \n     Textural content of the message truncated to 250 characters so as not cause insert failures in the standard objects. \n   \n   \n     ReasonCode \n     String \n     The raw reason code from either BACS or SEPA \n   \n   \n     Resource \n     String \n     Can be one of \nmandates\npayments\nrefunds\nPayouts (not currently sent)\nsubscriptions (not currently sent) \n   \n   \n     Status \n     String \n     The action that the message implies.  Typical values are\ncreated\nactive\ncancelled\nfailed\netc. \n   \n   \n     TransactionReference \n     String \n     A reference needed to locate the item to which the message refers (see below) \n     Locating the data to which a message refers.  When the resource has the text content \u2018mandates\u2019 the message relates to an Authorisation.  To locate the correct row search for where the Repeat Cross Reference on the Authorisation row equals the TransactionReference on the request.  When the resource has the text content of either \u2018payments\u2019 or \u2018refunds\u2019 then the message relates to the Payment object.  To locate the correct row search for where the Cross Reference on the Payment row equals the TransactionReference on the request.  Response  \n   \n     Field Name \n     Type \n     Usage \n   \n   \n     Success \n     Boolean \n     When true indicates that the overall request was successful. \n   \n   \n     ErrorMessage \n     String \n     If the Success field is false this indicates the reason why.", 
             "title": "Messages"
         }, 
         {
-            "location": "/templates/index.html", 
+            "location": "/templates/", 
             "text": "Modifying the standard template\n\n\nThe paypage as provided can be modified to provide it with an entirely custom look - both the HTML markup and the CSS may be changed.\n\n\nTo obtain a copy of the standard paypage for modification, please email support@asperato.com.\n\n\nThe following document gives an overview of some possible customisations, and some things that must not be altered.\n\n\nID / class attributes\n\n\nWhen modifying the document, please keep the class and ID attributes that are already present, as changing them will break form submission and validation. (Additional class names may be used.)\n\n\nAdditional JS\n\n\nAdditional Javascript is fine, but please place it in a separate file (where possible) rather than altering the provided \"script.js\" file. We need to manually check the Javascript to make sure it is not malicious in any way, so placing it in a separate file will speed up this process.\n\n\nEndpoint \n Method\n\n\n\n\n\n\nThe method must be \nPOST\n. Other HTTP methods (such as \nGET\n) are not supported.\n\n\n\n\n\n\nThe endpoint (action parameter) must either be \n/PMWeb2\n, or \n/PMWeb2X\n.\n\n\n\n\n\n\nPMWeb2X\n will display a gear animation while the payment is processing, but cannot be used with a hosted payment option (such as GoCardless standard or Paypal);\n\n\n\n\n\n\nPMWeb2\n will not display the gear animation.\n\n\n\n\n\n\n\n\n\n\nOnload Javascript\n\n\nImmediately after the opening body tag, the following must be left in place:\n\n\n!-- ONLOAD HERE --\n\n\nThis will provide a hook for injecting the Javascript we need to dynamically modify the paypage (based on data collected from Salesforce.)\n\n\nPostcode lookup\n\n\nYou may wish to include a postcode lookup in your page - we have this facility available as a simple JSON endpoint to which you can fire an AJAX request.\n\n\nEndpoint:\n \n/Asperato/asp/PMPostcode\n\n\n\n\n\n\nThis will be \nhttps://test.protectedpayments.net/Asperato/asp/PMPostcode\n for test and \nhttps://live.protectedpayments.net/Asperato/asp/PMPostcode\n for live.\n\n\n\n\n\n\nDo not specify the full URL in your Javascript, as the same origin policy will then break the functionality when moving from test to live.\n\n\n\n\n\n\nMethod: \nGET\n\n\nParameters:\n\n\n\n\n\n\npc\n - this is the postcode to look up. It should be all in lower case and contain no spaces.\n\n\n\n\n\n\nsession\n - this is the value of the \nDLsession\n parameter on the form.\n\n\n\n\n\n\nThe response will be given as a JSON array.\n\n\nFor example:\n\n\n\n\nGET\n \nhttps://test.protectedpayments.net/Asperato/asp/PMPostcode?pc=HD80pq\nsession=1133557799\n\n\n\n\nResponse:\n\n\n[\"22 Penistone Road, , , , Kirkburton, Huddersfield, West Yorkshire\",\"24 Penistone Road, , , , Kirkburton, Huddersfield, West Yorkshire\",\"24a Penistone Road, , , , Kirkburton, Huddersfield, West Yorkshire\",\"26a Penistone Road, , , , Kirkburton, Huddersfield, West Yorkshire\",\"28 Penistone Road, , , , Kirkburton, Huddersfield, West Yorkshire\",\"30 Penistone Road, , , , Kirkburton, Huddersfield, West Yorkshire\",\"32 Penistone Road, , , , Kirkburton, Huddersfield, West Yorkshire\",\"Shepley Springs Ltd, Brookfield Mills, Penistone Road, , Kirkburton, Huddersfield, West Yorkshire\",\"Spring Grove Fisheries, 26 Penistone Road, , , Kirkburton, Huddersfield, West Yorkshire\",\"Spring Grove Tavern, 20 Penistone Road, , , Kirkburton, Huddersfield, West Yorkshire\",\"The Foxglove, 36a Penistone Road, , , Kirkburton, Huddersfield, West Yorkshire\"]\n\n\nThe response can then be used to fill a HTML selection box or similar, and the selected value can be used to populate the required fields on the form.\n\n\nField names\n\n\nIn all cases here, both the \nid\n and \nname\n attributes of the element must be set to the name given. The attribute value is case sensitive.\n\n\nTaking \nDLemail\n as an example:\n\n\ninput type=\"text\" name=\"DLemail\" id=\"DLemail\"\n\n\nRequired fields\n\n\nThe following fields must be specified on the form regardless of payment method or type:\n\n\nDLsession\n\n\nThis is an internally generated session number \n(this field should be set to \"type=hidden\" and will be automatically populated from Salesforce.)\n\n\nDLpayMode\n\n\nThis is an internally generated session number \n(this field should be set to \"type=hidden\" and will be automatically populated from Salesforce.)\n\n\nDLpayType\n\n\nThis is an internally generated session number \n(this field should be set to \"type=hidden\" and will be automatically populated from Salesforce.)\n\n\nDLFrequency\n\n\nThe frequency of payment. You may wish to restrict the values to those provided in the \"LabelFrequencyOptions\" field.\n\n\nPossible values:\n\n\n\n\nONE\n (single payment)\n\n\nDLY\n (daily payment)\n\n\nWKL\n (weekly payment)\n\n\nMON\n (monthly payment)\n\n\nQTL\n (quarterly payment)\n\n\nSAN\n (semi-annual payment)\n\n\nANN\n (annual payment)\n\n\n\n\nDLamount\n\n\nThe amount to charge. One of DLamount or DLauthAmount must be provided, depending on whether this is a payment template or an authorisation template.\n\n\nDLauthAmount\n\n\nThe amount to authorise. One of DLamount or DLauthAmount must be provided, depending on whether this is a payment template or an authorisation template.\n\n\nDLemail\n\n\nThe email address of the customer.\n\n\nLabelFrequencyOptions\n\n\nThe frequency options passed from Salesforce. \n(this field should be set to \"type=hidden\" and will be automatically populated from Salesforce. Its \u201cid\u201d attribute must also match the field name.)\n\n\nLabelPaymentOptions\n\n\nThe payment options passed from Salesforce \n(this field should be set to \"type=hidden\" and will be automatically populated from Salesforce. Its \u201cid\u201d attribute must also match the field name.)\n\n\nYou may wish to use this field to restrict the payment options - i.e. hide the option to pay via direct debit if it is set to \"card\" or vica versa.\n\n\nRequired card fields\n\n\nThe following fields must (only) be specified if a debit or credit card payment is being made.\n\n\nDLcardNumber\n\n\nThe long number on the front of the card.\n\n\nDLcardType\n\n\nPossible values:\n\n\n\n\n\n\nVisa\n\n\n\n\n\n\nMastercard\n\n\n\n\n\n\nAmex\n\n\n\n\n\n\nSolo\n\n\n\n\n\n\nSwitch\n\n\n\n\n\n\nMaestro\n\n\n\n\n\n\nJCB\n\n\n\n\n\n\nDLcnp\n\n\nSet to \"jdi\" if cardholder is not present, otherwise do not specify this parameter.\n\n\nDLcurrency\n\n\nThe ISO currency code, eg. \"GBP\" for British pounds.\n\n\nDLexpiryDateMonth\n\n\nThe two digit expiry date month of the card.\n\n\nDLexpiryDateYear\n\n\nThe last two digits of the year the card expires.\n\n\nDLcv2\n\n\nThe 3 digit security code on the back of the card (or the 4 digit code on the top right of the card for Amex.)\n\n\nOptional card fields\n\n\nThese fields may be required - they are not for the majority of cards, but some (such as Solo, Maestro and Switch) may need them, so if you expect customers to pay with these cards they should be included.\n\n\nDLstartDateMonth\n\n\nThe two digit start date month of the card\n\n\nDLstartDateYear\n\n\nThe last two digits of the start date year.\n\n\nDLissueNumber\n\n\nThe issue number of the card (often \"01\" where it exists.)\n\n\nRequired Direct Debit / ACH fields\n\n\nThese fields are only required if making a direct debit or ACH payment.\n\n\nDLaccountName\n\n\nThe full name of the account holder.\n\n\nDLaccountNumber\n\n\nThe bank account number.\n\n\nDLsc\n\n\nThe sort code (direct debit) or routing number (ACH).\n\n\nDLaccountType\n\n\nOnly necessary for ACH - the account type. Usually \"checking\" or \u201csavings\u201d.\n\n\nAddress fields\n\n\nIf AVS (address) checking is enabled on your card gateway, then you will need some of these fields. The exact fields you require depends on your gateway settings, but often just the first line of the address (\nDLaddress1\n) and the postcode (\nDLpostcode\n) are required.\n\n\nFor direct debit and ACH payments, the title, forename, lastname, first line of the address, city and postcode are always required.\n\n\nDLtitle\n\n\nThe salutation or title.\n\n\nDLforename\n\n\nThe first name.\n\n\nDLlastname\n\n\nThe last name.\n\n\nDLaddress1\n\n\nThe first line of the address.\n\n\nDLaddress2\n\n\nThe second line of the address.\n\n\nDLcity\n\n\nThe town or city of the address\n\n\nDLcounty\n\n\nThe county or state of the address\n\n\nDLcountry\n\n\nThe country of the address\n\n\nDLpostcode\n\n\nThe postcode, or zip code of the address.\n\n\nPre-populating the template\n\n\nThe template will be pre-populated with values for the above parameters if values are provided as part of the URL string.\n\n\nFor example, if the normal URL to the payment page is:\n\n\nhttps://test.protectedpayments.net/Asperato/asp/PMWeb1?pmRef=73\ncampaignRef=431\n\n\nThen the email can be pre-populated with the following URL:\n\n\nhttps://test.protectedpayments.net/Asperato/asp/PMWeb1?pmRef=73\ncampaignRef=431\nDLemail=test@asperato.com\n\n\nDirect Debit Legal Requirements\n\n\nWhile the look and feel of both the payment and exit screens can be changed, the following rules must be adhered to if UK direct debit or SEPA payments are being used. These requirements are mandatory and non-negotiable as they are required under UK law.\n\n\nThe example payment page template includes all these requirements, so if you are just modifying the colours, fonts, and logo in use then you need not worry about the contents of this document. If you are developing a template with a radically different look and feel, we will need to send these to GoCardless for verification before they can be used live (this process can typically take a couple of weeks, depending on how many changes are required.)\n\n\nPayment page requirements\n\n\nAccount name field must be called \u201cAccount name\u201d\n\nThe label for the account name field must not be changed - it must also be presented in a logical block next to the account number and sort code. (In particular, it cannot be changed just to \u201cname\u201d.)\n\n\nRetain confirmation that only one user is required to authorise payments.\n\nThe check box that asks whether multiple signatures are needed to set up a direct debit on this account must be retained.\n\n\nConfirm customer details before submission.\n\nThe customer\u2019s bank account details (including account name, account number and sort code) must be relayed back to the customer in a confirmation dialog, with the opportunity to amend these details, before the form is submitted.\n\n\nProvide your contact details\n\nYou need to provide the name, address, phone number and email address of your payment provider somewhere on the payment page, usually in the footer. Note that if you are using GoCardless standard, this needs to be kept as GoCardless\u2019 details (included in the sample template.) If you are using GoCardless Pro with your own SUN, then these need to be your own details.\n\n\nInclude a link to the direct debit guarantee\n\nA link must be clearly visible on the page that points to the direct debit guarantee - the wording of the guarantee needs to stay exactly as it is in the sample template, aside from swapping out the company name. As previously, this needs to be left as GoCardless if GoCardless standard is being used, and changed to your company name if you are using GoCardless Pro with your own SUN.\n\n\nConfirmation page requirements\n\n\nShow confirmation of setup\n\nConfirmation that the direct debit was set up correctly must be displayed.\n\n\nProvide the mandate as a PDF link\n\nYou need to provide a link to the Direct Debit mandate as a PDF.\n\n\nConfirm that the customer will receive an email\n\nYou need to send the customer an email confirming that the direct debit was setup successfully, along with a link to their mandate (as above.) You need to state that this email will arrive in 3 business days.\n\n\nConfirm the name on the customer\u2019s bank statement\n\nYou need to include \u201cThe name on your bank statement will be X\u201d on your confirmation page. X will be \u201cGoCardless\u201d for GoCardless standard customers, and your company name for GoCardless Pro customers using their own SUN.\n\n\nError page requirements\n\n\nConfirm that the Direct Debit was not set up\n\nConfirm to the user that an error occurred, and as a result the direct debit was not set up correctly.", 
             "title": "Templates"
         }, 
         {
-            "location": "/templates/index.html#modifying-the-standard-template", 
+            "location": "/templates/#modifying-the-standard-template", 
             "text": "The paypage as provided can be modified to provide it with an entirely custom look - both the HTML markup and the CSS may be changed.  To obtain a copy of the standard paypage for modification, please email support@asperato.com.  The following document gives an overview of some possible customisations, and some things that must not be altered.", 
             "title": "Modifying the standard template"
         }, 
         {
-            "location": "/templates/index.html#id-class-attributes", 
+            "location": "/templates/#id-class-attributes", 
             "text": "When modifying the document, please keep the class and ID attributes that are already present, as changing them will break form submission and validation. (Additional class names may be used.)", 
             "title": "ID / class attributes"
         }, 
         {
-            "location": "/templates/index.html#additional-js", 
+            "location": "/templates/#additional-js", 
             "text": "Additional Javascript is fine, but please place it in a separate file (where possible) rather than altering the provided \"script.js\" file. We need to manually check the Javascript to make sure it is not malicious in any way, so placing it in a separate file will speed up this process.", 
             "title": "Additional JS"
         }, 
         {
-            "location": "/templates/index.html#endpoint-method", 
+            "location": "/templates/#endpoint-method", 
             "text": "The method must be  POST . Other HTTP methods (such as  GET ) are not supported.    The endpoint (action parameter) must either be  /PMWeb2 , or  /PMWeb2X .    PMWeb2X  will display a gear animation while the payment is processing, but cannot be used with a hosted payment option (such as GoCardless standard or Paypal);    PMWeb2  will not display the gear animation.", 
             "title": "Endpoint &amp; Method"
         }, 
         {
-            "location": "/templates/index.html#onload-javascript", 
+            "location": "/templates/#onload-javascript", 
             "text": "Immediately after the opening body tag, the following must be left in place:  !-- ONLOAD HERE --  This will provide a hook for injecting the Javascript we need to dynamically modify the paypage (based on data collected from Salesforce.)", 
             "title": "Onload Javascript"
         }, 
         {
-            "location": "/templates/index.html#postcode-lookup", 
+            "location": "/templates/#postcode-lookup", 
             "text": "You may wish to include a postcode lookup in your page - we have this facility available as a simple JSON endpoint to which you can fire an AJAX request.  Endpoint:   /Asperato/asp/PMPostcode    This will be  https://test.protectedpayments.net/Asperato/asp/PMPostcode  for test and  https://live.protectedpayments.net/Asperato/asp/PMPostcode  for live.    Do not specify the full URL in your Javascript, as the same origin policy will then break the functionality when moving from test to live.    Method:  GET  Parameters:    pc  - this is the postcode to look up. It should be all in lower case and contain no spaces.    session  - this is the value of the  DLsession  parameter on the form.    The response will be given as a JSON array.  For example:   GET   https://test.protectedpayments.net/Asperato/asp/PMPostcode?pc=HD80pq session=1133557799   Response:  [\"22 Penistone Road, , , , Kirkburton, Huddersfield, West Yorkshire\",\"24 Penistone Road, , , , Kirkburton, Huddersfield, West Yorkshire\",\"24a Penistone Road, , , , Kirkburton, Huddersfield, West Yorkshire\",\"26a Penistone Road, , , , Kirkburton, Huddersfield, West Yorkshire\",\"28 Penistone Road, , , , Kirkburton, Huddersfield, West Yorkshire\",\"30 Penistone Road, , , , Kirkburton, Huddersfield, West Yorkshire\",\"32 Penistone Road, , , , Kirkburton, Huddersfield, West Yorkshire\",\"Shepley Springs Ltd, Brookfield Mills, Penistone Road, , Kirkburton, Huddersfield, West Yorkshire\",\"Spring Grove Fisheries, 26 Penistone Road, , , Kirkburton, Huddersfield, West Yorkshire\",\"Spring Grove Tavern, 20 Penistone Road, , , Kirkburton, Huddersfield, West Yorkshire\",\"The Foxglove, 36a Penistone Road, , , Kirkburton, Huddersfield, West Yorkshire\"]  The response can then be used to fill a HTML selection box or similar, and the selected value can be used to populate the required fields on the form.", 
             "title": "Postcode lookup"
         }, 
         {
-            "location": "/templates/index.html#field-names", 
+            "location": "/templates/#field-names", 
             "text": "In all cases here, both the  id  and  name  attributes of the element must be set to the name given. The attribute value is case sensitive.  Taking  DLemail  as an example:  input type=\"text\" name=\"DLemail\" id=\"DLemail\"", 
             "title": "Field names"
         }, 
         {
-            "location": "/templates/index.html#required-fields", 
+            "location": "/templates/#required-fields", 
             "text": "The following fields must be specified on the form regardless of payment method or type:", 
             "title": "Required fields"
         }, 
         {
-            "location": "/templates/index.html#dlsession", 
+            "location": "/templates/#dlsession", 
             "text": "This is an internally generated session number  (this field should be set to \"type=hidden\" and will be automatically populated from Salesforce.)", 
             "title": "DLsession"
         }, 
         {
-            "location": "/templates/index.html#dlpaymode", 
+            "location": "/templates/#dlpaymode", 
             "text": "This is an internally generated session number  (this field should be set to \"type=hidden\" and will be automatically populated from Salesforce.)", 
             "title": "DLpayMode"
         }, 
         {
-            "location": "/templates/index.html#dlpaytype", 
+            "location": "/templates/#dlpaytype", 
             "text": "This is an internally generated session number  (this field should be set to \"type=hidden\" and will be automatically populated from Salesforce.)", 
             "title": "DLpayType"
         }, 
         {
-            "location": "/templates/index.html#dlfrequency", 
+            "location": "/templates/#dlfrequency", 
             "text": "The frequency of payment. You may wish to restrict the values to those provided in the \"LabelFrequencyOptions\" field.  Possible values:   ONE  (single payment)  DLY  (daily payment)  WKL  (weekly payment)  MON  (monthly payment)  QTL  (quarterly payment)  SAN  (semi-annual payment)  ANN  (annual payment)", 
             "title": "DLFrequency"
         }, 
         {
-            "location": "/templates/index.html#dlamount", 
+            "location": "/templates/#dlamount", 
             "text": "The amount to charge. One of DLamount or DLauthAmount must be provided, depending on whether this is a payment template or an authorisation template.", 
             "title": "DLamount"
         }, 
         {
-            "location": "/templates/index.html#dlauthamount", 
+            "location": "/templates/#dlauthamount", 
             "text": "The amount to authorise. One of DLamount or DLauthAmount must be provided, depending on whether this is a payment template or an authorisation template.", 
             "title": "DLauthAmount"
         }, 
         {
-            "location": "/templates/index.html#dlemail", 
+            "location": "/templates/#dlemail", 
             "text": "The email address of the customer.", 
             "title": "DLemail"
         }, 
         {
-            "location": "/templates/index.html#labelfrequencyoptions", 
+            "location": "/templates/#labelfrequencyoptions", 
             "text": "The frequency options passed from Salesforce.  (this field should be set to \"type=hidden\" and will be automatically populated from Salesforce. Its \u201cid\u201d attribute must also match the field name.)", 
             "title": "LabelFrequencyOptions"
         }, 
         {
-            "location": "/templates/index.html#labelpaymentoptions", 
+            "location": "/templates/#labelpaymentoptions", 
             "text": "The payment options passed from Salesforce  (this field should be set to \"type=hidden\" and will be automatically populated from Salesforce. Its \u201cid\u201d attribute must also match the field name.)  You may wish to use this field to restrict the payment options - i.e. hide the option to pay via direct debit if it is set to \"card\" or vica versa.", 
             "title": "LabelPaymentOptions"
         }, 
         {
-            "location": "/templates/index.html#required-card-fields", 
+            "location": "/templates/#required-card-fields", 
             "text": "The following fields must (only) be specified if a debit or credit card payment is being made.", 
             "title": "Required card fields"
         }, 
         {
-            "location": "/templates/index.html#dlcardnumber", 
+            "location": "/templates/#dlcardnumber", 
             "text": "The long number on the front of the card.", 
             "title": "DLcardNumber"
         }, 
         {
-            "location": "/templates/index.html#dlcardtype", 
+            "location": "/templates/#dlcardtype", 
             "text": "Possible values:    Visa    Mastercard    Amex    Solo    Switch    Maestro    JCB", 
             "title": "DLcardType"
         }, 
         {
-            "location": "/templates/index.html#dlcnp", 
+            "location": "/templates/#dlcnp", 
             "text": "Set to \"jdi\" if cardholder is not present, otherwise do not specify this parameter.", 
             "title": "DLcnp"
         }, 
         {
-            "location": "/templates/index.html#dlcurrency", 
+            "location": "/templates/#dlcurrency", 
             "text": "The ISO currency code, eg. \"GBP\" for British pounds.", 
             "title": "DLcurrency"
         }, 
         {
-            "location": "/templates/index.html#dlexpirydatemonth", 
+            "location": "/templates/#dlexpirydatemonth", 
             "text": "The two digit expiry date month of the card.", 
             "title": "DLexpiryDateMonth"
         }, 
         {
-            "location": "/templates/index.html#dlexpirydateyear", 
+            "location": "/templates/#dlexpirydateyear", 
             "text": "The last two digits of the year the card expires.", 
             "title": "DLexpiryDateYear"
         }, 
         {
-            "location": "/templates/index.html#dlcv2", 
+            "location": "/templates/#dlcv2", 
             "text": "The 3 digit security code on the back of the card (or the 4 digit code on the top right of the card for Amex.)", 
             "title": "DLcv2"
         }, 
         {
-            "location": "/templates/index.html#optional-card-fields", 
+            "location": "/templates/#optional-card-fields", 
             "text": "These fields may be required - they are not for the majority of cards, but some (such as Solo, Maestro and Switch) may need them, so if you expect customers to pay with these cards they should be included.", 
             "title": "Optional card fields"
         }, 
         {
-            "location": "/templates/index.html#dlstartdatemonth", 
+            "location": "/templates/#dlstartdatemonth", 
             "text": "The two digit start date month of the card", 
             "title": "DLstartDateMonth"
         }, 
         {
-            "location": "/templates/index.html#dlstartdateyear", 
+            "location": "/templates/#dlstartdateyear", 
             "text": "The last two digits of the start date year.", 
             "title": "DLstartDateYear"
         }, 
         {
-            "location": "/templates/index.html#dlissuenumber", 
+            "location": "/templates/#dlissuenumber", 
             "text": "The issue number of the card (often \"01\" where it exists.)", 
             "title": "DLissueNumber"
         }, 
         {
-            "location": "/templates/index.html#required-direct-debit-ach-fields", 
+            "location": "/templates/#required-direct-debit-ach-fields", 
             "text": "These fields are only required if making a direct debit or ACH payment.", 
             "title": "Required Direct Debit / ACH fields"
         }, 
         {
-            "location": "/templates/index.html#dlaccountname", 
+            "location": "/templates/#dlaccountname", 
             "text": "The full name of the account holder.", 
             "title": "DLaccountName"
         }, 
         {
-            "location": "/templates/index.html#dlaccountnumber", 
+            "location": "/templates/#dlaccountnumber", 
             "text": "The bank account number.", 
             "title": "DLaccountNumber"
         }, 
         {
-            "location": "/templates/index.html#dlsc", 
+            "location": "/templates/#dlsc", 
             "text": "The sort code (direct debit) or routing number (ACH).", 
             "title": "DLsc"
         }, 
         {
-            "location": "/templates/index.html#dlaccounttype", 
+            "location": "/templates/#dlaccounttype", 
             "text": "Only necessary for ACH - the account type. Usually \"checking\" or \u201csavings\u201d.", 
             "title": "DLaccountType"
         }, 
         {
-            "location": "/templates/index.html#address-fields", 
+            "location": "/templates/#address-fields", 
             "text": "If AVS (address) checking is enabled on your card gateway, then you will need some of these fields. The exact fields you require depends on your gateway settings, but often just the first line of the address ( DLaddress1 ) and the postcode ( DLpostcode ) are required.  For direct debit and ACH payments, the title, forename, lastname, first line of the address, city and postcode are always required.", 
             "title": "Address fields"
         }, 
         {
-            "location": "/templates/index.html#dltitle", 
+            "location": "/templates/#dltitle", 
             "text": "The salutation or title.", 
             "title": "DLtitle"
         }, 
         {
-            "location": "/templates/index.html#dlforename", 
+            "location": "/templates/#dlforename", 
             "text": "The first name.", 
             "title": "DLforename"
         }, 
         {
-            "location": "/templates/index.html#dllastname", 
+            "location": "/templates/#dllastname", 
             "text": "The last name.", 
             "title": "DLlastname"
         }, 
         {
-            "location": "/templates/index.html#dladdress1", 
+            "location": "/templates/#dladdress1", 
             "text": "The first line of the address.", 
             "title": "DLaddress1"
         }, 
         {
-            "location": "/templates/index.html#dladdress2", 
+            "location": "/templates/#dladdress2", 
             "text": "The second line of the address.", 
             "title": "DLaddress2"
         }, 
         {
-            "location": "/templates/index.html#dlcity", 
+            "location": "/templates/#dlcity", 
             "text": "The town or city of the address", 
             "title": "DLcity"
         }, 
         {
-            "location": "/templates/index.html#dlcounty", 
+            "location": "/templates/#dlcounty", 
             "text": "The county or state of the address", 
             "title": "DLcounty"
         }, 
         {
-            "location": "/templates/index.html#dlcountry", 
+            "location": "/templates/#dlcountry", 
             "text": "The country of the address", 
             "title": "DLcountry"
         }, 
         {
-            "location": "/templates/index.html#dlpostcode", 
+            "location": "/templates/#dlpostcode", 
             "text": "The postcode, or zip code of the address.", 
             "title": "DLpostcode"
         }, 
         {
-            "location": "/templates/index.html#pre-populating-the-template", 
+            "location": "/templates/#pre-populating-the-template", 
             "text": "The template will be pre-populated with values for the above parameters if values are provided as part of the URL string.  For example, if the normal URL to the payment page is:  https://test.protectedpayments.net/Asperato/asp/PMWeb1?pmRef=73 campaignRef=431  Then the email can be pre-populated with the following URL:  https://test.protectedpayments.net/Asperato/asp/PMWeb1?pmRef=73 campaignRef=431 DLemail=test@asperato.com", 
             "title": "Pre-populating the template"
         }, 
         {
-            "location": "/templates/index.html#direct-debit-legal-requirements", 
+            "location": "/templates/#direct-debit-legal-requirements", 
             "text": "While the look and feel of both the payment and exit screens can be changed, the following rules must be adhered to if UK direct debit or SEPA payments are being used. These requirements are mandatory and non-negotiable as they are required under UK law.  The example payment page template includes all these requirements, so if you are just modifying the colours, fonts, and logo in use then you need not worry about the contents of this document. If you are developing a template with a radically different look and feel, we will need to send these to GoCardless for verification before they can be used live (this process can typically take a couple of weeks, depending on how many changes are required.)", 
             "title": "Direct Debit Legal Requirements"
         }, 
         {
-            "location": "/templates/index.html#payment-page-requirements", 
+            "location": "/templates/#payment-page-requirements", 
             "text": "Account name field must be called \u201cAccount name\u201d \nThe label for the account name field must not be changed - it must also be presented in a logical block next to the account number and sort code. (In particular, it cannot be changed just to \u201cname\u201d.)  Retain confirmation that only one user is required to authorise payments. \nThe check box that asks whether multiple signatures are needed to set up a direct debit on this account must be retained.  Confirm customer details before submission. \nThe customer\u2019s bank account details (including account name, account number and sort code) must be relayed back to the customer in a confirmation dialog, with the opportunity to amend these details, before the form is submitted.  Provide your contact details \nYou need to provide the name, address, phone number and email address of your payment provider somewhere on the payment page, usually in the footer. Note that if you are using GoCardless standard, this needs to be kept as GoCardless\u2019 details (included in the sample template.) If you are using GoCardless Pro with your own SUN, then these need to be your own details.  Include a link to the direct debit guarantee \nA link must be clearly visible on the page that points to the direct debit guarantee - the wording of the guarantee needs to stay exactly as it is in the sample template, aside from swapping out the company name. As previously, this needs to be left as GoCardless if GoCardless standard is being used, and changed to your company name if you are using GoCardless Pro with your own SUN.", 
             "title": "Payment page requirements"
         }, 
         {
-            "location": "/templates/index.html#confirmation-page-requirements", 
+            "location": "/templates/#confirmation-page-requirements", 
             "text": "Show confirmation of setup \nConfirmation that the direct debit was set up correctly must be displayed.  Provide the mandate as a PDF link \nYou need to provide a link to the Direct Debit mandate as a PDF.  Confirm that the customer will receive an email \nYou need to send the customer an email confirming that the direct debit was setup successfully, along with a link to their mandate (as above.) You need to state that this email will arrive in 3 business days.  Confirm the name on the customer\u2019s bank statement \nYou need to include \u201cThe name on your bank statement will be X\u201d on your confirmation page. X will be \u201cGoCardless\u201d for GoCardless standard customers, and your company name for GoCardless Pro customers using their own SUN.", 
             "title": "Confirmation page requirements"
         }, 
         {
-            "location": "/templates/index.html#error-page-requirements", 
+            "location": "/templates/#error-page-requirements", 
             "text": "Confirm that the Direct Debit was not set up \nConfirm to the user that an error occurred, and as a result the direct debit was not set up correctly.", 
             "title": "Error page requirements"
         }
