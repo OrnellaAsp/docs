@@ -3,6 +3,6 @@ install: pip install mkdocs
 script: bash ./deploy.sh
 env:
   global:
-  - ENCRYPTION_LABEL: fd34632e5cc7
+  - ENCRYPTION_LABEL: "96c27df6402b"
   - COMMIT_AUTHOR_EMAIL: "berry120@gmail.com"
   
