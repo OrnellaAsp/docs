@@ -13,3 +13,7 @@ This documentation is designed for developers who are performing an Asperato int
 ## Need help?
 
 If you requrie any assistance with your integration then please contact support@asperato.com, we'll aim to get back to you in a couple of working days.
+
+##Source
+
+These documents are written in Markdown and [hosted on GitHub](https://github.com/Asperato/docs). Feel free to create an issue or submit a pull request if you spot a mistake.
