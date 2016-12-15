@@ -34,15 +34,15 @@ The fields are their usage are described below:
   <tr>
     <td>Authorisation Type</td>
     <td>One of:
-Card		Credit or debit card
-BACS		UK Direct Debit
-eCheck	US Bank payment
-SEPA		European Direct Debit
-Wallet		PayPal, etc.</td>
+<ul><li><b>Card</b>		Credit or debit card</li>
+<li><b>BACS</b>		UK Direct Debit</li>
+<li><b>eCheck</b>	US Bank payment</li>
+<li><b>SEPA</b>		European Direct Debit</li>
+<li><b>Wallet</b>		PayPal, etc.</li></ul></td>
   </tr>
   <tr>
     <td>Card Type</td>
-    <td>The type of credit or debit card, or ‘Not Applicable’ for the other Authorisation Types</td>
+    <td>The type of credit or debit card, or `Not Applicable` for the other Authorisation Types</td>
   </tr>
   <tr>
     <td>CPA Granted</td>
@@ -67,10 +67,10 @@ Wallet		PayPal, etc.</td>
   <tr>
     <td>Status</td>
     <td>The status of the authorisation.  Can be one of:
-Pending	Has been created but is not yet active
-In Force	In force and ready to use
-Cancelled	Has been stopped
-Failed		Has failed for some reason</td>
+<ul><li><b>Pending</b>	Has been created but is not yet active</li>
+<li><b>In Force</b>	In force and ready to use</li>
+<li><b>Cancelled</b>	Has been stopped</li>
+<li><b>Failed</b>		Has failed for some reason</li></ul></td>
   </tr>
   <tr>
     <td>Status Description</td>
@@ -131,8 +131,8 @@ The fields are their usage are described below:
   <tr>
     <td>Status</td>
     <td>The status of the subscription.  Can be one of:
-In Force	In force and ready to use
-Cancelled	Has been stopped</td>
+<ul><li><b>In Force</b>	In force and ready to use</li>
+<li><b>Cancelled</b>	Has been stopped</li></ul></td>
   </tr>
   <tr>
     <td>Status Description</td>
@@ -172,7 +172,7 @@ The fields are their usage are described below:
   </tr>
   <tr>
     <td>Card Type</td>
-    <td>The type of credit or debit card, or ‘Not Applicable’ for the other Payment Types</td>
+    <td>The type of credit or debit card, or `Not Applicable` for the other Payment Types</td>
   </tr>
   <tr>
     <td>Cross Reference</td>
@@ -197,11 +197,11 @@ The fields are their usage are described below:
   <tr>
     <td>Payment Type</td>
     <td>One of:
-Card		Credit or debit card
-BACS		UK Direct Debit
-eCheck	US Bank payment
-SEPA		European Direct Debit
-Wallet		PayPal, etc.</td>
+<ul><li><b>Card</b>		Credit or debit card</li>
+<li><b>BACS</b>		UK Direct Debit</li>
+<li><b>eCheck</b>	US Bank payment</li>
+<li><b>SEPA</b>		European Direct Debit</li>
+<li><b>Wallet</b>		PayPal, etc.</ul></td>
   </tr>
   <tr>
     <td>Scheduled Date</td>
@@ -214,19 +214,19 @@ Wallet		PayPal, etc.</td>
   <tr>
     <td>Source</td>
     <td>Payment source.  Can be one of:
-Web
-Holder not present
+<ul><li><b>Web</b></li>
+<li><b>Holder not present</b></li></ul>
 Repeat</td>
   </tr>
   <tr>
     <td>Status</td>
     <td>The status of the payment.  Can be one of:
-Pending		Has been created but is not yet active
-Sent			Has been set to Asperato for processing.
-Paid			Has been paid.
-Refunded		Has been refunded.
-Failed			Has failed for some reason
-Payment Scheduled	Is ready for collection by the next batch run.</td>
+<ul><li><b>Pending</b>		Has been created but is not yet active</li>
+<li><b>Sent</b>			Has been set to Asperato for processing.</li>
+<li><b>Paid</b>			Has been paid.</li>
+<li><b>Refunded</b>		Has been refunded.</li>
+<li><b>Failed</b>			Has failed for some reason</li>
+<li><b>Payment Scheduled</b>	Is ready for collection by the next batch run.</li></ul></td>
   </tr>
   <tr>
     <td>Status Description</td>
@@ -239,8 +239,8 @@ Payment Scheduled	Is ready for collection by the next batch run.</td>
   <tr>
     <td>Type</td>
     <td>One of:
-Payment
-Refund</td>
+<ul><li><b>Payment</b></li>
+<li><b>Refund</b></li></ul></td>
   </tr>
 </table>
 
@@ -255,7 +255,7 @@ There is a single record in this Metadata Type with the Label of Default.  When 
 
 The first of these field is labeled `pmRef`.  The value for this field is provided by Asperato and relates the Salesforce organisation to the equivalent configurations within the Asperato databases.  You must set this value before using the package to take payments etc.
 
-The second field is labeled `Operating Mode`.  This is a select box with two options, Test and Live.  Switching this value will automatically switch Asperato server endpoints between the sandbox test environment and the live server environment.  Leave this setting as ‘Test’ until such time as the live configuration has been established with Asperato.
+The second field is labeled `Operating Mode`.  This is a select box with two options, Test and Live.  Switching this value will automatically switch Asperato server endpoints between the sandbox test environment and the live server environment.  Leave this setting as `Test` until such time as the live configuration has been established with Asperato.
 
 The third field is labelled `Direct Debit Lead Time`.  This is a numeric field with a default value of 4 and this represents the number of days before a payment is due that the process of collecting that payment will start.  This is to compensation for the inherent delays in the UK BACS payment system.  This value can be tuned if needed. Under normal circumstances you should leave this value at the default.
 
@@ -309,7 +309,7 @@ There are three sets of web services relating to payments, authorisations and me
 
 ### Payments
 
-The two web services that relate to payments are labelled GetPayments and PutPayments.
+The two web services that relate to payments are labelled `GetPayments` and `PutPayments`.
 
 #### GetPayments
 
@@ -379,23 +379,23 @@ UrlParameter</td>
     <td>PaymentFrequency</td>
     <td>String</td>
     <td>One of:
-Single
-Daily
-Weekly
-Monthly
-Quarterly
-Semi-annual
-Annual</td>
+<ul><li><b>Single</b></li>
+<li><b>Daily</b></li>
+<li><b>Weekly</b></li>
+<li><b>Monthly</b></li>
+<li><b>Quarterly</b></li>
+<li><b>Semi-annual</b></li>
+<li><b>Annual</b></li></ul></td>
   </tr>
   <tr>
     <td>PaymentType</td>
     <td>String</td>
     <td>One of:
-Card
-BACS
-eCheck
-SEPA
-Wallet</td>
+<ul><li><b>Card</b></li>
+<li><b>BACS</b></li>
+<li><b>eCheck</b></li>
+<li><b>SEPA</b></li>
+<li><b>Wallet</b></li></ul></td>
   </tr>
   <tr>
     <td>UrlCancel</td>
@@ -526,7 +526,7 @@ PutPaymentRequestDetail</td>
   <tr>
     <td>CardType</td>
     <td>String</td>
-    <td>If a card this will say what type of card was used otherwise will say ‘Not Applicable’.</td>
+    <td>If a card this will say what type of card was used otherwise will say `Not Applicable`.</td>
   </tr>
   <tr>
     <td>CrossReference</td>
@@ -547,11 +547,11 @@ PutPaymentRequestDetail</td>
     <td>PaymentType</td>
     <td>String</td>
     <td>One of:
-Card
-BACS
-eCheck
-SEPA
-Wallet</td>
+<ul><li><b>Card</b></li>
+<li><b>BACS</b></li>
+<li><b>eCheck</b></li>
+<li><b>SEPA</b></li>
+<li><b>Wallet</b></li></ul></td>
   </tr>
   <tr>
     <td>SalesforceId</td>
@@ -562,16 +562,16 @@ Wallet</td>
     <td>Source</td>
     <td>String</td>
     <td>How the transaction was generated.  One of:
-Holder not present
-Repeat
-Web</td>
+<ul><li><b>Holder not present</b></li>
+<li><b>Repeat</b></li>
+<li><b>Web</b></li></ul></td>
   </tr>
   <tr>
     <td>Status</td>
     <td>String</td>
     <td>One of:
-Failed
-Sent</td>
+<ul><li><b>Failed</b></li>
+<li><b>Sent</b></li></ul></td>
   </tr>
   <tr>
     <td>StatusDescription</td>
@@ -718,11 +718,11 @@ PutMessageRequestDetail</td>
     <td>Resource</td>
     <td>String</td>
     <td>Can be one of 
-mandates
-payments
-refunds
-Payouts (not currently sent)
-subscriptions (not currently sent)</td>
+<ul><li><b>mandates</b></li>
+<li><b>payments</b></li>
+<li><b>refunds</b></li>
+<li><b>Payouts</b> (not currently sent)</li>
+<li><b>subscriptions</b> (not currently sent)</li></ul></td>
   </tr>
   <tr>
     <td>Status</td>
@@ -744,9 +744,9 @@ etc.</td>
 
 **Locating the data to which a message refers.**
 
-When the resource has the text content ‘mandates’ the message relates to an Authorisation.  To locate the correct row search for where the Repeat Cross Reference on the Authorisation row equals the TransactionReference on the request.
+When the resource has the text content `mandates` the message relates to an Authorisation.  To locate the correct row search for where the Repeat Cross Reference on the Authorisation row equals the TransactionReference on the request.
 
-When the resource has the text content of either ‘payments’ or ‘refunds’ then the message relates to the Payment object.
+When the resource has the text content of either `payments` or `refunds` then the message relates to the Payment object.
 
 To locate the correct row search for where the Cross Reference on the Payment row equals the TransactionReference on the request.
 
