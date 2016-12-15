@@ -1,10 +1,124 @@
-# Modifying the standard template
+# Payment template
+
+The standard payment template is provided by Asperato and will look similar to the following:
+
+![Asperato standard payment template](unmodified_template.png "Asperato standard template")
+
+To obtain a copy of the standard paypage for modification, please email support@asperato.com. Most users only wish to make a few standard modifications to the template - this is the recommended approach. However, it is possible to complete redesign the template if required.
+
+# Standard modifications
+
+* **Changing the company name**
+Open `style.css`, and find the following section:
+
+		.companyname::before {
+			content: "MyCompany";
+		}
+		
+	Change the content to your own company name.
+	
+	If you are using GoCardless Pro, and have your own SUN, then you also need to find and change the following sections:
+	
+		.ddcompanyname::before {
+			/* Change this to your company name */
+			content: "GoCardless Ltd";
+		}
+		
+		.creditorid::before {
+			/* Change this to your creditor id (only required if using SEPA direct debit) */
+			content: "GB18ZZZSDDRB0S00275069";
+		}
+
+		.ddcompanyaddress::before {
+			/* Change this to your company address, telephone number and email address respectively */
+			content: "338-346 Goswell Road, London, EC1V 7LQ, United Kingdom, 020 7183 8674, help@gocardless.com";
+		}
+		
+	If you are using GoCardless standard, you must leave these fields as they are. If you are not using direct debit, you can ignore these.
+
+* **Changing the logo**
+Just replace the `logo.png` file in the template directory with one of your own. The recommended size is `380x120`, but you can experiment to find a size that works well.
+
+* **Changing the font**
+Open `style.css`, and find the following section:
+
+
+        body {
+        	margin: 0;
+	        text-align: center;
+	        background-color: white;
+	        font-family: karla;
+        }
+
+    Change `karla` to whatever font family you wish to use on the template.
+
+* **Changing the background colour**
+As above, Open `style.css`, and find the following section:
+
+
+        body {
+        	margin: 0;
+	        text-align: center;
+	        background-color: white;
+	        font-family: karla;
+        }
+
+    Change `white` to whatever background colour you wish to use on the template.
+
+* **Changing the submit button colour**
+Open `style.css`, and find the following section:
+
+		.submitbutton {
+			...
+			background-color: #5092DA;
+			...
+		}
+		
+	Change `#5092DA' to whatever background colour you wish to use for the submit button.
+
+* **Removing the cancel link**
+Open `style.css`, and find the following section:
+
+
+         .cancelbutton {
+			 /* Uncomment if a cancel button isn't required on the payment page */
+			 /*display: none;*/
+		 }
+
+    Uncomment the `display: none;` as directed (remove the `/*` and `*/` either side.)
+
+* **Removing the "pay as company" link**
+Open `style.css`, and find the following section:
+
+
+        .label.right.payascompanylink {
+			/* Uncomment to hide the "pay as company" link */
+			/*display: none;*/
+		}
+
+    Uncomment the `display: none;` as directed (remove the `/*` and `*/` either side.)
+
+# Extensive modifications
 
 The paypage as provided can be modified to provide it with an entirely custom look - both the HTML markup and the CSS may be changed.
 
-To obtain a copy of the standard paypage for modification, please email support@asperato.com.
+However, extensively modifying the template can be a lot of work, and you can end up needing to re-implement many of the features the original template provides:
 
-The following document gives an overview of some possible customisations, and some things that must not be altered.
+* Javascript based card type identification from number (IIN range checker)
+* Start date and issue number fields dynamically displayed (based on card number) when required
+* Validation of user input, including Luhn algorithm on card number
+* Third party validation of bank details prior to submission (via Ajax)
+* UK postcode lookup
+* Responsive to mobile devices
+* Payment options set dynamically within Salesforce (Card, Direct debit or Paypal)
+* Can switch between taking a payment or updating an authorisation
+* Fully compatible with all modern browsers
+
+Asperato are unable to provide support for templates with extensive modifications.
+
+If you do choose to extensively modify the payment page, then you must read this document thoroughly and adhere to the guidelines.
+
+When your modifications are complete, you must [validate the document](https://validator.w3.org/). Unless there is a very good reason, **Asperato will not allow invalid HTML to be used on payment pages.**
 
 ## ID / class attributes
 
