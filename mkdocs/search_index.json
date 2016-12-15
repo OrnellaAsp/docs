@@ -2,7 +2,7 @@
     "docs": [
         {
             "location": "/", 
-            "text": "Asperato developer documentation\n\n\nThis documentation is designed for developers who are performing an Asperato integration.\n\n\nTemplate documentation\n\n\nThis page\n covers customising a template to work with Asperato.\n\n\nSalesforce documentation\n\n\nThis page\n covers the creation of a custom Salesforce package to work with Asperato.\n\n\nNeed help?\n\n\nIf you requrie any assistance with your integration then please contact support@asperato.com, we'll aim to get back to you in a couple of working days.", 
+            "text": "Asperato developer documentation\n\n\nThis documentation is designed for developers who are performing an Asperato integration.\n\n\nTemplate documentation\n\n\nThis page\n covers customising a template to work with Asperato.\n\n\nSalesforce documentation\n\n\nThis page\n covers the creation of a custom Salesforce package to work with Asperato.\n\n\nNeed help?\n\n\nIf you requrie any assistance with your integration then please contact support@asperato.com, we'll aim to get back to you in a couple of working days.\n\n\nSource\n\n\nThese documents are written in Markdown and \nhosted on GitHub\n. Feel free to create an issue or submit a pull request if you spot a mistake.", 
             "title": "Home"
         }, 
         {
@@ -24,6 +24,11 @@
             "location": "/#need-help", 
             "text": "If you requrie any assistance with your integration then please contact support@asperato.com, we'll aim to get back to you in a couple of working days.", 
             "title": "Need help?"
+        }, 
+        {
+            "location": "/#source", 
+            "text": "These documents are written in Markdown and  hosted on GitHub . Feel free to create an issue or submit a pull request if you spot a mistake.", 
+            "title": "Source"
         }, 
         {
             "location": "/sf/", 
