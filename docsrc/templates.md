@@ -74,7 +74,7 @@ Open `style.css`, and find the following section:
 			...
 		}
 		
-	Change `#5092DA' to whatever background colour you wish to use for the submit button.
+	Change `#5092DA` to whatever background colour you wish to use for the submit button.
 
 * **Removing the cancel link**
 Open `style.css`, and find the following section:
