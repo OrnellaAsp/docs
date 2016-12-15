@@ -1,6 +1,7 @@
 site_name: Asperato developers
 theme_dir: customtheme
 docs_dir: docsrc
+repo_url: https://github.com/Asperato/docs
 pages:
 - 'index.md'
 - "Salesforce package": 'sf.md'
