@@ -92,6 +92,15 @@
                     </li>
                 
                 
+                    <li>
+                        <a href="https://github.com/Asperato/docs">
+                            
+                                <i class="fa fa-github"></i>
+                            
+                            GitHub
+                        </a>
+                    </li>
+                
             </ul>
         </div>
     </div>
@@ -102,7 +111,13 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="#modifying-the-standard-template">Modifying the standard template</a></li>
+        <li class="first-level active"><a href="#payment-template">Payment template</a></li>
+        
+    
+        <li class="first-level "><a href="#standard-modifications">Standard modifications</a></li>
+        
+    
+        <li class="first-level "><a href="#extensive-modifications">Extensive modifications</a></li>
         
             <li class="second-level"><a href="#id-class-attributes">ID / class attributes</a></li>
             
@@ -152,10 +167,115 @@
 </div></div>
         <div class="col-md-9" role="main">
 
-<h1 id="modifying-the-standard-template">Modifying the standard template</h1>
+<h1 id="payment-template">Payment template</h1>
+<p>The standard payment template is provided by Asperato and will look similar to the following:</p>
+<p><img alt="Asperato standard payment template" src="../unmodified_template.png" title="Asperato standard template" /></p>
+<p>To obtain a copy of the standard paypage for modification, please email support@asperato.com. Most users only wish to make a few standard modifications to the template - this is the recommended approach. However, it is possible to complete redesign the template if required.</p>
+<h1 id="standard-modifications">Standard modifications</h1>
+<ul>
+<li>
+<p><strong>Changing the company name</strong>
+Open <code>style.css</code>, and find the following section:</p>
+<pre><code>.companyname::before {
+    content: "MyCompany";
+}
+</code></pre>
+<p>Change the content to your own company name.</p>
+<p>If you are using GoCardless Pro, and have your own SUN, then you also need to find and change the following sections:</p>
+<pre><code>.ddcompanyname::before {
+    /* Change this to your company name */
+    content: "GoCardless Ltd";
+}
+
+.creditorid::before {
+    /* Change this to your creditor id (only required if using SEPA direct debit) */
+    content: "GB18ZZZSDDRB0S00275069";
+}
+
+.ddcompanyaddress::before {
+    /* Change this to your company address, telephone number and email address respectively */
+    content: "338-346 Goswell Road, London, EC1V 7LQ, United Kingdom, 020 7183 8674, help@gocardless.com";
+}
+</code></pre>
+<p>If you are using GoCardless standard, you must leave these fields as they are. If you are not using direct debit, you can ignore these.</p>
+</li>
+<li>
+<p><strong>Changing the logo</strong>
+Just replace the <code>logo.png</code> file in the template directory with one of your own. The recommended size is <code>380x120</code>, but you can experiment to find a size that works well.</p>
+</li>
+<li>
+<p><strong>Changing the font</strong>
+Open <code>style.css</code>, and find the following section:</p>
+<pre><code>body {
+    margin: 0;
+    text-align: center;
+    background-color: white;
+    font-family: karla;
+}
+</code></pre>
+<p>Change <code>karla</code> to whatever font family you wish to use on the template.</p>
+</li>
+<li>
+<p><strong>Changing the background colour</strong>
+As above, Open <code>style.css</code>, and find the following section:</p>
+<pre><code>body {
+    margin: 0;
+    text-align: center;
+    background-color: white;
+    font-family: karla;
+}
+</code></pre>
+<p>Change <code>white</code> to whatever background colour you wish to use on the template.</p>
+</li>
+<li>
+<p><strong>Changing the submit button colour</strong>
+Open <code>style.css</code>, and find the following section:</p>
+<pre><code>.submitbutton {
+    ...
+    background-color: #5092DA;
+    ...
+}
+</code></pre>
+<p>Change `#5092DA' to whatever background colour you wish to use for the submit button.</p>
+</li>
+<li>
+<p><strong>Removing the cancel link</strong>
+Open <code>style.css</code>, and find the following section:</p>
+<pre><code> .cancelbutton {
+     /* Uncomment if a cancel button isn't required on the payment page */
+     /*display: none;*/
+ }
+</code></pre>
+<p>Uncomment the <code>display: none;</code> as directed (remove the <code>/*</code> and <code>*/</code> either side.)</p>
+</li>
+<li>
+<p><strong>Removing the "pay as company" link</strong>
+Open <code>style.css</code>, and find the following section:</p>
+<pre><code>.label.right.payascompanylink {
+    /* Uncomment to hide the "pay as company" link */
+    /*display: none;*/
+}
+</code></pre>
+<p>Uncomment the <code>display: none;</code> as directed (remove the <code>/*</code> and <code>*/</code> either side.)</p>
+</li>
+</ul>
+<h1 id="extensive-modifications">Extensive modifications</h1>
 <p>The paypage as provided can be modified to provide it with an entirely custom look - both the HTML markup and the CSS may be changed.</p>
-<p>To obtain a copy of the standard paypage for modification, please email support@asperato.com.</p>
-<p>The following document gives an overview of some possible customisations, and some things that must not be altered.</p>
+<p>However, extensively modifying the template can be a lot of work, and you can end up needing to re-implement many of the features the original template provides:</p>
+<ul>
+<li>Javascript based card type identification from number (IIN range checker)</li>
+<li>Start date and issue number fields dynamically displayed (based on card number) when required</li>
+<li>Validation of user input, including Luhn algorithm on card number</li>
+<li>Third party validation of bank details prior to submission (via Ajax)</li>
+<li>UK postcode lookup</li>
+<li>Responsive to mobile devices</li>
+<li>Payment options set dynamically within Salesforce (Card, Direct debit or Paypal)</li>
+<li>Can switch between taking a payment or updating an authorisation</li>
+<li>Fully compatible with all modern browsers</li>
+</ul>
+<p>Asperato are unable to provide support for templates with extensive modifications.</p>
+<p>If you do choose to extensively modify the payment page, then you must read this document thoroughly and adhere to the guidelines.</p>
+<p>When your modifications are complete, you must <a href="https://validator.w3.org/">validate the document</a>. Unless there is a very good reason, <strong>Asperato will not allow invalid HTML to be used on payment pages.</strong></p>
 <h2 id="id-class-attributes">ID / class attributes</h2>
 <p>When modifying the document, please keep the class and ID attributes that are already present, as changing them will break form submission and validation. (Additional class names may be used.)</p>
 <h2 id="additional-js">Additional JS</h2>
