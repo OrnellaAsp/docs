@@ -125,10 +125,6 @@ The fields are their usage are described below:
     <td>A formula reflecting the status of the associated Authorisation.</td>
   </tr>
   <tr>
-    <td>Authorisation Type</td>
-    <td>A formula reflecting the type of the associated Authorisation.</td>
-  </tr>
-  <tr>
     <td>Day of the Month</td>
     <td>The day of the month on which the subscription payment should be taken.</td>
   </tr>
@@ -143,6 +139,10 @@ The fields are their usage are described below:
   <tr>
     <td>Next Payment Date</td>
     <td>The date on which the next payment request will be raised.</td>
+  </tr>
+  <tr>
+    <td>Payment Route</td>
+    <td>A formula reflecting the payment route of the associated Authorisation.</td>
   </tr>
   <tr>
     <td>Regular Amount</td>
