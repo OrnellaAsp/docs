@@ -34,7 +34,7 @@ Setup > Build > Develop > Custom Metadata Types<br/>
 In the list that is displayed you will see ‘Asperato Settings’.<br/>
 Click on the ‘Manage Records’ link.<br/>
 On the list that is then displayed ‘Edit’ the line with the label ‘Default’.<br/>
-Change the pmRef value to that supplied to you by Asperato and save the record.<br/>
+Change the `pmRef` value to that supplied to you by Asperato and save the record.<br/>
 
 ## The data objects
 
@@ -444,7 +444,7 @@ UrlParameter</td>
   <tr>
     <td>Success</td>
     <td>Boolean</td>
-    <td>When true means the record was located correctly.</td>
+    <td>When true means the record was located correctly. If this is set to false it will cause the standard Asperato paypage template to output the message "Sorry, the payment cannot be taken at this time."</td>
   </tr>
   <tr>
     <td>UseHostedPage</td>
@@ -462,14 +462,59 @@ UrlParameter</td>
     <td>Amount due in the lowest denomination for the the currency. For GBP this would be pence, for USD this would be cents, for EUR this would be cents, etc.</td>
   </tr>
   <tr>
+    <td>AddressCity</td>
+    <td>String</td>
+    <td>This will be used to provide a default value for the billing address city on the paypage.</td>
+  </tr>
+  <tr>
+    <td>AddressCountry</td>
+    <td>String</td>
+    <td>This will be used to provide a default value for the billing address country on the paypage.</td>
+  </tr>
+  <tr>
+    <td>AddressPostalCode</td>
+    <td>String</td>
+    <td>This will be used to provide a default value for the billing postal code on the paypage.</td>
+  </tr>
+  <tr>
+    <td>AddressState</td>
+    <td>String</td>
+    <td>This will be used to provide a default value for the billing address state/county on the paypage.</td>
+  </tr>
+  <tr>
+    <td>AddressStreet</td>
+    <td>String</td>
+    <td>This will be used to provide a default value for the billing address streets on the paypage.  The Salesforce street address text area will be split so that the first line will appear in the first address line onn the screen and the rest of the block will appear in the second address line with the line feeds replaced by a comma</td>
+  </tr>
+  <tr>
+    <td>CompanyName</td>
+    <td>String</td>
+    <td>This will be used to provide a default value for the company name on the paypage.</td>
+  </tr>
+  <tr>
     <td>CurrencyCode</td>
     <td>String</td>
     <td>Three character ISO 4217 currency code.</td>
   </tr>
   <tr>
+    <td>Email</td>
+    <td>String</td>
+    <td>This will be used to provide a default value for the email address on the paypage.</td>
+  </tr>
+  <tr>
+    <td>FirstName</td>
+    <td>String</td>
+    <td>This will be used to provide a default value for the first name on the paypage.</td>
+  </tr>
+  <tr>
     <td>ErrorMessage</td>
     <td>String</td>
     <td>If the Success field is false this will contain an indication of why the call failed.</td>
+  </tr>
+  <tr>
+    <td>LastName</td>
+    <td>String</td>
+    <td>This will be used to provide a default value for the last name on the paypage.</td>
   </tr>
   <tr>
     <td>PaymentFrequency</td>
@@ -498,6 +543,11 @@ UrlParameter</td>
         <li><b>Wallet</b></li>
       </ul>
     </td>
+  </tr>
+  <tr>
+    <td>SalesforceId</td>
+    <td>String</td>
+    <td>The Salesforce ID of the payment object row to which the request relates.</td>
   </tr>
   <tr>
     <td>UrlCancel</td>
