@@ -532,7 +532,7 @@ UrlParameter</td>
     </td>
   </tr>
   <tr>
-    <td>PaymentType</td>
+    <td>PaymentRoute</td>
     <td>String</td>
     <td>One of:
       <ul>
@@ -731,7 +731,7 @@ PutPaymentRequestDetail</td>
     <td>An Asperato generated order reference for the transaction.</td>
   </tr>
   <tr>
-    <td>PaymentType</td>
+    <td>PaymentRoute</td>
     <td>String</td>
     <td>One of:
       <ul>
