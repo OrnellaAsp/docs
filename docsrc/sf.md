@@ -32,29 +32,53 @@ The fields are their usage are described below:
     <td>A partially obscured record of the bank account or credit card number for future reference.</td>
   </tr>
   <tr>
-    <td>Authorisation Type</td>
-    <td>One of:
-<ul><li><b>Card</b>		Credit or debit card</li>
-<li><b>BACS</b>		UK Direct Debit</li>
-<li><b>eCheck</b>	US Bank payment</li>
-<li><b>SEPA</b>		European Direct Debit</li>
-<li><b>Wallet</b>		PayPal, etc.</li></ul></td>
+    <td>Billing Address City</td>
+    <td>Records the city in the billing address that was captured on the payment page.</td>
+  </tr>
+  <tr>
+    <td>Billing Address Country</td>
+    <td>Records the country in the billing address that was captured on the payment page.</td>
+  </tr>
+  <tr>
+    <td>Billing Address PostalCode</td>
+    <td>Records the postal code in the billing address that was captured on the payment page.</td>
+  </tr>
+  <tr>
+    <td>Billing Address State</td>
+    <td>Records the state/county in the billing address that was captured on the payment page.</td>
+  </tr>
+  <tr>
+    <td>Billing Address Street</td>
+    <td>Records the street(s) in the billing address that was captured on the payment page.</td>
   </tr>
   <tr>
     <td>Card Type</td>
-    <td>The type of credit or debit card, or `Not Applicable` for the other Authorisation Types</td>
+    <td>The type of credit or debit card, or `Not Applicable` for the other Authorisation Types.</td>
   </tr>
   <tr>
     <td>CPA Granted</td>
     <td>Indicates that the customer has given permission for card details to be used to collect automatic payments.</td>
   </tr>
   <tr>
+    <td>Email</td>
+    <td>Records the email address that was captured on the payment page.</td>
+  </tr>
+  <tr>
     <td>Expiry Date</td>
-    <td>The date on the which the authorisation will expire (if applicable)</td>
+    <td>The date on the which the authorisation will expire (if applicable).</td>
   </tr>
   <tr>
     <td>Mandate Reference</td>
     <td>The reference for a Direct Debit mandate that will need to be displayed to the end customer in emails and other communication.</td>
+  </tr>
+  <tr>
+    <td>Payment Route</td>
+    <td>One of:
+      <ul><li><b>Card</b>Credit or debit card</li>
+      <li><b>BACS</b>UK Direct Debit</li>
+      <li><b>eCheck</b>	US Bank payment</li>
+      <li><b>SEPA</b>European Direct Debit</li>
+      <li><b>Wallet</b>PayPal, etc.</li></ul></td>
   </tr>
   <tr>
     <td>Repeat Cross Reference</td>
