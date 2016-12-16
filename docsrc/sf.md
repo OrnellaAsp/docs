@@ -6,6 +6,36 @@ There are simple VisualForce pages to support each of the data objects and tabs 
 
 The configuration of the package is managed via Custom Metadata.  There are two Metadata Types, Asperato Settings and Service Handler.  The options available for these settings are described below.
 
+## Installation
+
+The core package is installed using a Salesforce package deployment link.
+
+For a sandbox organisation this link is:
+https://test.salesforce.com/packaging/installPackage.apexp?p0=04t240000006Usj
+
+For a live or development organisation this link is:
+https://login.salesforce.com/packaging/installPackage.apexp?p0=04t240000006Usj
+
+When installing make sure that the package is accessible by all Salesforce users (this is not the default).<br/>
+Once the package has been installed you need to update the system Network Security so that the Asperato servers can communicate with your Salesforce organisation.
+As a system administrator go to<br/>
+Setup > Administer > Security Controls > Network Access<br/>
+Add the Trusted IP Ranges<br/>
+Start IP Address 77.68.42.36<br/>
+End IP Address 77.68.42.36<br/>
+Description Asperato Test<br/>
+Start IP Address 162.13.56.213<br/>
+End IP Address 162.13.56.213<br/>
+Description Asperato Live<br/>
+
+You will need to obtain a reference code from Asperato.  This code is known as the `pmRef` and this needs to be recorded into a Custom Metadata object.
+Once you have obtained the code from Asperato in Salesforce go to<br/>
+Setup > Build > Develop > Custom Metadata Types<br/>
+In the list that is displayed you will see ‘Asperato Settings’.<br/>
+Click on the ‘Manage Records’ link.<br/>
+On the list that is then displayed ‘Edit’ the line with the label ‘Default’.<br/>
+Change the pmRef value to that supplied to you by Asperato and save the record.<br/>
+
 ## The data objects
 
 The package data objects are called `Payment`, `Subscription` and `Authorisation` and they are related to each other as per the diagram below.
