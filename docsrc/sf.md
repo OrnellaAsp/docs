@@ -75,11 +75,11 @@ The fields are their usage are described below:
     <td>Payment Route</td>
     <td>One of:
       <ul>
-        <li><b>Card</b>Credit or debit card</li>
-        <li><b>BACS</b>UK Direct Debit</li>
+        <li><b>Card</b> Credit or debit card</li>
+        <li><b>BACS</b> UK Direct Debit</li>
         <li><b>eCheck</b>	US Bank payment</li>
-        <li><b>SEPA</b>European Direct Debit</li>
-        <li><b>Wallet</b>PayPal, etc.</li>
+        <li><b>SEPA</b> European Direct Debit</li>
+        <li><b>Wallet</b> PayPal, etc.</li>
       </ul>
     </td>
   </tr>
@@ -95,10 +95,10 @@ The fields are their usage are described below:
     <td>Status</td>
     <td>The status of the authorisation.  Can be one of:
       <ul>
-        <li><b>Pending</b>Has been created but is not yet active</li>
-        <li><b>In Force</b>In force and ready to use</li>
-        <li><b>Cancelled</b>Has been stopped</li>
-        <li><b>Failed</b>Has failed for some reason</li>
+        <li><b>Pending</b> Has been created but is not yet active</li>
+        <li><b>In Force</b> In force and ready to use</li>
+        <li><b>Cancelled</b> Has been stopped</li>
+        <li><b>Failed</b> Has failed for some reason</li>
       </ul>
     </td>
   </tr>
@@ -162,8 +162,8 @@ The fields are their usage are described below:
     <td>Status</td>
     <td>The status of the subscription.  Can be one of:
       <ul>
-        <li><b>In Force</b>In force and ready to use</li>
-        <li><b>Cancelled</b>Has been stopped</li>
+        <li><b>In Force</b> In force and ready to use</li>
+        <li><b>Cancelled</b> Has been stopped</li>
       </ul>
     </td>
   </tr>
@@ -255,11 +255,11 @@ The fields are their usage are described below:
     <td>Payment Route</td>
     <td>One of:
       <ul>
-        <li><b>Card</b>Credit or debit card</li>
-        <li><b>BACS</b>UK Direct Debit</li>
-        <li><b>eCheck</b>US Bank payment</li>
-        <li><b>SEPA</b>European Direct Debit</li>
-        <li><b>Wallet</b>PayPal, etc.</li>
+        <li><b>Card</b> Credit or debit card</li>
+        <li><b>BACS</b> UK Direct Debit</li>
+        <li><b>eCheck</b> US Bank payment</li>
+        <li><b>SEPA</b> European Direct Debit</li>
+        <li><b>Wallet</b> PayPal, etc.</li>
       </ul>
     </td>
   </tr>
@@ -282,12 +282,12 @@ Repeat</td>
     <td>Status</td>
     <td>The status of the payment.  Can be one of:
       <ul>
-        <li><b>Pending</b>Has been created but is not yet active</li>
-        <li><b>Sent</b>Has been set to Asperato for processing.</li>
-        <li><b>Paid</b>Has been paid.</li>
-        <li><b>Refunded</b>Has been refunded.</li>
-        <li><b>Failed</b>Has failed for some reason</li>
-        <li><b>Payment Scheduled</b>Is ready for collection by the next batch run.</li>
+        <li><b>Pending</b> Has been created but is not yet active</li>
+        <li><b>Sent</b> Has been set to Asperato for processing.</li>
+        <li><b>Paid</b> Has been paid.</li>
+        <li><b>Refunded</b> Has been refunded.</li>
+        <li><b>Failed</b> Has failed for some reason</li>
+        <li><b>Payment Scheduled</b> Is ready for collection by the next batch run.</li>
       </ul>
     </td>
   </tr>
@@ -803,8 +803,8 @@ PutMessageRequestDetail</td>
         <li><b>mandates</b></li>
         <li><b>payments</b></li>
         <li><b>refunds</b></li>
-        <li><b>Payouts</b>(not currently sent)</li>
-        <li><b>subscriptions</b>(not currently sent)</li>
+        <li><b>Payouts</b> (not currently sent)</li>
+        <li><b>subscriptions</b> (not currently sent)</li>
       </ul>
     </td>
   </tr>
