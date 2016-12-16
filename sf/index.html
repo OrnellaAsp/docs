@@ -113,6 +113,9 @@
     
         <li class="first-level active"><a href="#salesforce-package">Salesforce package</a></li>
         
+            <li class="second-level"><a href="#installation">Installation</a></li>
+            
+        
             <li class="second-level"><a href="#the-data-objects">The data objects</a></li>
             
                 <li class="third-level"><a href="#authorisation">Authorisation</a></li>
@@ -145,6 +148,30 @@
 <p>The core package consists of three custom objects and a set of web services that communicate between Asperato and Salesforce.  The web services are all managed through Apex classes.  The package is designed to be extensible so that the package web service classes can be replaced by custom Apex code if that is required.  </p>
 <p>There are simple VisualForce pages to support each of the data objects and tabs accessing these are grouped together into an Asperato application.</p>
 <p>The configuration of the package is managed via Custom Metadata.  There are two Metadata Types, Asperato Settings and Service Handler.  The options available for these settings are described below.</p>
+<h2 id="installation">Installation</h2>
+<p>The core package is installed using a Salesforce package deployment link.</p>
+<p>For a sandbox organisation this link is:
+https://test.salesforce.com/packaging/installPackage.apexp?p0=04t240000006Usj</p>
+<p>For a live or development organisation this link is:
+https://login.salesforce.com/packaging/installPackage.apexp?p0=04t240000006Usj</p>
+<p>When installing make sure that the package is accessible by all Salesforce users (this is not the default).<br/>
+Once the package has been installed you need to update the system Network Security so that the Asperato servers can communicate with your Salesforce organisation.
+As a system administrator go to<br/>
+Setup &gt; Administer &gt; Security Controls &gt; Network Access<br/>
+Add the Trusted IP Ranges<br/>
+Start IP Address 77.68.42.36<br/>
+End IP Address 77.68.42.36<br/>
+Description Asperato Test<br/>
+Start IP Address 162.13.56.213<br/>
+End IP Address 162.13.56.213<br/>
+Description Asperato Live<br/></p>
+<p>You will need to obtain a reference code from Asperato.  This code is known as the <code>pmRef</code> and this needs to be recorded into a Custom Metadata object.
+Once you have obtained the code from Asperato in Salesforce go to<br/>
+Setup &gt; Build &gt; Develop &gt; Custom Metadata Types<br/>
+In the list that is displayed you will see ‘Asperato Settings’.<br/>
+Click on the ‘Manage Records’ link.<br/>
+On the list that is then displayed ‘Edit’ the line with the label ‘Default’.<br/>
+Change the pmRef value to that supplied to you by Asperato and save the record.<br/></p>
 <h2 id="the-data-objects">The data objects</h2>
 <p>The package data objects are called <code>Payment</code>, <code>Subscription</code> and <code>Authorisation</code> and they are related to each other as per the diagram below.</p>
 <p><img alt="Authorisation has a reference to payment and subscription, subscription has a reference to payment" src="../sf_diagram.png" /></p>
