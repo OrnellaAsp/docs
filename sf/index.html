@@ -741,6 +741,11 @@ PutPaymentRequestDetail</td>
     <th>Usage</th>
   </tr>
   <tr>
+    <td>Success</td>
+    <td>Boolean</td>
+    <td>When true means that the request to the gateway was processed successfully.  When false indicates that the transaction did not succeed and either no payment was taken or the authorisation request was not accepted.</td>
+  </tr>
+  <tr>
     <td>PaymentDate</td>
     <td>Date</td>
     <td>The date the payment was attempted.</td>
@@ -751,14 +756,39 @@ PutPaymentRequestDetail</td>
     <td>Amount transacted in the lowest denomination for the the currency. For GBP this would be pence, for USD this would be cents, for EUR this would be cents, etc.</td>
   </tr>
   <tr>
-    <td>AccountReference</td>
+    <td>AddressCity</td>
     <td>String</td>
-    <td>An obscured reference to the card or the bank account.</td>
+    <td>The billing address city as entered on the paypage.</td>
+  </tr>
+  <tr>
+    <td>AddressCountry</td>
+    <td>String</td>
+    <td>The billing address country as selected on the paypage.</td>
+  </tr>
+  <tr>
+    <td>AddressPostalCode</td>
+    <td>String</td>
+    <td>The billing address postal code as entered on the paypage.</td>
+  </tr>
+  <tr>
+    <td>AddressState</td>
+    <td>String</td>
+    <td>The billing address state/county as entered on the paypage.</td>
+  </tr>
+  <tr>
+    <td>AddressStreet</td>
+    <td>String</td>
+    <td>The billing address street as entered on the paypage. This will consist of the content of the address line 1 followed by the content of the address line 2 separated by a line break.</td>
   </tr>
   <tr>
     <td>AccountName</td>
     <td>String</td>
     <td>The name on the card or the bank account</td>
+  </tr>
+  <tr>
+    <td>AccountReference</td>
+    <td>String</td>
+    <td>An obscured reference to the card or the bank account.</td>
   </tr>
   <tr>
     <td>CardType</td>
@@ -774,6 +804,11 @@ PutPaymentRequestDetail</td>
     <td>CurrencyCode</td>
     <td>String</td>
     <td>Three character ISO 4217 currency code.</td>
+  </tr>
+  <tr>
+    <td>Email</td>
+    <td>String</td>
+    <td>The email address as entered on the paypage.</td>
   </tr>
   <tr>
     <td>OrderId</td>
@@ -810,19 +845,9 @@ PutPaymentRequestDetail</td>
     </td>
   </tr>
   <tr>
-    <td>Status</td>
-    <td>String</td>
-    <td>One of:
-      <ul>
-        <li><b>Failed</b></li>
-        <li><b>Sent</b></li>
-      </ul>
-    </td>
-  </tr>
-  <tr>
     <td>StatusDescription</td>
     <td>String</td>
-    <td>Text relating to the Status.  This will show either some form of transaction reference or the reason why the payment failed as appropriate.</td>
+    <td>Text relating to the transaction.  If present, this will show either some form of transaction reference or the reason why the payment failed as appropriate.</td>
   </tr>
   <tr>
     <td>PassThroughParameters</td>
