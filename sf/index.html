@@ -159,12 +159,12 @@ Once the package has been installed you need to update the system Network Securi
 As a system administrator go to<br/>
 Setup &gt; Administer &gt; Security Controls &gt; Network Access<br/>
 Add the Trusted IP Ranges<br/>
-Start IP Address 77.68.42.36<br/>
-End IP Address 77.68.42.36<br/>
-Description Asperato Test<br/>
-Start IP Address 162.13.56.213<br/>
-End IP Address 162.13.56.213<br/>
-Description Asperato Live<br/></p>
+Start IP Address: 77.68.42.36<br/>
+End IP Address: 77.68.42.36<br/>
+Description: Asperato Test<br/>
+Start IP Address: 162.13.56.213<br/>
+End IP Address: 162.13.56.213<br/>
+Description: Asperato Live<br/></p>
 <p>You will need to obtain a reference code from Asperato.  This code is known as the <code>pmRef</code> and this needs to be recorded into a Custom Metadata object.
 Once you have obtained the code from Asperato in Salesforce go to<br/>
 Setup &gt; Build &gt; Develop &gt; Custom Metadata Types<br/>
@@ -270,7 +270,7 @@ Change the <code>pmRef</code> value to that supplied to you by Asperato and save
 
 <h3 id="subscription">Subscription</h3>
 <p>Subscription contains the information needed to drive the creation of payments where they need to recur automatically.</p>
-<p>Subscription has a master/detail relationship with Authorisation.</p>
+<p>Subscription has a lookup relationship with Authorisation.</p>
 <p>The fields are their usage are described below: </p>
 <table>
   <tr>
