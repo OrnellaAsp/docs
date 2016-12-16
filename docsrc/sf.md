@@ -10,10 +10,10 @@ The configuration of the package is managed via Custom Metadata.  There are two 
 
 The core package is installed using a Salesforce package deployment link.
 
-For a sandbox organisation this link is:
+For a sandbox organisation this link is:<br/>
 <https://test.salesforce.com/packaging/installPackage.apexp?p0=04t240000006Usj>
 
-For a live or development organisation this link is:
+For a live or development organisation this link is:<br/>
 <https://login.salesforce.com/packaging/installPackage.apexp?p0=04t240000006Usj>
 
 When installing make sure that the package is accessible by all Salesforce users (this is not the default).<br/>
