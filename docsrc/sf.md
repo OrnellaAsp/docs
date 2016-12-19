@@ -307,8 +307,8 @@ The fields are their usage are described below:
     <td>Source</td>
     <td>Payment source.  Can be one of:
 <ul><li><b>Web</b></li>
-<li><b>Holder not present</b></li></ul>
-Repeat</td>
+<li><b>Holder not present</b></li>
+<li><b>Repeat</b></li></ul></td>
   </tr>
   <tr>
     <td>Status</td>
