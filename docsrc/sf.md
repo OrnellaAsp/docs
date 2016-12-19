@@ -18,15 +18,17 @@ For a live or development organisation this link is:<br/>
 
 When installing make sure that the package is accessible by all Salesforce users (this is not the default).<br/>
 Once the package has been installed you need to update the system Network Security so that the Asperato servers can communicate with your Salesforce organisation.
-As a system administrator go to<br/>
-Setup > Administer > Security Controls > Network Access<br/>
-Add the Trusted IP Ranges<br/>
-Start IP Address: 77.68.42.36<br/>
-End IP Address: 77.68.42.36<br/>
-Description: Asperato Test<br/>
-Start IP Address: 162.13.56.213<br/>
-End IP Address: 162.13.56.213<br/>
-Description: Asperato Live<br/>
+As a system administrator go to:<br/>
+**Setup > Administer > Security Controls > Network Access**<br/>
+Add the following Trusted IP Ranges:<br/>
+
+> Start IP Address: 77.68.42.36<br/>
+> End IP Address: 77.68.42.36<br/>
+> Description: Asperato Test<br/>
+
+> Start IP Address: 162.13.56.213<br/>
+> End IP Address: 162.13.56.213<br/>
+> Description: Asperato Live<br/>
 
 You will need to obtain a reference code from Asperato.  This code is known as the `pmRef` and this needs to be recorded into a Custom Metadata object.
 Once you have obtained the code from Asperato in Salesforce go to<br/>
