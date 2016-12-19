@@ -48,7 +48,7 @@ The package data objects are called `Payment`, `Subscription` and `Authorisation
 
 Authorisation contains data relating to an authority to collect payments.  This can take the form of either a Direct Debit mandate or a card continuous payment authority.
 
-The fields are their usage are described below:	
+The fields and their usage are described below:	
 
 <table>
   <tr>
