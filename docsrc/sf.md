@@ -32,7 +32,7 @@ Add the following Trusted IP Ranges:<br/>
 
 You will need to obtain a reference code from Asperato.  This code is known as the `pmRef` and this needs to be recorded into a Custom Metadata object.
 Once you have obtained the code from Asperato in Salesforce go to<br/>
-**Setup > Build > Develop > Custom Metadata Type**s<br/>
+**Setup > Build > Develop > Custom Metadata Types**<br/>
 In the list that is displayed you will see ‘Asperato Settings’.<br/>
 Click on the ‘Manage Records’ link.<br/>
 On the list that is then displayed ‘Edit’ the line with the label ‘Default’.<br/>
