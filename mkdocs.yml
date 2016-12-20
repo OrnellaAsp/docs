@@ -4,5 +4,6 @@ docs_dir: docsrc
 repo_url: https://github.com/Asperato/docs
 pages:
 - 'index.md'
+- "Overview": 'overview.md'
 - "Salesforce package": 'sf.md'
 - "Templates": 'templates.md'
