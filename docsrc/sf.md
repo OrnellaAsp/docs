@@ -38,6 +38,32 @@ Click on the ‘Manage Records’ link.<br/>
 On the list that is then displayed ‘Edit’ the line with the label ‘Default’.<br/>
 Change the `pmRef` value to that supplied to you by Asperato and save the record.<br/>
 
+## Design overview
+
+### The web journey
+
+The web journey is where a payment or an authorisation is set up via screens that require interaction from a paying person.  This is typically through links in a website, links sent in email communications or direct from Salesforce via a button or a link.
+
+The journey starts with a URL that invokes an Asperato program.  The URL will contain at least one parameter (pmRef) and might have several more.  This are described more fully elsewhere.  The parameters are used to:
+..* Obtain configuration from Asperato using the pmRef parameter.
+..* Obtain data from Salesforce using either the GetAuthorisations REST webservice or the GetPayments REST webservice.  The requests and responses for these services are described fully elsewhere in this documentation.
+The Asperato program combines the configuration and the data to create a dynamic web screen that is then displayed to the person making the payment in a web browser.
+The payer then enters data to the web screen and control then passes to another Asperato program.
+This second program accepts and validates the data input and then calls the relevant payment gateway.
+The gateway then returns a response and this is passed back to Salesforce using either or both of the REST webservices PutAuthorisations and PutPayments.
+Asperato then displays the outcome of the whole transaction on either a success or a fail screen.
+
+### The automatic (repeat) payment journey
+
+The automatic payment journey is the process by which a payment can be taken without the need for screen input on behalf of the payer based on an authorisation that has already been put in place.  This authorisation is typically a Direct Debit mandate or a card continuous payment authority.
+
+The journey starts in Salesforce where suitable code creates a list of payments that are due for collection.  
+This list of payments is then sent to Asperato using a REST web service.
+Asperato then applies validation to each line in the list and either accepts or rejects the individual request line.
+For those lines that are accepted Asperato calls the relevant gateway. 
+The gateway then returns a response and this is passed back to Salesforce using either or both of the REST webservices PutAuthorisations and PutPayments.
+
+
 ## The data objects
 
 The package data objects are called `Payment`, `Subscription` and `Authorisation` and they are related to each other as per the diagram below.
