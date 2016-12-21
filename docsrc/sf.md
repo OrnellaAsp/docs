@@ -77,7 +77,7 @@ The payment route is either BACS or SEPA since these require authorisations even
 
 #### Payment scenarios
 
-Basic actions on the data in Salesforce:
+Basic actions on the data in Salesforce:<br/>
 (a) Create new Authorisation row<br/>
 (b) Update existing Authorisation row<br/>
 (c) Create a new Payment row<br/>
