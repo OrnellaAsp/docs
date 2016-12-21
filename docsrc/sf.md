@@ -64,6 +64,72 @@ Asperato then applies validation to each line in the list and either accepts or 
 For those lines that are accepted Asperato calls the relevant gateway. <br/>
 The gateway then returns a response and this is passed back to Salesforce using either or both of the REST webservices PutAuthorisations and PutPayments.<br/>
 
+### Terminology 
+
+In Asperato terms an Authorisation is a record of an authority given by a payer to collect automatic payments.  This will take the physical form of either a Direct Debit mandate or a card Continuous Payment Authorisation (CPA).  Creating an authority does not take money from the associated account, it merely sets up the mechanism to allow that to happen in the future.  There are rules in force about what you have to tell the payer when you set up an authority and when you take payments using it.  Those rules vary depending on the payment route you are using.
+
+A Payment is a financial transaction.  This can include a refund. Its key attributes are that is has an amount, currency, a due date and a payment route.
+
+In Asperato terms an Automatic or Repeat payment is defined as where:
+The payment frequency is not ‘Single’.
+The payment frequency is ‘Single’ but the payment due date is in the future.
+The payment route is either BACS or SEPA since these require authorisations even for one off payments
+
+#### Payment scenarios
+
+Basic actions on the data in Salesforce:
+Create new Authorisation row
+Update existing Authorisation row
+Create a new Payment row
+Update an existing Payment row
+
+These are the data scenarios that the package is designed to deal with:
+<table>
+  <tr>
+    <th>Scenario</th>
+    <th>Action</th>
+  </tr>
+  <tr>
+    <td>New authority where no data currently exists</td>
+    <td>(a)</td>
+  </tr>
+  <tr>
+    <td>New authority where an Authorisation row already exists</td>
+    <td>(b)</td>
+  </tr>
+  <tr>
+    <td>Update to an existing authority</td>
+    <td>(b)</td>
+  </tr>
+  <tr>
+    <td>Single payment where no data currently exists</td>
+    <td>(c)</td>
+  </tr>
+  <tr>
+    <td>Single payment where a Payment row already exists</td>
+    <td>(d)</td>
+  </tr>
+  <tr>
+    <td>Repeat payment where where no data currently exists on either Authorisation or Payment</td>
+    <td>(a) + (c)</td>
+  </tr>
+  <tr>
+    <td>Repeat payment where where no data currently exists on Payment but an Authorisation exists</td>
+    <td>(b) + (c)</td>
+  </tr>
+  <tr>
+    <td>Repeat payment where where data exists on Payment but no Authorisation exists</td>
+    <td>(a) + (d)</td>
+  </tr>
+  <tr>
+    <td>Repeat payment where where rows exist on both Authorisation and Payment</td>
+    <td>(b) + (d)</td>
+  </tr>
+  <tr>
+    <td>Subsequent repeat payment (i.e. an automatic payment)</td>
+    <td>(b) + (d)</td>
+  </tr>
+</table>
 
 ## The data objects
 
