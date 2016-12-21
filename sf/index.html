@@ -210,16 +210,16 @@ The gateway then returns a response and this is passed back to Salesforce using 
 <h3 id="terminology">Terminology</h3>
 <p>In Asperato terms an Authorisation is a record of an authority given by a payer to collect automatic payments.  This will take the physical form of either a Direct Debit mandate or a card Continuous Payment Authorisation (CPA).  Creating an authority does not take money from the associated account, it merely sets up the mechanism to allow that to happen in the future.  There are rules in force about what you have to tell the payer when you set up an authority and when you take payments using it.  Those rules vary depending on the payment route you are using.</p>
 <p>A Payment is a financial transaction.  This can include a refund. Its key attributes are that is has an amount, currency, a due date and a payment route.</p>
-<p>In Asperato terms an Automatic or Repeat payment is defined as where:
-The payment frequency is not ‘Single’.
-The payment frequency is ‘Single’ but the payment due date is in the future.
+<p>In Asperato terms an Automatic or Repeat payment is defined as where:<br/>
+The payment frequency is not ‘Single’.<br/>
+The payment frequency is ‘Single’ but the payment due date is in the future.<br/>
 The payment route is either BACS or SEPA since these require authorisations even for one off payments</p>
 <h4 id="payment-scenarios">Payment scenarios</h4>
 <p>Basic actions on the data in Salesforce:
-Create new Authorisation row
-Update existing Authorisation row
-Create a new Payment row
-Update an existing Payment row</p>
+(a) Create new Authorisation row<br/>
+(b) Update existing Authorisation row<br/>
+(c) Create a new Payment row<br/>
+(d) Update an existing Payment row<br/></p>
 <p>These are the data scenarios that the package is designed to deal with:
 <table>
   <tr>
