@@ -6,39 +6,9 @@ There are simple VisualForce pages to support each of the data objects and tabs 
 
 The configuration of the package is managed via Custom Metadata.  There are two Metadata Types, Asperato Settings and Service Handler.  The options available for these settings are described below.
 
-## Installation
-
-The core package is installed using a Salesforce package deployment link.
-
-For a sandbox organisation this link is:<br/>
-<https://test.salesforce.com/packaging/installPackage.apexp?p0=04t240000006Usj>
-
-For a live or development organisation this link is:<br/>
-<https://login.salesforce.com/packaging/installPackage.apexp?p0=04t240000006Usj>
-
-When installing make sure that the package is accessible by all Salesforce users (this is not the default).<br/>
-Once the package has been installed you need to update the system Network Security so that the Asperato servers can communicate with your Salesforce organisation.
-As a system administrator go to:<br/>
-**Setup > Administer > Security Controls > Network Access**<br/>
-Add the following Trusted IP Ranges:<br/>
-
-> Start IP Address: 77.68.42.36<br/>
-> End IP Address: 77.68.42.36<br/>
-> Description: Asperato Test<br/>
-
-> Start IP Address: 162.13.56.213<br/>
-> End IP Address: 162.13.56.213<br/>
-> Description: Asperato Live<br/>
-
-You will need to obtain a reference code from Asperato.  This code is known as the `pmRef` and this needs to be recorded into a Custom Metadata object.
-Once you have obtained the code from Asperato in Salesforce go to<br/>
-**Setup > Build > Develop > Custom Metadata Types**<br/>
-In the list that is displayed you will see ‘Asperato Settings’.<br/>
-Click on the ‘Manage Records’ link.<br/>
-On the list that is then displayed ‘Edit’ the line with the label ‘Default’.<br/>
-Change the `pmRef` value to that supplied to you by Asperato and save the record.<br/>
 
 ## Design overview
+
 
 ### The web journey
 
@@ -64,6 +34,7 @@ Asperato then applies validation to each line in the list and either accepts or 
 For those lines that are accepted Asperato calls the relevant gateway. <br/>
 The gateway then returns a response and this is passed back to Salesforce using either or both of the REST webservices PutAuthorisations and PutPayments.<br/>
 
+
 ### Terminology 
 
 In Asperato terms an Authorisation is a record of an authority given by a payer to collect automatic payments.  This will take the physical form of either a Direct Debit mandate or a card Continuous Payment Authorisation (CPA).  Creating an authority does not take money from the associated account, it merely sets up the mechanism to allow that to happen in the future.  There are rules in force about what you have to tell the payer when you set up an authority and when you take payments using it.  Those rules vary depending on the payment route you are using.
@@ -74,6 +45,7 @@ In Asperato terms an Automatic or Repeat payment is defined as where:<br/>
 The payment frequency is not ‘Single’.<br/>
 The payment frequency is ‘Single’ but the payment due date is in the future.<br/>
 The payment route is either BACS or SEPA since these require authorisations even for one off payments
+
 
 #### Payment scenarios
 
@@ -131,11 +103,13 @@ These are the data scenarios that the package is designed to deal with:
   </tr>
 </table>
 
+
 ## The data objects
 
 The package data objects are called `Payment`, `Subscription` and `Authorisation` and they are related to each other as per the diagram below.
 
 ![Authorisation has a reference to payment and subscription, subscription has a reference to payment](sf_diagram.png)
+
 
 ### Authorisation
 
@@ -436,9 +410,43 @@ The fields are their usage are described below:
 </table>
 
 
+## Installation
+
+The core package is installed using a Salesforce package deployment link.
+
+For a sandbox organisation this link is:<br/>
+<https://test.salesforce.com/packaging/installPackage.apexp?p0=04t240000006Usj>
+
+For a live or development organisation this link is:<br/>
+<https://login.salesforce.com/packaging/installPackage.apexp?p0=04t240000006Usj>
+
+When installing make sure that the package is accessible by all Salesforce users (this is not the default).<br/>
+Once the package has been installed you need to update the system Network Security so that the Asperato servers can communicate with your Salesforce organisation.
+As a system administrator go to:<br/>
+**Setup > Administer > Security Controls > Network Access**<br/>
+Add the following Trusted IP Ranges:<br/>
+
+> Start IP Address: 77.68.42.36<br/>
+> End IP Address: 77.68.42.36<br/>
+> Description: Asperato Test<br/>
+
+> Start IP Address: 162.13.56.213<br/>
+> End IP Address: 162.13.56.213<br/>
+> Description: Asperato Live<br/>
+
+You will need to obtain a reference code from Asperato.  This code is known as the `pmRef` and this needs to be recorded into a Custom Metadata object.
+Once you have obtained the code from Asperato in Salesforce go to<br/>
+**Setup > Build > Develop > Custom Metadata Types**<br/>
+In the list that is displayed you will see ‘Asperato Settings’.<br/>
+Click on the ‘Manage Records’ link.<br/>
+On the list that is then displayed ‘Edit’ the line with the label ‘Default’.<br/>
+Change the `pmRef` value to that supplied to you by Asperato and save the record.<br/>
+
+
 ## The Custom Metadata Type settings
 
 There are two Custom Metadata Types that affect the way that the Asperato Phoenix package operates.
+
 
 ### Asperato Settings
 
@@ -449,6 +457,7 @@ The first of these field is labeled `pmRef`.  The value for this field is provid
 The second field is labeled `Operating Mode`.  This is a select box with two options, Test and Live.  Switching this value will automatically switch Asperato server endpoints between the sandbox test environment and the live server environment.  Leave this setting as `Test` until such time as the live configuration has been established with Asperato.
 
 The third field is labelled `Direct Debit Lead Time`.  This is a numeric field with a default value of 4 and this represents the number of days before a payment is due that the process of collecting that payment will start.  This is to compensation for the inherent delays in the UK BACS payment system.  This value can be tuned if needed. Under normal circumstances you should leave this value at the default.
+
 
 ### Service Handlers
 
@@ -498,13 +507,16 @@ So in simple terms to create a new Apex service handler you create a new Apex cl
 
 There are three sets of web services relating to payments, authorisations and message updates.
 
+
 ### Payments
 
 The two web services that relate to payments are labelled `GetPayments` and `PutPayments`.
 
+
 #### GetPayments
 
 This gets data from the Payment object and passes this to Asperato so that it can be used to prepopulate the payment page web screen.  The web service has a simple request of a single Salesforce ID and returns a single set of response data.  The field names and usage are shown in the table below.
+
 
 **Request**
 
@@ -670,6 +682,7 @@ PassThroughParameter</td>
 
 These are the list parameters mentioned above
 
+
 **UrlParameter**
 
 <table>
@@ -721,9 +734,11 @@ By default all parameters are passed into Asperato and back out again.</td>
 
 When implementing a service handler override class this new class should implement the interface called `asp03__IGetPaymentsService`.
 
+
 #### PutPayments
 
 This puts data back into Salesforce after a payment attempt has been made irrespective of whether that attempt succeeded or failed.  This web service can be bulked up so is capable of sending multiple rows in a single request.
+
 
 **Request**
 
