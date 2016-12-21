@@ -70,18 +70,18 @@ In Asperato terms an Authorisation is a record of an authority given by a payer 
 
 A Payment is a financial transaction.  This can include a refund. Its key attributes are that is has an amount, currency, a due date and a payment route.
 
-In Asperato terms an Automatic or Repeat payment is defined as where:
-The payment frequency is not ‘Single’.
-The payment frequency is ‘Single’ but the payment due date is in the future.
+In Asperato terms an Automatic or Repeat payment is defined as where:<br/>
+The payment frequency is not ‘Single’.<br/>
+The payment frequency is ‘Single’ but the payment due date is in the future.<br/>
 The payment route is either BACS or SEPA since these require authorisations even for one off payments
 
 #### Payment scenarios
 
 Basic actions on the data in Salesforce:
-Create new Authorisation row
-Update existing Authorisation row
-Create a new Payment row
-Update an existing Payment row
+(a) Create new Authorisation row<br/>
+(b) Update existing Authorisation row<br/>
+(c) Create a new Payment row<br/>
+(d) Update an existing Payment row<br/>
 
 These are the data scenarios that the package is designed to deal with:
 <table>
