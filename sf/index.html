@@ -119,9 +119,6 @@
     
         <li class="first-level active"><a href="#salesforce-package">Salesforce package</a></li>
         
-            <li class="second-level"><a href="#installation">Installation</a></li>
-            
-        
             <li class="second-level"><a href="#design-overview">Design overview</a></li>
             
                 <li class="third-level"><a href="#the-web-journey">The web journey</a></li>
@@ -138,6 +135,9 @@
                 <li class="third-level"><a href="#subscription">Subscription</a></li>
             
                 <li class="third-level"><a href="#payment">Payment</a></li>
+            
+        
+            <li class="second-level"><a href="#installation">Installation</a></li>
             
         
             <li class="second-level"><a href="#the-custom-metadata-type-settings">The Custom Metadata Type settings</a></li>
@@ -163,32 +163,6 @@
 <p>The core package consists of three custom objects and a set of web services that communicate between Asperato and Salesforce.  The web services are all managed through Apex classes.  The package is designed to be extensible so that the package web service classes can be replaced by custom Apex code if that is required.  </p>
 <p>There are simple VisualForce pages to support each of the data objects and tabs accessing these are grouped together into an Asperato application.</p>
 <p>The configuration of the package is managed via Custom Metadata.  There are two Metadata Types, Asperato Settings and Service Handler.  The options available for these settings are described below.</p>
-<h2 id="installation">Installation</h2>
-<p>The core package is installed using a Salesforce package deployment link.</p>
-<p>For a sandbox organisation this link is:<br/>
-<a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04t240000006Usj">https://test.salesforce.com/packaging/installPackage.apexp?p0=04t240000006Usj</a></p>
-<p>For a live or development organisation this link is:<br/>
-<a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t240000006Usj">https://login.salesforce.com/packaging/installPackage.apexp?p0=04t240000006Usj</a></p>
-<p>When installing make sure that the package is accessible by all Salesforce users (this is not the default).<br/>
-Once the package has been installed you need to update the system Network Security so that the Asperato servers can communicate with your Salesforce organisation.
-As a system administrator go to:<br/>
-<strong>Setup &gt; Administer &gt; Security Controls &gt; Network Access</strong><br/>
-Add the following Trusted IP Ranges:<br/></p>
-<blockquote>
-<p>Start IP Address: 77.68.42.36<br/>
-End IP Address: 77.68.42.36<br/>
-Description: Asperato Test<br/></p>
-<p>Start IP Address: 162.13.56.213<br/>
-End IP Address: 162.13.56.213<br/>
-Description: Asperato Live<br/></p>
-</blockquote>
-<p>You will need to obtain a reference code from Asperato.  This code is known as the <code>pmRef</code> and this needs to be recorded into a Custom Metadata object.
-Once you have obtained the code from Asperato in Salesforce go to<br/>
-<strong>Setup &gt; Build &gt; Develop &gt; Custom Metadata Types</strong><br/>
-In the list that is displayed you will see ‘Asperato Settings’.<br/>
-Click on the ‘Manage Records’ link.<br/>
-On the list that is then displayed ‘Edit’ the line with the label ‘Default’.<br/>
-Change the <code>pmRef</code> value to that supplied to you by Asperato and save the record.<br/></p>
 <h2 id="design-overview">Design overview</h2>
 <h3 id="the-web-journey">The web journey</h3>
 <p>The web journey is where a payment or an authorisation is set up via screens that require interaction from a paying person.  This is typically through links in a website, links sent in email communications or direct from Salesforce via a button or a link.</p>
@@ -555,6 +529,32 @@ The payment route is either BACS or SEPA since these require authorisations even
   </tr>
 </table>
 
+<h2 id="installation">Installation</h2>
+<p>The core package is installed using a Salesforce package deployment link.</p>
+<p>For a sandbox organisation this link is:<br/>
+<a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04t240000006Usj">https://test.salesforce.com/packaging/installPackage.apexp?p0=04t240000006Usj</a></p>
+<p>For a live or development organisation this link is:<br/>
+<a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t240000006Usj">https://login.salesforce.com/packaging/installPackage.apexp?p0=04t240000006Usj</a></p>
+<p>When installing make sure that the package is accessible by all Salesforce users (this is not the default).<br/>
+Once the package has been installed you need to update the system Network Security so that the Asperato servers can communicate with your Salesforce organisation.
+As a system administrator go to:<br/>
+<strong>Setup &gt; Administer &gt; Security Controls &gt; Network Access</strong><br/>
+Add the following Trusted IP Ranges:<br/></p>
+<blockquote>
+<p>Start IP Address: 77.68.42.36<br/>
+End IP Address: 77.68.42.36<br/>
+Description: Asperato Test<br/></p>
+<p>Start IP Address: 162.13.56.213<br/>
+End IP Address: 162.13.56.213<br/>
+Description: Asperato Live<br/></p>
+</blockquote>
+<p>You will need to obtain a reference code from Asperato.  This code is known as the <code>pmRef</code> and this needs to be recorded into a Custom Metadata object.
+Once you have obtained the code from Asperato in Salesforce go to<br/>
+<strong>Setup &gt; Build &gt; Develop &gt; Custom Metadata Types</strong><br/>
+In the list that is displayed you will see ‘Asperato Settings’.<br/>
+Click on the ‘Manage Records’ link.<br/>
+On the list that is then displayed ‘Edit’ the line with the label ‘Default’.<br/>
+Change the <code>pmRef</code> value to that supplied to you by Asperato and save the record.<br/></p>
 <h2 id="the-custom-metadata-type-settings">The Custom Metadata Type settings</h2>
 <p>There are two Custom Metadata Types that affect the way that the Asperato Phoenix package operates.</p>
 <h3 id="asperato-settings">Asperato Settings</h3>
