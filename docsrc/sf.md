@@ -50,10 +50,10 @@ The payment route is either BACS or SEPA since these require authorisations even
 #### Payment scenarios
 
 Basic actions on the data in Salesforce:<br/>
-(a) Create new Authorisation row<br/>
-(b) Update existing Authorisation row<br/>
-(c) Create a new Payment row<br/>
-(d) Update an existing Payment row<br/>
+(a) Create new `Authorisation` row<br/>
+(b) Update existing `Authorisation` row<br/>
+(c) Create a new `Paymen`t row<br/>
+(d) Update an existing `Payment` row<br/>
 
 These are the data scenarios that the package is designed to deal with:
 <table>
@@ -66,7 +66,7 @@ These are the data scenarios that the package is designed to deal with:
     <td>(a)</td>
   </tr>
   <tr>
-    <td>New authority where an Authorisation row already exists</td>
+    <td>New authority where an `Authorisation` row already exists</td>
     <td>(b)</td>
   </tr>
   <tr>
@@ -78,23 +78,23 @@ These are the data scenarios that the package is designed to deal with:
     <td>(c)</td>
   </tr>
   <tr>
-    <td>Single payment where a Payment row already exists</td>
+    <td>Single payment where a `Payment` row already exists</td>
     <td>(d)</td>
   </tr>
   <tr>
-    <td>Repeat payment where where no data currently exists on either Authorisation or Payment</td>
+    <td>Repeat payment where where no data currently exists on either `Authorisation` or `Payment`</td>
     <td>(a) + (c)</td>
   </tr>
   <tr>
-    <td>Repeat payment where where no data currently exists on Payment but an Authorisation exists</td>
+    <td>Repeat payment where where no data currently exists on `Payment` but an `Authorisation` row exists</td>
     <td>(b) + (c)</td>
   </tr>
   <tr>
-    <td>Repeat payment where where data exists on Payment but no Authorisation exists</td>
+    <td>Repeat payment where where data exists on `Payment` but no related `Authorisation` row exists</td>
     <td>(a) + (d)</td>
   </tr>
   <tr>
-    <td>Repeat payment where where rows exist on both Authorisation and Payment</td>
+    <td>Repeat payment where where rows exist on both `Authorisation` and `Payment`</td>
     <td>(b) + (d)</td>
   </tr>
   <tr>
