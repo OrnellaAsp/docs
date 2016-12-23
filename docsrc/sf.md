@@ -1012,6 +1012,417 @@ PutPaymentResponseDetail</td>
 </table>
 
 
+When implementing a service handler override class this new class should implement the interface called `asp03__IPutPaymentsService`.
+
+
+### Authorisations
+
+The two web services that relate to authorisations are labelled `GetAuthorisations` and `PutAuthorisations`.
+
+
+#### GetAuthorisations
+
+This gets data from the Authorisation object and passes this to Asperato so that it can be used to prepopulate the payment page web screen.  The web service has a simple request of a single Salesforce ID and returns a single set of response data.  The field names and usage are shown in the table below.
+
+
+**Request**
+
+<table>
+  <tr>
+    <th>Field Name</th>
+    <th>Type</th>
+    <th>Usage</th>
+  </tr>
+  <tr>
+    <td>RecordID</td>
+    <td>String (ID)</td>
+    <td>Contains the Salesforce ID to a row in the payment object.</td>
+  </tr>
+  <tr>
+    <td>UrlParameters</td>
+    <td>List of
+UrlParameter</td>
+    <td>Any additional parameters included into the URL that invokes the Asperato pay page are passed to Salesforce in this list.</td>
+  </tr>
+</table>
+
+
+**Response**
+
+<table>
+  <tr>
+    <th>Field Name</th>
+    <th>Type</th>
+    <th>Usage</th>
+  </tr>
+  <tr>
+    <td>CPAGranted</td>
+    <td>Boolean</td>
+    <td>The existing value of the CPAGranted field in the Authorisation record.</td>
+  </tr>
+  <tr>
+    <td>Success</td>
+    <td>Boolean</td>
+    <td>When true means the record was located correctly. If this is set to false it will cause the standard Asperato paypage template to output the message "Sorry, the payment cannot be taken at this time."</td>
+  </tr>
+  <tr>
+    <td>AddressCity</td>
+    <td>String</td>
+    <td>This will be used to provide a default value for the billing address city on the paypage.</td>
+  </tr>
+  <tr>
+    <td>AddressCountry</td>
+    <td>String</td>
+    <td>This will be used to provide a default value for the billing address country on the paypage.</td>
+  </tr>
+  <tr>
+    <td>AddressPostalCode</td>
+    <td>String</td>
+    <td>This will be used to provide a default value for the billing postal code on the paypage.</td>
+  </tr>
+  <tr>
+    <td>AddressState</td>
+    <td>String</td>
+    <td>This will be used to provide a default value for the billing address state/county on the paypage.</td>
+  </tr>
+  <tr>
+    <td>AddressStreet</td>
+    <td>String</td>
+    <td>This will be used to provide a default value for the billing address streets on the paypage.  The Salesforce street address text area will be split so that the first line will appear in the first address line onn the screen and the rest of the block will appear in the second address line with the line feeds replaced by a comma</td>
+  </tr>
+  <tr>
+    <td>CompanyName</td>
+    <td>String</td>
+    <td>This will be used to provide a default value for the company name on the paypage.</td>
+  </tr>
+  <tr>
+    <td>Email</td>
+    <td>String</td>
+    <td>This will be used to provide a default value for the email address on the paypage.</td>
+  </tr>
+  <tr>
+    <td>FirstName</td>
+    <td>String</td>
+    <td>This will be used to provide a default value for the first name on the paypage.</td>
+  </tr>
+  <tr>
+    <td>ErrorMessage</td>
+    <td>String</td>
+    <td>If the Success field is false this will contain an indication of why the call failed.</td>
+  </tr>
+  <tr>
+    <td>LastName</td>
+    <td>String</td>
+    <td>This will be used to provide a default value for the last name on the paypage.</td>
+  </tr>
+  <tr>
+    <td>PaymentRoute</td>
+    <td>String</td>
+    <td>One of:
+      <ul>
+        <li><b>Card</b></li>
+        <li><b>BACS</b></li>
+        <li><b>eCheck</b></li>
+        <li><b>SEPA</b></li>
+        <li><b>Wallet</b></li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>UrlCancel</td>
+    <td>String</td>
+    <td>URL that the payment page will link to if the end customer chooses to cancel the payment process.</td>
+  </tr>
+  <tr>
+    <td>UrlError</td>
+    <td>String</td>
+    <td>URL that the result page will go to in the event that the transaction fails</td>
+  </tr>
+  <tr>
+    <td>UrlExit</td>
+    <td>String</td>
+    <td>URL that the result page will go to after a successful transaction</td>
+  </tr>
+  <tr>
+    <td>PassThroughParameters</td>
+    <td>List of
+PassThroughParameter</td>
+    <td>This is a list of name value pairs that can be passed from Salesforce, updated in the paypage and then passed back to Salesforce.</td>
+  </tr>
+</table>
+
+
+These are the list parameters mentioned above
+
+
+**UrlParameter**
+
+<table>
+  <tr>
+    <th>Field Name</th>
+    <th>Type</th>
+    <th>Usage</th>
+  </tr>
+  <tr>
+    <td>Key</td>
+    <td>String</td>
+    <td>The name of the parameter as it appeared in the URL.</td>
+  </tr>
+  <tr>
+    <td>Value</td>
+    <td>String</td>
+    <td>The content of the parameter as it appeared in the URL.</td>
+  </tr>
+</table>
+
+
+**PassThroughParameter**
+
+<table>
+  <tr>
+    <th>Field Name</th>
+    <th>Type</th>
+    <th>Usage</th>
+  </tr>
+  <tr>
+    <td>Key</td>
+    <td>String</td>
+    <td>The desired name of the parameter to be passed to Asperato.
+Note that there are certain names that have significance to the web templates and these are documented in the templates chapter.</td>
+  </tr>
+  <tr>
+    <td>Value</td>
+    <td>String</td>
+    <td>The desired content of the parameter to be passed to Asperato.</td>
+  </tr>
+  <tr>
+    <td>IsDisplayOnly</td>
+    <td>Boolean</td>
+    <td>When true the parameter will appear in the template and not be passed back to Salesforce.
+By default all parameters are passed into Asperato and back out again.</td>
+  </tr>
+</table>
+
+
+When implementing a service handler override class this new class should implement the interface called `asp03__IGetPaymentsService`.
+
+
+#### PutAuthorisations
+
+This puts data back into Salesforce after a authorisation attempt has been made irrespective of whether that attempt succeeded or failed.  This web service can be bulked up so is capable of sending multiple rows in a single request.
+
+
+**Request**
+
+<table>
+  <tr>
+    <th>Field Name</th>
+    <th>Type</th>
+    <th>Usage</th>
+  </tr>
+  <tr>
+    <td>PutAuthorisationRequestDetails</td>
+    <td>List of PutAuthorisationRequestDetail</td>
+    <td>A list of outcomes from authorisation attempts.</td>
+  </tr>
+</table>
+
+
+**PutAuthorisationRequestDetail**
+
+<table>
+  <tr>
+    <th>Field Name</th>
+    <th>Type</th>
+    <th>Usage</th>
+  </tr>
+  <tr>
+    <td>CPAGranted</td>
+    <td>Boolean</td>
+    <td>When true means that the request that a continuous payment authorisation was granted by the payer.</td>
+  </tr>
+  <tr>
+    <td>Success</td>
+    <td>Boolean</td>
+    <td>When true means that the request to the gateway was processed successfully.  When false indicates that the transaction did not succeed and either no payment was taken or the authorisation request was not accepted.</td>
+  </tr>
+  <tr>
+    <td>ExpiryDate</td>
+    <td>Date</td>
+    <td>The date the authorisation will expire if that applies.  This could be the card expiry date for example.</td>
+  </tr>
+  <tr>
+    <td>AddressCity</td>
+    <td>String</td>
+    <td>The billing address city as entered on the paypage.</td>
+  </tr>
+  <tr>
+    <td>AddressCountry</td>
+    <td>String</td>
+    <td>The billing address country as selected on the paypage.</td>
+  </tr>
+  <tr>
+    <td>AddressPostalCode</td>
+    <td>String</td>
+    <td>The billing address postal code as entered on the paypage.</td>
+  </tr>
+  <tr>
+    <td>AddressState</td>
+    <td>String</td>
+    <td>The billing address state/county as entered on the paypage.</td>
+  </tr>
+  <tr>
+    <td>AddressStreet</td>
+    <td>String</td>
+    <td>The billing address street as entered on the paypage. This will consist of the content of the address line 1 followed by the content of the address line 2 separated by a line break.</td>
+  </tr>
+  <tr>
+    <td>AccountName</td>
+    <td>String</td>
+    <td>The name on the card or the bank account</td>
+  </tr>
+  <tr>
+    <td>AccountReference</td>
+    <td>String</td>
+    <td>An obscured reference to the card or the bank account.</td>
+  </tr>
+  <tr>
+    <td>CardType</td>
+    <td>String</td>
+    <td>If a card this will say what type of card was used otherwise will say `Not Applicable`.</td>
+  </tr>
+  <tr>
+    <td>Email</td>
+    <td>String</td>
+    <td>The email address as entered on the paypage.</td>
+  </tr>
+  <tr>
+    <td>MandateReference</td>
+    <td>String</td>
+    <td>The mandate reference that should appear on any documentation sent to the payer (if applicable).</td>
+  </tr>
+  <tr>
+    <td>PaymentRoute</td>
+    <td>String</td>
+    <td>One of:
+      <ul>
+        <li><b>Card</b></li>
+        <li><b>BACS</b></li>
+        <li><b>eCheck</b></li>
+        <li><b>SEPA</b></li>
+        <li><b>Wallet</b></li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>RepeatCrossReference</td>
+    <td>String</td>
+    <td>The cross reference value obtained from the payment gateway that is used to make a subsequent payment.  As a rule this value will change each time a repeat (automatic) payment is successfull.</td>
+  </tr>
+  <tr>
+    <td>RepeatOrderId</td>
+    <td>String</td>
+    <td>An Asperato generated order reference for the transaction that is used to make a subsequent payment.  As a rule this value will change each time a repeat (automatic) payment is successfull.</td>
+  </tr>
+  <tr>
+    <td>SalesforceId</td>
+    <td>String</td>
+    <td>ID of the payment object row</td>
+  </tr>
+  <tr>
+    <td>StatusDescription</td>
+    <td>String</td>
+    <td>Text relating to the transaction.  If present, this will show either some form of transaction reference or the reason why the payment failed as appropriate.</td>
+  </tr>
+  <tr>
+    <td>SubscriptionID</td>
+    <td>String</td>
+    <td>Contains the Salesforce ID of an associated Subscription if one exists.</td>
+  </tr>
+  <tr>
+    <td>PassThroughParameters</td>
+    <td>List of PassThroughParameter</td>
+    <td>This is a list of name value pairs that can be passed from Salesforce, updated in the paypage and then passed back to Salesforce.</td>
+  </tr>
+</table>
+
+
+**PassThroughParameter**
+
+<table>
+  <tr>
+    <th>Field Name</th>
+    <th>Type</th>
+    <th>Usage</th>
+  </tr>
+  <tr>
+    <td>Key</td>
+    <td>String</td>
+    <td>The name of the parameter passed from Asperato.</td>
+  </tr>
+  <tr>
+    <td>Value</td>
+    <td>String</td>
+    <td>The content of the parameter passed from Asperato.</td>
+  </tr>
+</table>
+
+
+**Response**
+
+<table>
+  <tr>
+    <th>Field Name</th>
+    <th>Type</th>
+    <th>Usage</th>
+  </tr>
+  <tr>
+    <td>Success</td>
+    <td>Boolean</td>
+    <td>When true indicates that the overall request was successful.</td>
+  </tr>
+  <tr>
+    <td>ErrorMessage</td>
+    <td>String</td>
+    <td>If the Success field is false this indicates the reason why.</td>
+  </tr>
+  <tr>
+    <td>PutAuthorisationResponseDetails</td>
+    <td>List of PutAuthorisationResponseDetail</td>
+    <td></td>
+  </tr>
+</table>
+
+
+**PutAuthorisationResponseDetail**
+
+<table>
+  <tr>
+    <th>Field Name</th>
+    <th>Type</th>
+    <th>Usage</th>
+  </tr>
+  <tr>
+    <td>Success</td>
+    <td>Boolean</td>
+    <td>When true indicates that the request was successful for this row.</td>
+  </tr>
+  <tr>
+    <td>ErrorMessage</td>
+    <td>String</td>
+    <td>If the Success field is false this indicates the reason why.</td>
+  </tr>
+  <tr>
+    <td>SalesforceId</td>
+    <td>String</td>
+    <td>The ID of the row that was updated or created.</td>
+  </tr>
+</table>
+
+
+When implementing a service handler override class this new class should implement the interface called `asp03__IPutAuthorisationsService`.
+
+
 ### Messages
 
 The message web service is used to send messages from Asperato to Salesforce.  These messages affect the status of existing payments or authorisations.
@@ -1118,3 +1529,6 @@ To locate the correct row search for where the Cross Reference on the Payment ro
     <td>If the Success field is false this indicates the reason why.</td>
   </tr>
 </table>
+
+
+When implementing a service handler override class this new class should implement the interface called `asp03__IPutMessagesService`.
