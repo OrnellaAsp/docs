@@ -435,10 +435,10 @@ The fields are their usage are described below:
 The core package is installed using a Salesforce package deployment link.
 
 For a sandbox organisation this link is:<br/>
-<https://test.salesforce.com/packaging/installPackage.apexp?p0=04t240000006Uz7>
+<https://test.salesforce.com/packaging/installPackage.apexp?p0=04t240000006V1X>
 
 For a live or development organisation this link is:<br/>
-<https://login.salesforce.com/packaging/installPackage.apexp?p0=04t240000006Uz7>
+<https://login.salesforce.com/packaging/installPackage.apexp?p0=04t240000006V1X>
 
 When installing make sure that the package is accessible by all Salesforce users (this is not the default).<br/>
 Once the package has been installed you need to update the system Network Security so that the Asperato servers can communicate with your Salesforce organisation.
