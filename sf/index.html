@@ -360,7 +360,16 @@ The payment route is either BACS or SEPA since these require authorisations even
   </tr>
   <tr>
     <td>Frequency</td>
-    <td>The payment frequency for the subscription.</td>
+    <td>The payment frequency for the subscription. One of:
+      <ul>
+        <li><b>Daily</b></li>
+        <li><b>Weekly</b></li>
+        <li><b>Monthly</b></li>
+        <li><b>Quarterly</b></li>
+        <li><b>Semi-annual</b></li>
+        <li><b>Annual</b></li>
+      </ul>
+    </td>
   </tr>
   <tr>
     <td>Last Payment Date</td>
@@ -483,6 +492,14 @@ The payment route is either BACS or SEPA since these require authorisations even
     </td>
   </tr>
   <tr>
+    <td>Repeat Cross Reference</td>
+    <td>A formula reflecting the repeat cross reference from the associated authoriisation if appropriate.  Contains the text "Not set up yet" if there is no value.</td>
+  </tr>
+  <tr>
+    <td>Repeat Order ID</td>
+    <td>A formula reflecting the repeat order Id from the associated authoriisation if appropriate.  Contains the text "Not set up yet" if there is no value.</td>
+  </tr>
+  <tr>
     <td>Scheduled Date</td>
     <td>Date on which a payment is scheduled to be processed.  Can be used to set up payments that are due in the future.</td>
   </tr>
@@ -493,9 +510,12 @@ The payment route is either BACS or SEPA since these require authorisations even
   <tr>
     <td>Source</td>
     <td>Payment source.  Can be one of:
-<ul><li><b>Web</b></li>
-<li><b>Holder not present</b></li>
-<li><b>Repeat</b></li></ul></td>
+     <ul>
+      <li><b>Web</b></li>
+      <li><b>Holder not present</b></li>
+      <li><b>Repeat</b></li>
+     </ul>
+    </td>
   </tr>
   <tr>
     <td>Status</td>
