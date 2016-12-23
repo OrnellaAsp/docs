@@ -699,6 +699,11 @@ UrlParameter</td>
     <td>This will be used to provide a default value for the billing address streets on the paypage.  The Salesforce street address text area will be split so that the first line will appear in the first address line onn the screen and the rest of the block will appear in the second address line with the line feeds replaced by a comma</td>
   </tr>
   <tr>
+    <td>AuthorisationID</td>
+    <td>String</td>
+    <td>Contains the Salesforce ID of an associated Authorisation if one exists.</td>
+  </tr>
+  <tr>
     <td>CompanyName</td>
     <td>String</td>
     <td>This will be used to provide a default value for the company name on the paypage.</td>
@@ -760,6 +765,11 @@ UrlParameter</td>
     <td>SalesforceId</td>
     <td>String</td>
     <td>The Salesforce ID of the payment object row to which the request relates.</td>
+  </tr>
+  <tr>
+    <td>SubscriptionID</td>
+    <td>String</td>
+    <td>Contains the Salesforce ID of an associated Subscription if one exists.</td>
   </tr>
   <tr>
     <td>UrlCancel</td>
@@ -906,9 +916,19 @@ PutPaymentRequestDetail</td>
     <td>An obscured reference to the card or the bank account.</td>
   </tr>
   <tr>
+    <td>AuthorisationID</td>
+    <td>String</td>
+    <td>Contains the Salesforce ID of an associated Authorisation if one exists.  If one was created during the update the ID of that row will be shown here.</td>
+  </tr>
+  <tr>
     <td>CardType</td>
     <td>String</td>
     <td>If a card this will say what type of card was used otherwise will say `Not Applicable`.</td>
+  </tr>
+  <tr>
+    <td>CompanyName</td>
+    <td>String</td>
+    <td>The company name as entered on the paypage.</td>
   </tr>
   <tr>
     <td>CrossReference</td>
@@ -924,6 +944,16 @@ PutPaymentRequestDetail</td>
     <td>Email</td>
     <td>String</td>
     <td>The email address as entered on the paypage.</td>
+  </tr>
+  <tr>
+    <td>FirstName</td>
+    <td>String</td>
+    <td>The first name as entered on the paypage.</td>
+  </tr>
+  <tr>
+    <td>LastName</td>
+    <td>String</td>
+    <td>The last name as entered on the paypage.</td>
   </tr>
   <tr>
     <td>OrderId</td>
@@ -963,6 +993,11 @@ PutPaymentRequestDetail</td>
     <td>StatusDescription</td>
     <td>String</td>
     <td>Text relating to the transaction.  If present, this will show either some form of transaction reference or the reason why the payment failed as appropriate.</td>
+  </tr>
+  <tr>
+    <td>SubscriptionID</td>
+    <td>String</td>
+    <td>Contains the Salesforce ID of an associated Subscription if one exists.</td>
   </tr>
   <tr>
     <td>PassThroughParameters</td>
