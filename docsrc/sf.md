@@ -1292,9 +1292,24 @@ This puts data back into Salesforce after a authorisation attempt has been made 
     <td>If a card this will say what type of card was used otherwise will say `Not Applicable`.</td>
   </tr>
   <tr>
+    <td>CompanyName</td>
+    <td>String</td>
+    <td>The company name as entered on the paypage.</td>
+  </tr>
+  <tr>
     <td>Email</td>
     <td>String</td>
     <td>The email address as entered on the paypage.</td>
+  </tr>
+  <tr>
+    <td>FirstName</td>
+    <td>String</td>
+    <td>The first name as entered on the paypage.</td>
+  </tr>
+  <tr>
+    <td>LastName</td>
+    <td>String</td>
+    <td>The last name as entered on the paypage.</td>
   </tr>
   <tr>
     <td>MandateReference</td>
