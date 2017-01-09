@@ -1577,3 +1577,23 @@ To locate the correct row search for where the Cross Reference on the Payment ro
 
 
 When implementing a service handler override class this new class should implement the interface called `asp03__IPutMessagesService`.
+
+## Customisation
+
+The standard package service handlers can be overlayed with custom versions if that is desired.
+
+The custom class has to implement its appropriate interface and then have code to action that interface methods.  This is a simple example of an class that overrides the handler for the PutPayments web service.
+
+```
+public with sharing class asp_OverridePutPaymentsServiceHandler implements asp03.IPutPaymentsService
+{
+    public asp03.PutPaymentsService.PutPaymentsResponse PutPayments(asp03.PutPaymentsService.PutPaymentsRequest request)
+    {
+        asp03.PutPaymentsService.PutPaymentsResponse response = new asp03.PutPaymentsService.PutPaymentsResponse();
+        
+        // the real code goes here
+        
+        return response;
+    }
+}
+```
