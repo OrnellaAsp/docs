@@ -156,6 +156,9 @@
                 <li class="third-level"><a href="#messages">Messages</a></li>
             
         
+            <li class="second-level"><a href="#customisation">Customisation</a></li>
+            
+        
     
     </ul>
 </div></div>
@@ -1592,7 +1595,22 @@ PutMessageRequestDetail</td>
   </tr>
 </table>
 
-<p>When implementing a service handler override class this new class should implement the interface called <code>asp03__IPutMessagesService</code>.</p></div>
+<p>When implementing a service handler override class this new class should implement the interface called <code>asp03__IPutMessagesService</code>.</p>
+<h2 id="customisation">Customisation</h2>
+<p>The standard package service handlers can be overlayed with custom versions if that is desired.</p>
+<p>The custom class has to implement its appropriate interface and then have code to action that interface methods.  This is a simple example of an class that overrides the handler for the PutPayments web service.</p>
+<pre><code>public with sharing class asp_OverridePutPaymentsServiceHandler implements asp03.IPutPaymentsService
+{
+    public asp03.PutPaymentsService.PutPaymentsResponse PutPayments(asp03.PutPaymentsService.PutPaymentsRequest request)
+    {
+        asp03.PutPaymentsService.PutPaymentsResponse response = new asp03.PutPaymentsService.PutPaymentsResponse();
+
+        // the real code goes here
+
+        return response;
+    }
+}
+</code></pre></div>
         
     </div>
 
