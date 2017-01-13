@@ -460,9 +460,9 @@ The core package is installed using a Salesforce package deployment link.  In th
 
 The unmanaged version is this:
 For a sandbox organisation the install link is:<br/>
-<https://test.salesforce.com/packaging/installPackage.apexp?p0=04t240000006V1m>
+<https://test.salesforce.com/packaging/installPackage.apexp?p0=04t240000006V4R>
 For a live or development organisation this lthe installink is:<br/>
-<https://login.salesforce.com/packaging/installPackage.apexp?p0=04t240000006V1m>
+<https://login.salesforce.com/packaging/installPackage.apexp?p0=04t240000006V4R>
 
 The managed version is this:
 For a sandbox organisation the install link is:<br/>
