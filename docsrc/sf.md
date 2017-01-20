@@ -797,7 +797,7 @@ When implementing a service handler override class this new class should impleme
 
 #### PutPayments
 
-This puts data back into Salesforce after a payment attempt has been made irrespective of whether that attempt succeeded or failed.  This web service can be bulked up so is capable of sending multiple rows in a single request.
+This puts data back into Salesforce after a payment attempt has been made irrespective of whether that attempt succeeded or failed.  This web service can be bulked up so is capable of sending multiple rows in a single request.  In reality this will only happen for the automated (repeat) journey.  To detect this test the first row of the PutPaymentRequestDetails array and examine the value of the Source field.  If this equates to 'Repeat' then you might expect multiple rows otherwise it will be a single element in the PutPaymentRequestDetails array.
 
 
 **PutPaymentsRequest**
@@ -1239,7 +1239,7 @@ When implementing a service handler override class this new class should impleme
 
 #### PutAuthorisations
 
-This puts data back into Salesforce after a authorisation attempt has been made irrespective of whether that attempt succeeded or failed.  This web service can be bulked up so is capable of sending multiple rows in a single request.
+This puts data back into Salesforce after a authorisation attempt has been made irrespective of whether that attempt succeeded or failed.  This web service can be bulked up so is capable of sending multiple rows in a single request.  In reality this will only happen for the automated (repeat) journey.  To detect this test the first row of the PutAuthorisationRequestDetails array and examine the value of the Source field.  If this equates to 'Repeat' then you might expect multiple rows otherwise it will be a single element in the PutAuthorisationRequestDetails array.
 
 
 **PutAuthorisationsRequest**
@@ -1375,14 +1375,20 @@ This puts data back into Salesforce after a authorisation attempt has been made 
     <td>ID of the payment object row</td>
   </tr>
   <tr>
+    <td>Source</td>
+    <td>String</td>
+    <td>How the transaction was generated.  One of:
+      <ul>
+        <li><b>Holder not present</b></li>
+        <li><b>Repeat</b></li>
+        <li><b>Web</b></li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
     <td>StatusDescription</td>
     <td>String</td>
     <td>Text relating to the transaction.  If present, this will show either some form of transaction reference or the reason why the payment failed as appropriate.</td>
-  </tr>
-  <tr>
-    <td>SubscriptionID</td>
-    <td>String</td>
-    <td>Contains the Salesforce ID of an associated Subscription if one exists.</td>
   </tr>
   <tr>
     <td>PassThroughParameters</td>
