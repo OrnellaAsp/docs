@@ -661,7 +661,7 @@ Change the <code>pmRef</code> value to that supplied to you by Asperato and save
 <p>The two web services that relate to payments are labelled <code>GetPayments</code> and <code>PutPayments</code>.</p>
 <h4 id="getpayments">GetPayments</h4>
 <p>This gets data from the Payment object and passes this to Asperato so that it can be used to prepopulate the payment page web screen.  The web service has a simple request of a single Salesforce ID and returns a single set of response data.  The field names and usage are shown in the table below.</p>
-<p><strong>Request</strong></p>
+<p><strong>GetPaymentsRequest</strong></p>
 <table>
   <tr>
     <th>Field Name</th>
@@ -681,7 +681,7 @@ UrlParameter</td>
   </tr>
 </table>
 
-<p><strong>Response</strong></p>
+<p><strong>GetPaymentsResponse</strong></p>
 <table>
   <tr>
     <th>Field Name</th>
@@ -878,7 +878,7 @@ By default all parameters are passed into Asperato and back out again.</td>
 <p>When implementing a service handler override class this new class should implement the interface called <code>asp03__IGetPaymentsService</code>.</p>
 <h4 id="putpayments">PutPayments</h4>
 <p>This puts data back into Salesforce after a payment attempt has been made irrespective of whether that attempt succeeded or failed.  This web service can be bulked up so is capable of sending multiple rows in a single request.</p>
-<p><strong>Request</strong></p>
+<p><strong>PutPaymentsRequest</strong></p>
 <table>
   <tr>
     <th>Field Name</th>
@@ -1061,7 +1061,7 @@ PassThroughParameter</td>
   </tr>
 </table>
 
-<p><strong>Response</strong></p>
+<p><strong>PutPaymentsResponse</strong></p>
 <table>
   <tr>
     <th>Field Name</th>
@@ -1115,7 +1115,7 @@ PutPaymentResponseDetail</td>
 <p>The two web services that relate to authorisations are labelled <code>GetAuthorisations</code> and <code>PutAuthorisations</code>.</p>
 <h4 id="getauthorisations">GetAuthorisations</h4>
 <p>This gets data from the Authorisation object and passes this to Asperato so that it can be used to prepopulate the payment page web screen.  The web service has a simple request of a single Salesforce ID and returns a single set of response data.  The field names and usage are shown in the table below.</p>
-<p><strong>Request</strong></p>
+<p><strong>GetAuthorisationsRequest</strong></p>
 <table>
   <tr>
     <th>Field Name</th>
@@ -1135,7 +1135,7 @@ UrlParameter</td>
   </tr>
 </table>
 
-<p><strong>Response</strong></p>
+<p><strong>GetAuthorisationsResponse</strong></p>
 <table>
   <tr>
     <th>Field Name</th>
@@ -1287,7 +1287,7 @@ By default all parameters are passed into Asperato and back out again.</td>
 <p>When implementing a service handler override class this new class should implement the interface called <code>asp03__IGetPaymentsService</code>.</p>
 <h4 id="putauthorisations">PutAuthorisations</h4>
 <p>This puts data back into Salesforce after a authorisation attempt has been made irrespective of whether that attempt succeeded or failed.  This web service can be bulked up so is capable of sending multiple rows in a single request.</p>
-<p><strong>Request</strong></p>
+<p><strong>PutAuthorisationsRequest</strong></p>
 <table>
   <tr>
     <th>Field Name</th>
@@ -1452,7 +1452,7 @@ By default all parameters are passed into Asperato and back out again.</td>
   </tr>
 </table>
 
-<p><strong>Response</strong></p>
+<p><strong>PutAuthorisationsResponse</strong></p>
 <table>
   <tr>
     <th>Field Name</th>
@@ -1505,7 +1505,7 @@ By default all parameters are passed into Asperato and back out again.</td>
 <p>The message web service is used to send messages from Asperato to Salesforce.  These messages affect the status of existing payments or authorisations.</p>
 <p>At the moment these messages all relate to UK Direct Debits, though in future this will include SEPA direct debits and card updates.</p>
 <p>This web service can be bulked up so is capable of sending multiple rows in a single request.</p>
-<p><strong>Request</strong></p>
+<p><strong>PutMessagesRequest</strong></p>
 <table>
   <tr>
     <th>Field Name</th>
@@ -1576,7 +1576,7 @@ PutMessageRequestDetail</td>
 <p>When the resource has the text content <code>mandates</code> the message relates to an Authorisation.  To locate the correct row search for where the Repeat Cross Reference on the Authorisation row equals the TransactionReference on the request.</p>
 <p>When the resource has the text content of either <code>payments</code> or <code>refunds</code> then the message relates to the Payment object.</p>
 <p>To locate the correct row search for where the Cross Reference on the Payment row equals the TransactionReference on the request.</p>
-<p><strong>Response</strong></p>
+<p><strong>PutMessagesResponse</strong></p>
 <table>
   <tr>
     <th>Field Name</th>
