@@ -1372,7 +1372,7 @@ This puts data back into Salesforce after a authorisation attempt has been made 
   <tr>
     <td>SalesforceId</td>
     <td>String</td>
-    <td>ID of the payment object row</td>
+    <td>ID of the authorisation object row</td>
   </tr>
   <tr>
     <td>Source</td>
