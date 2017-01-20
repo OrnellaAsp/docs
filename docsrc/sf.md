@@ -1360,6 +1360,11 @@ This puts data back into Salesforce after a authorisation attempt has been made 
     </td>
   </tr>
   <tr>
+    <td>RegularAmount</td>
+    <td>Long</td>
+    <td>Regular amount due in the lowest denomination for the the currency. For GBP this would be pence, for USD this would be cents, for EUR this would be cents, etc.</td>
+  </tr>
+  <tr>
     <td>RepeatCrossReference</td>
     <td>String</td>
     <td>The cross reference value obtained from the payment gateway that is used to make a subsequent payment.  As a rule this value will change each time a repeat (automatic) payment is successfull.</td>
