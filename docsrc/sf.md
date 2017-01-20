@@ -568,7 +568,7 @@ The two web services that relate to payments are labelled `GetPayments` and `Put
 This gets data from the Payment object and passes this to Asperato so that it can be used to prepopulate the payment page web screen.  The web service has a simple request of a single Salesforce ID and returns a single set of response data.  The field names and usage are shown in the table below.
 
 
-**Request**
+**GetPaymentsRequest**
 
 <table>
   <tr>
@@ -590,7 +590,7 @@ UrlParameter</td>
 </table>
 
 
-**Response**
+**GetPaymentsResponse**
 
 <table>
   <tr>
@@ -800,7 +800,7 @@ When implementing a service handler override class this new class should impleme
 This puts data back into Salesforce after a payment attempt has been made irrespective of whether that attempt succeeded or failed.  This web service can be bulked up so is capable of sending multiple rows in a single request.
 
 
-**Request**
+**PutPaymentsRequest**
 
 <table>
   <tr>
@@ -989,7 +989,7 @@ PassThroughParameter</td>
 </table>
 
 
-**Response**
+**PutPaymentsResponse**
 
 <table>
   <tr>
@@ -1055,7 +1055,7 @@ The two web services that relate to authorisations are labelled `GetAuthorisatio
 This gets data from the Authorisation object and passes this to Asperato so that it can be used to prepopulate the payment page web screen.  The web service has a simple request of a single Salesforce ID and returns a single set of response data.  The field names and usage are shown in the table below.
 
 
-**Request**
+**GetAuthorisationsRequest**
 
 <table>
   <tr>
@@ -1077,7 +1077,7 @@ UrlParameter</td>
 </table>
 
 
-**Response**
+**GetAuthorisationsResponse**
 
 <table>
   <tr>
@@ -1242,7 +1242,7 @@ When implementing a service handler override class this new class should impleme
 This puts data back into Salesforce after a authorisation attempt has been made irrespective of whether that attempt succeeded or failed.  This web service can be bulked up so is capable of sending multiple rows in a single request.
 
 
-**Request**
+**PutAuthorisationsRequest**
 
 <table>
   <tr>
@@ -1413,7 +1413,7 @@ This puts data back into Salesforce after a authorisation attempt has been made 
 </table>
 
 
-**Response**
+**PutAuthorisationsResponse**
 
 <table>
   <tr>
@@ -1476,7 +1476,7 @@ At the moment these messages all relate to UK Direct Debits, though in future th
 
 This web service can be bulked up so is capable of sending multiple rows in a single request.
 
-**Request**
+**PutMessagesRequest**
 
 <table>
   <tr>
@@ -1555,7 +1555,7 @@ When the resource has the text content of either `payments` or `refunds` then th
 
 To locate the correct row search for where the Cross Reference on the Payment row equals the TransactionReference on the request.
 
-**Response**
+**PutMessagesResponse**
 
 <table>
   <tr>
