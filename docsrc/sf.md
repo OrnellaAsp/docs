@@ -466,9 +466,9 @@ For a live or development organisation this lthe installink is:<br/>
 
 The managed version is this:
 For a sandbox organisation the install link is:<br/>
-<https://test.salesforce.com/packaging/installPackage.apexp?p0=04t240000006V7z>
+<https://test.salesforce.com/packaging/installPackage.apexp?p0=04t240000006V84>
 For a live or development organisation the install link is:<br/>
-<https://login.salesforce.com/packaging/installPackage.apexp?p0=04t240000006V7z>
+<https://login.salesforce.com/packaging/installPackage.apexp?p0=04t240000006V84>
 
 When installing make sure that the package is accessible by all Salesforce users (this is not the default).<br/>
 Once the package has been installed you need to update the system Network Security so that the Asperato servers can communicate with your Salesforce organisation.
