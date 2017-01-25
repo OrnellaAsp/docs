@@ -610,6 +610,21 @@ In the list that is displayed you will see ‘Asperato Settings’.<br/>
 Click on the ‘Manage Records’ link.<br/>
 On the list that is then displayed ‘Edit’ the line with the label ‘Default’.<br/>
 Change the <code>pmRef</code> value to that supplied to you by Asperato and save the record.<br/></p>
+<p>There is a regular scheduled task that needs to run each day.  This task will look at the Subscriptions object and determine whether there are any that are due.  If a subscription payment is due then this task will create a row in the Payment object for each subscription.  The task will then look at the Payment object for any rows that are due and will send these as a batch to Asperato for collection.
+To set up this job go to<br>
+<strong>Setup &gt; Build &gt; Develop &gt; Apex Classes</strong><br/>
+At the top of the list that is displayed there is a ‘Schedule Apex’ button.  Press this button.<br/>
+A screen will display enabling you to establish the run criteria.<br/>
+Enter a Job Name - Suggested name is ‘Asperato Repeat Payment’.<br/>
+Next to the Apex Class box press the maginfying glass icon and in the list that displays select ‘BatchProcessSubscriptions’.<br/>
+Set the Frquency to ‘Weekly’.<br/>
+In the 'Recurs every week on' area tick all the boxes.<br/>
+Select a Start date (defaults to today).<br/>
+Set an End date.  The default is in one month and you should change this to a value a long time in the future such as 31/12/2050.<br/>
+Set the Preferred Start Time to a value, a suggestion would be 04:00 or 05:00.<br/>
+Save this record and that will schedule the task.<br/>
+To see scheduled jobs go to<br/>
+<strong>Setup &gt; Monitor &gt; Jobs &gt; Scheduled Jobs</strong><br/></p>
 <h2 id="the-custom-metadata-type-settings">The Custom Metadata Type settings</h2>
 <p>There are two Custom Metadata Types that affect the way that the Asperato Phoenix package operates.</p>
 <h3 id="asperato-settings">Asperato Settings</h3>
