@@ -1,4 +1,4 @@
-# Aspeato ONE Salesforce package
+# Asperato ONE Salesforce package
 
 The core package consists of three custom objects and a set of web services that communicate between Asperato and Salesforce.  The web services are all managed through Apex classes.  The package is designed to be extensible so that the package web service classes can be replaced by custom Apex code if that is required.  
 
