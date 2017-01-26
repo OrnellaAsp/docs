@@ -1293,9 +1293,19 @@ This puts data back into Salesforce after a authorisation attempt has been made 
     <td>When true means that the request to the gateway was processed successfully.  When false indicates that the transaction did not succeed and either no payment was taken or the authorisation request was not accepted.</td>
   </tr>
   <tr>
+    <td>EffectiveDate</td>
+    <td>Date</td>
+    <td>The date the authorisation will become effective.  This is used to establish the point at which a repeating payment cycle will start.  An example of this would be where an authorisation is set up now for a monthly repeating payment where the first payment happens in two weeks time.</td>
+  </tr>
+  <tr>
     <td>ExpiryDate</td>
     <td>Date</td>
     <td>The date the authorisation will expire if that applies.  This could be the card expiry date for example.</td>
+  </tr>
+  <tr>
+    <td>RegularAmount</td>
+    <td>Long</td>
+    <td>Amount that will be processed as part of a repeating payment in the lowest denomination for the the currency. For GBP this would be pence, for USD this would be cents, for EUR this would be cents, etc.</td>
   </tr>
   <tr>
     <td>AddressCity</td>
@@ -1363,6 +1373,21 @@ This puts data back into Salesforce after a authorisation attempt has been made 
     <td>The mandate reference that should appear on any documentation sent to the payer (if applicable).</td>
   </tr>
   <tr>
+    <td>PaymentFrequency</td>
+    <td>String</td>
+    <td>The frequency that applies to a regular payment.  Will be one of:
+      <ul>
+        <li><b>Single</b></li>
+        <li><b>Daily</b></li>
+        <li><b>Weekly</b></li>
+        <li><b>Monthly</b></li>
+        <li><b>Quarterly</b></li>
+        <li><b>Semi-annual</b></li>
+        <li><b>Annual</b></li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
     <td>PaymentRoute</td>
     <td>String</td>
     <td>One of:
@@ -1374,11 +1399,6 @@ This puts data back into Salesforce after a authorisation attempt has been made 
         <li><b>Wallet</b></li>
       </ul>
     </td>
-  </tr>
-  <tr>
-    <td>RegularAmount</td>
-    <td>Long</td>
-    <td>Regular amount due in the lowest denomination for the the currency. For GBP this would be pence, for USD this would be cents, for EUR this would be cents, etc.</td>
   </tr>
   <tr>
     <td>RepeatCrossReference</td>
