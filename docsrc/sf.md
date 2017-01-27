@@ -1633,7 +1633,7 @@ The standard package service handlers can be overlayed with custom versions if t
 The custom class has to implement its appropriate interface and then have code to action that interface methods.  This is a simple example of an class that overrides the handler for the PutPayments web service.
 
 ```
-public with sharing class asp_OverridePutPaymentsServiceHandler implements asp03.IPutPaymentsService
+public with sharing class MyOverridePutPaymentsServiceHandler implements asp03.IPutPaymentsService
 {
     public asp03.PutPaymentsService.PutPaymentsResponse PutPayments(asp03.PutPaymentsService.PutPaymentsRequest request)
     {
