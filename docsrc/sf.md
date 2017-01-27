@@ -35,6 +35,7 @@ For those lines that are accepted Asperato calls the relevant gateway. <br/>
 The gateway then returns a response and this is passed back to Salesforce using either or both of the REST webservices PutAuthorisations and PutPayments.<br/>
 
 
+
 ### Terminology 
 
 In Asperato terms an Authorisation is a record of an authority given by a payer to collect automatic payments.  This will take the physical form of either a Direct Debit mandate or a card Continuous Payment Authorisation (CPA).  Creating an authority does not take money from the associated account, it merely sets up the mechanism to allow that to happen in the future.  There are rules in force about what you have to tell the payer when you set up an authority and when you take payments using it.  Those rules vary depending on the payment route you are using.
