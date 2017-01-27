@@ -5,5 +5,5 @@ repo_url: https://github.com/Asperato/docs
 pages:
 - 'index.md'
 - "Overview": 'overview.md'
-- "Salesforce package": 'sf.md'
+- "Asperato ONE": 'sf.md'
 - "Templates": 'templates.md'
