@@ -1645,7 +1645,7 @@ PutMessageRequestDetail</td>
 <h2 id="customisation">Customisation</h2>
 <p>The standard package service handlers can be overlayed with custom versions if that is desired.</p>
 <p>The custom class has to implement its appropriate interface and then have code to action that interface methods.  This is a simple example of an class that overrides the handler for the PutPayments web service.</p>
-<pre><code>public with sharing class asp_OverridePutPaymentsServiceHandler implements asp03.IPutPaymentsService
+<pre><code>public with sharing class MyOverridePutPaymentsServiceHandler implements asp03.IPutPaymentsService
 {
     public asp03.PutPaymentsService.PutPaymentsResponse PutPayments(asp03.PutPaymentsService.PutPaymentsRequest request)
     {
