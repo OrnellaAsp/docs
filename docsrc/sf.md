@@ -461,15 +461,15 @@ The core package is installed using a Salesforce package deployment link.  In th
 
 The unmanaged version is this:
 For a sandbox organisation the install link is:<br/>
-<https://test.salesforce.com/packaging/installPackage.apexp?p0=04t240000006V7V>
+<https://test.salesforce.com/packaging/installPackage.apexp?p0=04t240000006V89>
 For a live or development organisation this lthe installink is:<br/>
-<https://login.salesforce.com/packaging/installPackage.apexp?p0=04t240000006V7V>
+<https://login.salesforce.com/packaging/installPackage.apexp?p0=04t240000006V89>
 
 The managed version is this:
 For a sandbox organisation the install link is:<br/>
-<https://test.salesforce.com/packaging/installPackage.apexp?p0=04t240000006VDj>
+<https://test.salesforce.com/packaging/installPackage.apexp?p0=04t240000006VEc>
 For a live or development organisation the install link is:<br/>
-<https://login.salesforce.com/packaging/installPackage.apexp?p0=04t240000006VDj>
+<https://login.salesforce.com/packaging/installPackage.apexp?p0=04t240000006VEc>
 
 When installing make sure that the package is accessible by all Salesforce users (this is not the default).<br/>
 Once the package has been installed you need to update the system Network Security so that the Asperato servers can communicate with your Salesforce organisation.
