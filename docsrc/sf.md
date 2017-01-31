@@ -6,6 +6,8 @@ There are simple VisualForce pages to support each of the data objects and tabs 
 
 The configuration of the package is managed via Custom Metadata.  There are two Metadata Types, Asperato Settings and Service Handler.  The options available for these settings are described below.
 
+Note that this package is available for: Lightning Enterprise & Lightning Unlimited only. For further information please see <https://www.salesforce.com/uk/editions-pricing/sales-cloud/>
+
 
 ## Design overview
 
