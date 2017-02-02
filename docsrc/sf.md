@@ -1628,6 +1628,14 @@ To locate the correct row search for where the Cross Reference on the Payment ro
 
 When implementing a service handler override class this new class should implement the interface called `asp03__IPutMessagesService`.
 
+## Utilities
+
+There are a number of utility functions in the core Asperato ONE package that are available for use for designers and code builds that choose to extend the package.
+
+### Resolve the payment route from text to a code
+
+Asperato uses four character codes to represent the type of transaction that is to take place.  This appears in the repeat payment process.  There is a utility function available that will resolve the text to a code.
+
 ## Customisation
 
 The standard package service handlers can be overlayed with custom versions if that is desired.
