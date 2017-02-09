@@ -148,7 +148,7 @@
             
                 <li class="third-level"><a href="#optional-card-fields">Optional card fields</a></li>
             
-                <li class="third-level"><a href="#required-direct-debit-ach-fields">Required Direct Debit / ACH fields</a></li>
+                <li class="third-level"><a href="#direct-debit-ach-fields">Direct Debit / ACH fields</a></li>
             
                 <li class="third-level"><a href="#address-fields">Address fields</a></li>
             
@@ -418,19 +418,25 @@ Open <code>style.css</code>, and find the following section:</p>
 <p>The last two digits of the start date year.</p>
 <h4 id="dlissuenumber">DLissueNumber</h4>
 <p>The issue number of the card (often "01" where it exists.)</p>
-<h3 id="required-direct-debit-ach-fields">Required Direct Debit / ACH fields</h3>
-<p>These fields are only required if making a direct debit or ACH payment.</p>
+<h3 id="direct-debit-ach-fields">Direct Debit / ACH fields</h3>
+<p>These fields are only relevant if making a direct debit or ACH payment. When submitting a direct debit payment, you have the option of submitting local bank details or an IBAN.</p>
+<p>There are three fields related to local bank details: the account number, branch code and bank code. Not all these fields are required in each country, and they are known by different local names (in the UK for example, the "branch code" is known as the "sort code" and the "bank code" is not required.) Additionally, some countries have ceased using local bank details entirely, and customers will likely only know their IBAN.</p>
+<p>GoCardless has a good write up of local bank details here: <a href="https://developer.gocardless.com/api-reference/#appendix-local-bank-details">https://developer.gocardless.com/api-reference/#appendix-local-bank-details</a>.</p>
 <h4 id="dlaccountname">DLaccountName</h4>
 <p>The full name of the account holder.</p>
 <h4 id="dlaccountnumber">DLaccountNumber</h4>
 <p>The bank account number.</p>
 <h4 id="dlsc">DLsc</h4>
-<p>The sort code (direct debit) or routing number (ACH).</p>
+<p>The branch code (known as sort code in the UK.) If using ACH instead of Direct Debit, this field should contain the routing number.</p>
+<h4 id="dlbc">DLbc</h4>
+<p>The bank code (not required in the UK or for ACH.)</p>
+<h4 id="dliban">DLiban</h4>
+<p>The IBAN can be provided here instead of the local bank fields (DLaccountNumber, DLsc and DLbc.)</p>
 <h4 id="dlaccounttype">DLaccountType</h4>
-<p>Only necessary for ACH - the account type. Usually "checking" or “savings”.</p>
+<p>Only necessary for ACH - the account type. This should be one of "checking" or “savings”.</p>
 <h3 id="address-fields">Address fields</h3>
 <p>If AVS (address) checking is enabled on your card gateway, then you will need some of these fields. The exact fields you require depends on your gateway settings, but often just the first line of the address (<code>DLaddress1</code>) and the postcode (<code>DLpostcode</code>) are required.</p>
-<p>For direct debit and ACH payments, the title, forename, lastname, first line of the address, city and postcode are always required.</p>
+<p>For both direct debit and ACH payments, the title, forename, lastname, first line of the address, city and postcode (zip code in the USA) are always required.</p>
 <h4 id="dltitle">DLtitle</h4>
 <p>The salutation or title.</p>
 <h4 id="dlforename">DLforename</h4>
