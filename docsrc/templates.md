@@ -298,9 +298,13 @@ The last two digits of the start date year.
 
 The issue number of the card (often "01" where it exists.)
 
-### Required Direct Debit / ACH fields
+### Direct Debit / ACH fields
 
-These fields are only required if making a direct debit or ACH payment.
+These fields are only relevant if making a direct debit or ACH payment. When submitting a direct debit payment, you have the option of submitting local bank details or an IBAN.
+
+There are three fields related to local bank details: the account number, branch code and bank code. Not all these fields are required in each country, and they are known by different local names (in the UK for example, the "branch code" is known as the "sort code" and the "bank code" is not required.) Additionally, some countries have ceased using local bank details entirely, and customers will likely only know their IBAN.
+
+GoCardless has a good write up of local bank details here: <https://developer.gocardless.com/api-reference/#appendix-local-bank-details>.
 
 #### DLaccountName
 
@@ -312,17 +316,25 @@ The bank account number.
 
 #### DLsc
 
-The sort code (direct debit) or routing number (ACH).
+The branch code (known as sort code in the UK.) If using ACH instead of Direct Debit, this field should contain the routing number.
+
+#### DLbc
+
+The bank code (not required in the UK or for ACH.)
+
+#### DLiban
+
+The IBAN can be provided here instead of the local bank fields (DLaccountNumber, DLsc and DLbc.)
 
 #### DLaccountType
 
-Only necessary for ACH - the account type. Usually "checking" or “savings”.
+Only necessary for ACH - the account type. This should be one of "checking" or “savings”.
 
 ### Address fields
 
 If AVS (address) checking is enabled on your card gateway, then you will need some of these fields. The exact fields you require depends on your gateway settings, but often just the first line of the address (`DLaddress1`) and the postcode (`DLpostcode`) are required.
 
-For direct debit and ACH payments, the title, forename, lastname, first line of the address, city and postcode are always required.
+For both direct debit and ACH payments, the title, forename, lastname, first line of the address, city and postcode (zip code in the USA) are always required.
 
 #### DLtitle
 
