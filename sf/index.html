@@ -132,7 +132,7 @@
             
                 <li class="third-level"><a href="#authorisation">Authorisation</a></li>
             
-                <li class="third-level"><a href="#subscription">Subscription</a></li>
+                <li class="third-level"><a href="#payment-schedule">Payment Schedule</a></li>
             
                 <li class="third-level"><a href="#payment">Payment</a></li>
             
@@ -360,9 +360,9 @@ The payment route is either BACS or SEPA since these require authorisations even
   </tr>
 </table>
 
-<h3 id="subscription">Subscription</h3>
-<p>Subscription contains the information needed to drive the creation of payments where they need to recur automatically.</p>
-<p>Subscription has a lookup relationship with Authorisation.</p>
+<h3 id="payment-schedule">Payment Schedule</h3>
+<p>Payment Schedule contains the information needed to drive the creation of payments where they need to recur automatically.</p>
+<p>Payment Schedule has a lookup relationship with Authorisation.</p>
 <p>The fields are their usage are described below: </p>
 <table>
   <tr>
@@ -586,13 +586,7 @@ The payment route is either BACS or SEPA since these require authorisations even
 
 <h2 id="installation">Installation</h2>
 <p>The core package is installed using a Salesforce package deployment link.  In the short term there are two versions on offer, one is an unmanaged package that contains the source and the other is a fully mananged package.  Be aware that if you install the unmanaged version then you would have to un-install it before you could then apply an upgrade.  The process of un-installation might be non-trivial, depending on the type of integration you have created.</p>
-<p>The unmanaged version is this:
-For a sandbox organisation the install link is:<br/>
-<a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04t240000006V89">https://test.salesforce.com/packaging/installPackage.apexp?p0=04t240000006V89</a>
-For a live or development organisation this lthe installink is:<br/>
-<a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t240000006V89">https://login.salesforce.com/packaging/installPackage.apexp?p0=04t240000006V89</a></p>
-<p>The managed version is this:
-For a sandbox organisation the install link is:<br/>
+<p>For a sandbox organisation the install link is:<br/>
 <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04t240000006VFG">https://test.salesforce.com/packaging/installPackage.apexp?p0=04t240000006VFG</a>
 For a live or development organisation the install link is:<br/>
 <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t240000006VFG">https://login.salesforce.com/packaging/installPackage.apexp?p0=04t240000006VFG</a></p>
@@ -609,14 +603,14 @@ Description: Asperato Test<br/></p>
 End IP Address: 162.13.56.213<br/>
 Description: Asperato Live<br/></p>
 </blockquote>
-<p>You will need to obtain a reference code from Asperato.  This code is known as the <code>pmRef</code> and this needs to be recorded into a Custom Metadata object.
+<p>You will need to obtain a reference code from Asperato.  This code is known as the <code>Customer ID</code> and this needs to be recorded into a Custom Setting object.
 Once you have obtained the code from Asperato in Salesforce go to<br/>
-<strong>Setup &gt; Build &gt; Develop &gt; Custom Metadata Types</strong><br/>
-In the list that is displayed you will see ‘Asperato Settings’.<br/>
-Click on the ‘Manage Records’ link.<br/>
-On the list that is then displayed ‘Edit’ the line with the label ‘Default’.<br/>
-Change the <code>pmRef</code> value to that supplied to you by Asperato and save the record.<br/></p>
-<p>There is a regular scheduled task that needs to run each day.  This task will look at the Subscriptions object and determine whether there are any that are due.  If a subscription payment is due then this task will create a row in the Payment object for each subscription.  The task will then look at the Payment object for any rows that are due and will send these as a batch to Asperato for collection.
+<strong>Setup &gt; Build &gt; Develop &gt; Custom Settings</strong><br/>
+In the list that is displayed you will see ‘Asperato ONE settings’.<br/>
+Click on the ‘Manage’ link.<br/>
+On the page that is then displayed press the ‘Edit’ button<br/>
+Change the <code>Customer ID</code> value to that supplied to you by Asperato and save the record.<br/></p>
+<p>There is a regular scheduled task that needs to run each day.  This task will look at the Payment Schedule object and determine whether there are any that are due.  If a Payment Schedule payment is due then this task will create a row in the Payment object for each Payment Schedule.  The task will then look at the Payment object for any rows that are due and will send these as a batch to Asperato for collection.
 To set up this job go to<br>
 <strong>Setup &gt; Build &gt; Develop &gt; Apex Classes</strong><br/>
 At the top of the list that is displayed there is a ‘Schedule Apex’ button.  Press this button.<br/>
@@ -634,10 +628,7 @@ To see scheduled jobs go to<br/>
 <h2 id="the-custom-metadata-type-settings">The Custom Metadata Type settings</h2>
 <p>There are two Custom Metadata Types that affect the way that the Asperato Phoenix package operates.</p>
 <h3 id="asperato-settings">Asperato Settings</h3>
-<p>There is a single record in this Metadata Type with the Label of Default.  When managing this record there are three fields available.</p>
-<p>The first of these field is labeled <code>pmRef</code>.  The value for this field is provided by Asperato and relates the Salesforce organisation to the equivalent configurations within the Asperato databases.  You must set this value before using the package to take payments etc.</p>
-<p>The second field is labeled <code>Operating Mode</code>.  This is a select box with two options, Test and Live.  Switching this value will automatically switch Asperato server endpoints between the sandbox test environment and the live server environment.  Leave this setting as <code>Test</code> until such time as the live configuration has been established with Asperato.</p>
-<p>The third field is labelled <code>Direct Debit Lead Time</code>.  This is a numeric field with a default value of 4 and this represents the number of days before a payment is due that the process of collecting that payment will start.  This is to compensation for the inherent delays in the UK BACS payment system.  This value can be tuned if needed. Under normal circumstances you should leave this value at the default.</p>
+<p>There is a single record in this Metadata Type with the Label of Default.  This record provides reference data for the URLs needed for Asperato.  There is nothing that can be edited in this Metadata Type.</p>
 <h3 id="service-handlers">Service Handlers</h3>
 <p>There are five records in the Service Handlers Metadata Type and these are used to implement overrides to standard package service handlers.  A service handler is an Apex class that processes the data provided in a web service call and builds the appropriate response.  The full details for each of the web services available and how to create the Apex needed is described in the Web Services section.</p>
 <p>The only field you can edit for each record is the Handler Name.  This is the name of the Apex class that will be executed for the relevant handler.  The complete list of the Service Handlers and their default values is shown in the table below.  The Interface Name is the name of the interface that the service handler implements.</p>
@@ -896,7 +887,7 @@ By default all parameters are passed into Asperato and back out again.</td>
   </tr>
 </table>
 
-<p>When implementing a service handler override class this new class should implement the interface called <code>asp03__IGetPaymentsService</code>.</p>
+<p>When implementing a service handler override class this new class should implement the interface called <code>asp04__IGetPaymentsService</code>.</p>
 <h4 id="putpayments">PutPayments</h4>
 <p>This puts data back into Salesforce after a payment attempt has been made irrespective of whether that attempt succeeded or failed.  This web service can be bulked up so is capable of sending multiple rows in a single request.  In reality this will only happen for the automated (repeat) journey.  To detect this test the first row of the PutPaymentRequestDetails array and examine the value of the Source field.  If this equates to 'Repeat' then you might expect multiple rows otherwise it will be a single element in the PutPaymentRequestDetails array.</p>
 <p><strong>PutPaymentsRequest</strong></p>
@@ -1131,7 +1122,7 @@ PutPaymentResponseDetail</td>
   </tr>
 </table>
 
-<p>When implementing a service handler override class this new class should implement the interface called <code>asp03__IPutPaymentsService</code>.</p>
+<p>When implementing a service handler override class this new class should implement the interface called <code>asp04__IPutPaymentsService</code>.</p>
 <h3 id="authorisations">Authorisations</h3>
 <p>The two web services that relate to authorisations are labelled <code>GetAuthorisations</code> and <code>PutAuthorisations</code>.</p>
 <h4 id="getauthorisations">GetAuthorisations</h4>
@@ -1305,7 +1296,7 @@ By default all parameters are passed into Asperato and back out again.</td>
   </tr>
 </table>
 
-<p>When implementing a service handler override class this new class should implement the interface called <code>asp03__IGetPaymentsService</code>.</p>
+<p>When implementing a service handler override class this new class should implement the interface called <code>asp04__IGetPaymentsService</code>.</p>
 <h4 id="putauthorisations">PutAuthorisations</h4>
 <p>This puts data back into Salesforce after a authorisation attempt has been made irrespective of whether that attempt succeeded or failed.  This web service can be bulked up so is capable of sending multiple rows in a single request.  In reality this will only happen for the automated (repeat) journey.  To detect this test the first row of the PutAuthorisationRequestDetails array and examine the value of the Source field.  If this equates to 'Repeat' then you might expect multiple rows otherwise it will be a single element in the PutAuthorisationRequestDetails array.</p>
 <p><strong>PutAuthorisationsRequest</strong></p>
@@ -1552,7 +1543,7 @@ By default all parameters are passed into Asperato and back out again.</td>
   </tr>
 </table>
 
-<p>When implementing a service handler override class this new class should implement the interface called <code>asp03__IPutAuthorisationsService</code>.</p>
+<p>When implementing a service handler override class this new class should implement the interface called <code>asp04__IPutAuthorisationsService</code>.</p>
 <h3 id="messages">Messages</h3>
 <p>The message web service is used to send messages from Asperato to Salesforce.  These messages affect the status of existing payments or authorisations.</p>
 <p>At the moment these messages all relate to UK Direct Debits, though in future this will include SEPA direct debits and card updates.</p>
@@ -1647,7 +1638,7 @@ PutMessageRequestDetail</td>
   </tr>
 </table>
 
-<p>When implementing a service handler override class this new class should implement the interface called <code>asp03__IPutMessagesService</code>.</p>
+<p>When implementing a service handler override class this new class should implement the interface called <code>asp04__IPutMessagesService</code>.</p>
 <h2 id="utilities">Utilities</h2>
 <p>There are a number of utility functions in the core Asperato ONE package that are available for use for designers and code builds that choose to extend the package.</p>
 <h3 id="resolve-the-payment-route-from-text-to-a-code">Resolve the payment route from text to a code</h3>
@@ -1655,11 +1646,11 @@ PutMessageRequestDetail</td>
 <h2 id="customisation">Customisation</h2>
 <p>The standard package service handlers can be overlayed with custom versions if that is desired.</p>
 <p>The custom class has to implement its appropriate interface and then have code to action that interface methods.  This is a simple example of an class that overrides the handler for the PutPayments web service.</p>
-<pre><code>public with sharing class MyOverridePutPaymentsServiceHandler implements asp03.IPutPaymentsService
+<pre><code>public with sharing class MyOverridePutPaymentsServiceHandler implements asp04.IPutPaymentsService
 {
-    public asp03.PutPaymentsService.PutPaymentsResponse PutPayments(asp03.PutPaymentsService.PutPaymentsRequest request)
+    public asp04.PutPaymentsService.PutPaymentsResponse PutPayments(asp04.PutPaymentsService.PutPaymentsRequest request)
     {
-        asp03.PutPaymentsService.PutPaymentsResponse response = new asp03.PutPaymentsService.PutPaymentsResponse();
+        asp04.PutPaymentsService.PutPaymentsResponse response = new asp04.PutPaymentsService.PutPaymentsResponse();
 
         // the real code goes here
 
