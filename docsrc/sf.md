@@ -223,11 +223,11 @@ The fields and their usage are described below:
 </table>
 
 
-### Subscription
+### Payment Schedule
 
-Subscription contains the information needed to drive the creation of payments where they need to recur automatically.
+Payment Schedule contains the information needed to drive the creation of payments where they need to recur automatically.
 
-Subscription has a lookup relationship with Authorisation.
+Payment Schedule has a lookup relationship with Authorisation.
 
 The fields are their usage are described below:	
 
@@ -461,13 +461,6 @@ The fields are their usage are described below:
 
 The core package is installed using a Salesforce package deployment link.  In the short term there are two versions on offer, one is an unmanaged package that contains the source and the other is a fully mananged package.  Be aware that if you install the unmanaged version then you would have to un-install it before you could then apply an upgrade.  The process of un-installation might be non-trivial, depending on the type of integration you have created.
 
-The unmanaged version is this:
-For a sandbox organisation the install link is:<br/>
-<https://test.salesforce.com/packaging/installPackage.apexp?p0=04t240000006V89>
-For a live or development organisation this lthe installink is:<br/>
-<https://login.salesforce.com/packaging/installPackage.apexp?p0=04t240000006V89>
-
-The managed version is this:
 For a sandbox organisation the install link is:<br/>
 <https://test.salesforce.com/packaging/installPackage.apexp?p0=04t240000006VFG>
 For a live or development organisation the install link is:<br/>
@@ -487,15 +480,15 @@ Add the following Trusted IP Ranges:<br/>
 > End IP Address: 162.13.56.213<br/>
 > Description: Asperato Live<br/>
 
-You will need to obtain a reference code from Asperato.  This code is known as the `pmRef` and this needs to be recorded into a Custom Metadata object.
+You will need to obtain a reference code from Asperato.  This code is known as the `Customer ID` and this needs to be recorded into a Custom Setting object.
 Once you have obtained the code from Asperato in Salesforce go to<br/>
-**Setup > Build > Develop > Custom Metadata Types**<br/>
-In the list that is displayed you will see ‘Asperato Settings’.<br/>
-Click on the ‘Manage Records’ link.<br/>
-On the list that is then displayed ‘Edit’ the line with the label ‘Default’.<br/>
-Change the `pmRef` value to that supplied to you by Asperato and save the record.<br/>
+**Setup > Build > Develop > Custom Settings**<br/>
+In the list that is displayed you will see ‘Asperato ONE settings’.<br/>
+Click on the ‘Manage’ link.<br/>
+On the page that is then displayed press the ‘Edit’ button<br/>
+Change the `Customer ID` value to that supplied to you by Asperato and save the record.<br/>
 
-There is a regular scheduled task that needs to run each day.  This task will look at the Subscriptions object and determine whether there are any that are due.  If a subscription payment is due then this task will create a row in the Payment object for each subscription.  The task will then look at the Payment object for any rows that are due and will send these as a batch to Asperato for collection.
+There is a regular scheduled task that needs to run each day.  This task will look at the Payment Schedule object and determine whether there are any that are due.  If a Payment Schedule payment is due then this task will create a row in the Payment object for each Payment Schedule.  The task will then look at the Payment object for any rows that are due and will send these as a batch to Asperato for collection.
 To set up this job go to<br>
 **Setup > Build > Develop > Apex Classes**<br/>
 At the top of the list that is displayed there is a ‘Schedule Apex’ button.  Press this button.<br/>
@@ -519,13 +512,7 @@ There are two Custom Metadata Types that affect the way that the Asperato Phoeni
 
 ### Asperato Settings
 
-There is a single record in this Metadata Type with the Label of Default.  When managing this record there are three fields available.
-
-The first of these field is labeled `pmRef`.  The value for this field is provided by Asperato and relates the Salesforce organisation to the equivalent configurations within the Asperato databases.  You must set this value before using the package to take payments etc.
-
-The second field is labeled `Operating Mode`.  This is a select box with two options, Test and Live.  Switching this value will automatically switch Asperato server endpoints between the sandbox test environment and the live server environment.  Leave this setting as `Test` until such time as the live configuration has been established with Asperato.
-
-The third field is labelled `Direct Debit Lead Time`.  This is a numeric field with a default value of 4 and this represents the number of days before a payment is due that the process of collecting that payment will start.  This is to compensation for the inherent delays in the UK BACS payment system.  This value can be tuned if needed. Under normal circumstances you should leave this value at the default.
+There is a single record in this Metadata Type with the Label of Default.  This record provides reference data for the URLs needed for Asperato.  There is nothing that can be edited in this Metadata Type.
 
 
 ### Service Handlers
@@ -811,7 +798,7 @@ By default all parameters are passed into Asperato and back out again.</td>
 </table>
 
 
-When implementing a service handler override class this new class should implement the interface called `asp03__IGetPaymentsService`.
+When implementing a service handler override class this new class should implement the interface called `asp04__IGetPaymentsService`.
 
 
 #### PutPayments
@@ -1061,7 +1048,7 @@ PutPaymentResponseDetail</td>
 </table>
 
 
-When implementing a service handler override class this new class should implement the interface called `asp03__IPutPaymentsService`.
+When implementing a service handler override class this new class should implement the interface called `asp04__IPutPaymentsService`.
 
 
 ### Authorisations
@@ -1253,7 +1240,7 @@ By default all parameters are passed into Asperato and back out again.</td>
 </table>
 
 
-When implementing a service handler override class this new class should implement the interface called `asp03__IGetPaymentsService`.
+When implementing a service handler override class this new class should implement the interface called `asp04__IGetPaymentsService`.
 
 
 #### PutAuthorisations
@@ -1515,7 +1502,7 @@ This puts data back into Salesforce after a authorisation attempt has been made 
 </table>
 
 
-When implementing a service handler override class this new class should implement the interface called `asp03__IPutAuthorisationsService`.
+When implementing a service handler override class this new class should implement the interface called `asp04__IPutAuthorisationsService`.
 
 
 ### Messages
@@ -1626,7 +1613,7 @@ To locate the correct row search for where the Cross Reference on the Payment ro
 </table>
 
 
-When implementing a service handler override class this new class should implement the interface called `asp03__IPutMessagesService`.
+When implementing a service handler override class this new class should implement the interface called `asp04__IPutMessagesService`.
 
 ## Utilities
 
@@ -1643,11 +1630,11 @@ The standard package service handlers can be overlayed with custom versions if t
 The custom class has to implement its appropriate interface and then have code to action that interface methods.  This is a simple example of an class that overrides the handler for the PutPayments web service.
 
 ```
-public with sharing class MyOverridePutPaymentsServiceHandler implements asp03.IPutPaymentsService
+public with sharing class MyOverridePutPaymentsServiceHandler implements asp04.IPutPaymentsService
 {
-    public asp03.PutPaymentsService.PutPaymentsResponse PutPayments(asp03.PutPaymentsService.PutPaymentsRequest request)
+    public asp04.PutPaymentsService.PutPaymentsResponse PutPayments(asp04.PutPaymentsService.PutPaymentsRequest request)
     {
-        asp03.PutPaymentsService.PutPaymentsResponse response = new asp03.PutPaymentsService.PutPaymentsResponse();
+        asp04.PutPaymentsService.PutPaymentsResponse response = new asp04.PutPaymentsService.PutPaymentsResponse();
         
         // the real code goes here
         
