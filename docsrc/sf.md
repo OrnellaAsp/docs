@@ -134,6 +134,10 @@ The fields and their usage are described below:
     <td>A partially obscured record of the bank account or credit card number for future reference.</td>
   </tr>
   <tr>
+    <td>Asperato Repeat Token</td>
+    <td>One of a pair of fields needed to make a repeat payment request.</td>
+  </tr>
+  <tr>
     <td>Billing Address City</td>
     <td>Records the city in the billing address that was captured on the payment page.</td>
   </tr>
@@ -154,6 +158,10 @@ The fields and their usage are described below:
     <td>Records the street(s) in the billing address that was captured on the payment page.</td>
   </tr>
   <tr>
+    <td>Cancel Endpoint</td>
+    <td>The link or URL that will be executed if the customer presses the cancel link on the payment page.</td>
+  </tr>
+  <tr>
     <td>Card Type</td>
     <td>The type of credit or debit card, or `Not Applicable` for the other Authorisation Types.</td>
   </tr>
@@ -166,12 +174,24 @@ The fields and their usage are described below:
     <td>Indicates that the customer has given permission for card details to be used to collect automatic payments.</td>
   </tr>
   <tr>
+    <td>Direct Debit Error Code</td>
+    <td>In the event that the BACS system passes back an error response this will contain the raw BACS error code.</td>
+  </tr>
+  <tr>
+    <td>eCommerce URL</td>
+    <td>This is the URL needed to invoke the Asperato paypage is an eCommerce situation.  For example, this can be used to email someone a link by which to make a payment.</td>
+  </tr>
+  <tr>
     <td>Email</td>
     <td>Records the email address that was captured on the payment page.</td>
   </tr>
   <tr>
     <td>Expiry Date</td>
     <td>The date on the which the authorisation will expire (if applicable).</td>
+  </tr>
+  <tr>
+    <td>Fail Endpoint</td>
+    <td>The link or URL that will be executed if the customer presses the 'Finished' button on the transaction error response screen.</td>
   </tr>
   <tr>
     <td>First Name</td>
@@ -186,23 +206,18 @@ The fields and their usage are described below:
     <td>The reference for a Direct Debit mandate that will need to be displayed to the end customer in emails and other communication.</td>
   </tr>
   <tr>
-    <td>Payment Route</td>
-    <td>One of:
+    <td>Payment Route Options</td>
+    <td>One or more of of:
       <ul>
         <li><b>Card</b> Credit or debit card</li>
-        <li><b>BACS</b> UK Direct Debit</li>
+        <li><b>Direct Debit</b> Direct Debit</li>
         <li><b>eCheck</b>	US Bank payment</li>
-        <li><b>SEPA</b> European Direct Debit</li>
-        <li><b>Wallet</b> PayPal, etc.</li>
+        <li><b>PayPal</b></li>
       </ul>
     </td>
   </tr>
   <tr>
-    <td>Repeat Cross Reference</td>
-    <td>One of a pair of fields needed to make a repeat payment request.</td>
-  </tr>
-  <tr>
-    <td>Repeat Order ID</td>
+    <td>Payment Service Provider Repeat Token</td>
     <td>One of a pair of fields needed to make a repeat payment request.</td>
   </tr>
   <tr>
@@ -219,6 +234,10 @@ The fields and their usage are described below:
   <tr>
     <td>Status Description</td>
     <td>A descriptive text showing the reason related to the current status.  Might contain the reason for cancellation or failure for example.</td>
+  </tr>
+  <tr>
+    <td>Success Endpoint</td>
+    <td>The link or URL that will be executed if the customer presses the 'Finished' button on the transaction success response screen.</td>
   </tr>
 </table>
 
@@ -245,8 +264,8 @@ The fields are their usage are described below:
     <td>A formula reflecting the status of the associated Authorisation.</td>
   </tr>
   <tr>
-    <td>Day of the Month</td>
-    <td>The day of the month on which the subscription payment should be taken.</td>
+    <td>Final Payment Date</td>
+    <td>After this date no more payments will be taken from this payment schedule</td>
   </tr>
   <tr>
     <td>Frequency</td>
@@ -263,36 +282,33 @@ The fields are their usage are described below:
   </tr>
   <tr>
     <td>Last Payment Date</td>
-    <td>The date on which the subscription payment request was last raised.</td>
+    <td>The date on which the last payment schedule payment request was raised.</td>
   </tr>
   <tr>
     <td>Next Payment Date</td>
     <td>The date on which the next payment request will be raised.</td>
   </tr>
   <tr>
-    <td>Payment Route</td>
-    <td>A formula reflecting the payment route of the associated Authorisation.</td>
+    <td>Next Process Date</td>
+    <td>A formula that calculates the next date on which a payment request should be processed.  This takes into account ant delay caused by Direct Debit processing</td>
+  </tr>
+  <tr>
+    <td>Payment Route Selected</td>
+    <td>A formula reflecting the selected payment route of the associated Authorisation.</td>
   </tr>
   <tr>
     <td>Regular Amount</td>
     <td>The amount of the subscription charge.  The currency will be determined based on the currency of the Subscription record in a multi-currency org or from the org default currency for a single currency org.</td>
   </tr>
   <tr>
-    <td>Start Date</td>
-    <td>Date of which the subscription come into force.</td>
-  </tr>
-  <tr>
     <td>Status</td>
     <td>The status of the subscription.  Can be one of:
       <ul>
-        <li><b>In Force</b> In force and ready to use</li>
-        <li><b>Cancelled</b> Has been stopped</li>
+        <li><b>Active</b> In force and ready to use</li>
+        <li><b>Inactive</b> Has been stopped</li>
+        <li><b>Expired</b> Has been stopped because the Final Payment Date has been reached</li>
       </ul>
     </td>
-  </tr>
-  <tr>
-    <td>Status Description</td>
-    <td>A descriptive text showing the reason related to the current status.  Might contain the reason for cancellation for example.</td>
   </tr>
 </table>
 
