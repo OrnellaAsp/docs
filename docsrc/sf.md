@@ -501,12 +501,8 @@ The fields are their usage are described below:
 
 ## Installation
 
-The core package is installed using a Salesforce package deployment link.  In the short term there are two versions on offer, one is an unmanaged package that contains the source and the other is a fully mananged package.  Be aware that if you install the unmanaged version then you would have to un-install it before you could then apply an upgrade.  The process of un-installation might be non-trivial, depending on the type of integration you have created.
-
-For a sandbox organisation the install link is:<br/>
-<https://test.salesforce.com/packaging/installPackage.apexp?p0=04t0Y000001ECej><br/>
-For a live or development organisation the install link is:<br/>
-<https://login.salesforce.com/packaging/installPackage.apexp?p0=04t0Y000001ECej><br/>
+The core package is installed using a Salesforce package deployment link.  That link will be sent to you when you register with Asperato.  To register please go to this link:
+<https://test.protectedpayments.net/Register><br/>
 
 When installing make sure that the package is accessible by all Salesforce users (this is not the default).<br/>
 Once the package has been installed you need to update the system Network Security so that the Asperato servers can communicate with your Salesforce organisation.
