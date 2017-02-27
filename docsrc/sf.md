@@ -756,7 +756,7 @@ UrlParameter</td>
     <td>The Salesforce ID of the payment object row to which the request relates.</td>
   </tr>
   <tr>
-    <td>SubscriptionID</td>
+    <td>PaymentScheduleID</td>
     <td>String</td>
     <td>Contains the Salesforce ID of an associated Subscription if one exists.</td>
   </tr>
@@ -935,7 +935,7 @@ PutPaymentRequestDetail</td>
     <td>The company name as entered on the paypage.</td>
   </tr>
   <tr>
-    <td>CrossReference</td>
+    <td>PSPReference</td>
     <td>String</td>
     <td>The cross reference value obtained from the payment gateway.</td>
   </tr>
@@ -960,7 +960,7 @@ PutPaymentRequestDetail</td>
     <td>The last name as entered on the paypage.</td>
   </tr>
   <tr>
-    <td>OrderId</td>
+    <td>AsperatoReference</td>
     <td>String</td>
     <td>An Asperato generated order reference for the transaction.</td>
   </tr>
@@ -999,7 +999,7 @@ PutPaymentRequestDetail</td>
     <td>Text relating to the transaction.  If present, this will show either some form of transaction reference or the reason why the payment failed as appropriate.</td>
   </tr>
   <tr>
-    <td>SubscriptionID</td>
+    <td>PaymentScheduleID</td>
     <td>String</td>
     <td>Contains the Salesforce ID of an associated Subscription if one exists.</td>
   </tr>
@@ -1429,12 +1429,12 @@ This puts data back into Salesforce after a authorisation attempt has been made 
     </td>
   </tr>
   <tr>
-    <td>RepeatCrossReference</td>
+    <td>PSPRepeatToken</td>
     <td>String</td>
     <td>The cross reference value obtained from the payment gateway that is used to make a subsequent payment.  As a rule this value will change each time a repeat (automatic) payment is successfull.</td>
   </tr>
   <tr>
-    <td>RepeatOrderId</td>
+    <td>AsperatoRepeatReference</td>
     <td>String</td>
     <td>An Asperato generated order reference for the transaction that is used to make a subsequent payment.  As a rule this value will change each time a repeat (automatic) payment is successfull.</td>
   </tr>
