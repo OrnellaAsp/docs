@@ -743,9 +743,8 @@ UrlParameter</td>
     <td>One of:
       <ul>
         <li><b>Card</b></li>
-        <li><b>BACS</b></li>
+        <li><b>Direct Debit</b></li>
         <li><b>eCheck</b></li>
-        <li><b>SEPA</b></li>
         <li><b>Wallet</b></li>
       </ul>
     </td>
@@ -920,6 +919,16 @@ PutPaymentRequestDetail</td>
     <td>An obscured reference to the card or the bank account.</td>
   </tr>
   <tr>
+    <td>AsperatoReference</td>
+    <td>String</td>
+    <td>An Asperato generated order reference for the transaction.</td>
+  </tr>
+  <tr>
+    <td>AsperatoRepeatReference</td>
+    <td>String</td>
+    <td>An Asperato generated order reference for the transaction that is used to make a subsequent payment.  As a rule this value will change each time a repeat (automatic) payment is successfull.</td>
+  </tr>
+  <tr>
     <td>AuthorisationID</td>
     <td>String</td>
     <td>Contains the Salesforce ID of an associated Authorisation if one exists.  If one was created during the update the ID of that row will be shown here.</td>
@@ -933,11 +942,6 @@ PutPaymentRequestDetail</td>
     <td>CompanyName</td>
     <td>String</td>
     <td>The company name as entered on the paypage.</td>
-  </tr>
-  <tr>
-    <td>PSPReference</td>
-    <td>String</td>
-    <td>The cross reference value obtained from the payment gateway.</td>
   </tr>
   <tr>
     <td>CurrencyCode</td>
@@ -960,22 +964,31 @@ PutPaymentRequestDetail</td>
     <td>The last name as entered on the paypage.</td>
   </tr>
   <tr>
-    <td>AsperatoReference</td>
-    <td>String</td>
-    <td>An Asperato generated order reference for the transaction.</td>
-  </tr>
-  <tr>
     <td>PaymentRoute</td>
     <td>String</td>
     <td>One of:
       <ul>
         <li><b>Card</b></li>
-        <li><b>BACS</b></li>
+        <li><b>Direct Debit</b></li>
         <li><b>eCheck</b></li>
-        <li><b>SEPA</b></li>
         <li><b>Wallet</b></li>
       </ul>
     </td>
+  </tr>
+  <tr>
+    <td>PaymentScheduleID</td>
+    <td>String</td>
+    <td>Contains the Salesforce ID of an associated Subscription if one exists.</td>
+  </tr>
+  <tr>
+    <td>PSPReference</td>
+    <td>String</td>
+    <td>The cross reference value obtained from the payment gateway.</td>
+  </tr>
+  <tr>
+    <td>PSPRepeatToken</td>
+    <td>String</td>
+    <td>The cross reference value obtained from the payment gateway that is used to make a subsequent payment.  As a rule this value will change each time a repeat (automatic) payment is successfull.</td>
   </tr>
   <tr>
     <td>SalesforceId</td>
@@ -997,11 +1010,6 @@ PutPaymentRequestDetail</td>
     <td>StatusDescription</td>
     <td>String</td>
     <td>Text relating to the transaction.  If present, this will show either some form of transaction reference or the reason why the payment failed as appropriate.</td>
-  </tr>
-  <tr>
-    <td>PaymentScheduleID</td>
-    <td>String</td>
-    <td>Contains the Salesforce ID of an associated Subscription if one exists.</td>
   </tr>
   <tr>
     <td>PassThroughParameters</td>
@@ -1140,6 +1148,16 @@ UrlParameter</td>
     <td>When true means the record was located correctly. If this is set to false it will cause the standard Asperato paypage template to output the message "Sorry, the payment cannot be taken at this time."</td>
   </tr>
   <tr>
+    <td>UseHostedPage</td>
+    <td>Boolean</td>
+    <td>When true means that where a gateway offers a hosted page option that will be invoked in preference to the Asperato template.</td>
+  </tr>
+  <tr>
+    <td>AuthorisationAmount</td>
+    <td>Long</td>
+    <td>Authorisation Amount due in the lowest denomination for the the currency. For GBP this would be pence, for USD this would be cents, for EUR this would be cents, etc.</td>
+  </tr>
+  <tr>
     <td>AddressCity</td>
     <td>String</td>
     <td>This will be used to provide a default value for the billing address city on the paypage.</td>
@@ -1170,6 +1188,11 @@ UrlParameter</td>
     <td>This will be used to provide a default value for the company name on the paypage.</td>
   </tr>
   <tr>
+    <td>CurrencyCode</td>
+    <td>String</td>
+    <td>Three character ISO 4217 currency code.</td>
+  </tr>
+  <tr>
     <td>Email</td>
     <td>String</td>
     <td>This will be used to provide a default value for the email address on the paypage.</td>
@@ -1195,9 +1218,8 @@ UrlParameter</td>
     <td>One of:
       <ul>
         <li><b>Card</b></li>
-        <li><b>BACS</b></li>
+        <li><b>Direct Debit</b></li>
         <li><b>eCheck</b></li>
-        <li><b>SEPA</b></li>
         <li><b>Wallet</b></li>
       </ul>
     </td>
@@ -1371,6 +1393,11 @@ This puts data back into Salesforce after a authorisation attempt has been made 
     <td>An obscured reference to the card or the bank account.</td>
   </tr>
   <tr>
+    <td>AsperatoRepeatReference</td>
+    <td>String</td>
+    <td>An Asperato generated order reference for the transaction that is used to make a subsequent payment.  As a rule this value will change each time a repeat (automatic) payment is successfull.</td>
+  </tr>
+  <tr>
     <td>CardType</td>
     <td>String</td>
     <td>If a card this will say what type of card was used otherwise will say `Not Applicable`.</td>
@@ -1421,9 +1448,8 @@ This puts data back into Salesforce after a authorisation attempt has been made 
     <td>One of:
       <ul>
         <li><b>Card</b></li>
-        <li><b>BACS</b></li>
+        <li><b>Direct Debit</b></li>
         <li><b>eCheck</b></li>
-        <li><b>SEPA</b></li>
         <li><b>Wallet</b></li>
       </ul>
     </td>
@@ -1432,11 +1458,6 @@ This puts data back into Salesforce after a authorisation attempt has been made 
     <td>PSPRepeatToken</td>
     <td>String</td>
     <td>The cross reference value obtained from the payment gateway that is used to make a subsequent payment.  As a rule this value will change each time a repeat (automatic) payment is successfull.</td>
-  </tr>
-  <tr>
-    <td>AsperatoRepeatReference</td>
-    <td>String</td>
-    <td>An Asperato generated order reference for the transaction that is used to make a subsequent payment.  As a rule this value will change each time a repeat (automatic) payment is successfull.</td>
   </tr>
   <tr>
     <td>SalesforceId</td>
@@ -1582,6 +1603,11 @@ PutMessageRequestDetail</td>
     <td>When true means the message has a positive implication, when false indicates a failure of some sort.</td>
   </tr>
   <tr>
+    <td>Action</td>
+    <td>String</td>
+    <td>The action that the message implies.  Typical values are created, active, cancelled, failed, etc.</td>
+  </tr>
+  <tr>
     <td>EventReference</td>
     <td>String</td>
     <td>A unique reference to the message.</td>
@@ -1610,11 +1636,6 @@ PutMessageRequestDetail</td>
     </td>
   </tr>
   <tr>
-    <td>Status</td>
-    <td>String</td>
-    <td>The action that the message implies.  Typical values are created, active, cancelled, failed, etc.</td>
-  </tr>
-  <tr>
     <td>TransactionReference</td>
     <td>String</td>
     <td>A reference needed to locate the item to which the message refers (see below)</td>
@@ -1624,11 +1645,11 @@ PutMessageRequestDetail</td>
 
 **Locating the data to which a message refers.**
 
-When the resource has the text content `mandates` the message relates to an Authorisation.  To locate the correct row search for where the Repeat Cross Reference on the Authorisation row equals the TransactionReference on the request.
+When the resource has the text content `mandates` the message relates to an Authorisation.  To locate the correct row search for where the Payment Service Provider Repeat Token on the Authorisation row equals the TransactionReference on the request.
 
 When the resource has the text content of either `payments` or `refunds` then the message relates to the Payment object.
 
-To locate the correct row search for where the Cross Reference on the Payment row equals the TransactionReference on the request.
+To locate the correct row search for where the Payment Service Provider Reference on the Payment row equals the TransactionReference on the request.
 
 **PutMessagesResponse**
 
