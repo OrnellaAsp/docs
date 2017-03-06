@@ -1682,7 +1682,7 @@ There are a number of utility functions in the core Asperato ONE package that ar
 
 There is a utility class that contains the constant code values used throughout the Asperato ONE package.  It is recommended that you use these constants rather than the raw codes because that will make any customisations forward compatible.
 
-To use a value from the Contants class simply refer to it.  For example to set the Authorisation Status to the value of 'In Force' then refere the to constant value asp04.Constants.AUTHORISATION_STATUS_IN_FORCE.
+To use a value from the Contants class simply refer to it.  For example to set the Authorisation Status to the value of 'In Force' then refer the to constant value `asp04.Constants.AUTHORISATION_STATUS_IN_FORCE`.
 
 **Authorisation Status**
 <table>
