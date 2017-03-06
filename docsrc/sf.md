@@ -745,7 +745,7 @@ UrlParameter</td>
         <li><b>Card</b></li>
         <li><b>Direct Debit</b></li>
         <li><b>eCheck</b></li>
-        <li><b>Wallet</b></li>
+        <li><b>PayPal</b></li>
       </ul>
     </td>
   </tr>
@@ -971,7 +971,7 @@ PutPaymentRequestDetail</td>
         <li><b>Card</b></li>
         <li><b>Direct Debit</b></li>
         <li><b>eCheck</b></li>
-        <li><b>Wallet</b></li>
+        <li><b>PayPal</b></li>
       </ul>
     </td>
   </tr>
@@ -1220,7 +1220,7 @@ UrlParameter</td>
         <li><b>Card</b></li>
         <li><b>Direct Debit</b></li>
         <li><b>eCheck</b></li>
-        <li><b>Wallet</b></li>
+        <li><b>PayPal</b></li>
       </ul>
     </td>
   </tr>
@@ -1450,7 +1450,7 @@ This puts data back into Salesforce after a authorisation attempt has been made 
         <li><b>Card</b></li>
         <li><b>Direct Debit</b></li>
         <li><b>eCheck</b></li>
-        <li><b>Wallet</b></li>
+        <li><b>PayPal</b></li>
       </ul>
     </td>
   </tr>
