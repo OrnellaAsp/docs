@@ -1684,7 +1684,7 @@ There is a utility class that contains the constant code values used throughout 
 
 To use a value from the Contants class simply refer to it.  For example to set the Authorisation Status to the value of 'In Force' then refere the to constant value asp04.Constants.AUTHORISATION_STATUS_IN_FORCE.
 
-** Authorisation Status **
+**Authorisation Status**
 <table>
   <tr>
     <th>Field Name</th>
@@ -1708,7 +1708,7 @@ To use a value from the Contants class simply refer to it.  For example to set t
   </tr>
 </table>
 
-** Payment Route **
+**Payment Route**
 <table>
   <tr>
     <th>Field Name</th>
@@ -1732,7 +1732,7 @@ To use a value from the Contants class simply refer to it.  For example to set t
   </tr>
 </table>
 
-** Payment Source **
+**Payment Source**
 <table>
   <tr>
     <th>Field Name</th>
@@ -1752,7 +1752,7 @@ To use a value from the Contants class simply refer to it.  For example to set t
   </tr>
 </table>
 
-** Payment Status **
+**Payment Status**
 <table>
   <tr>
     <th>Field Name</th>
@@ -1780,7 +1780,7 @@ To use a value from the Contants class simply refer to it.  For example to set t
   </tr>
 </table>
 
-** Payment Type **
+**Payment Type**
 <table>
   <tr>
     <th>Field Name</th>
@@ -1796,7 +1796,7 @@ To use a value from the Contants class simply refer to it.  For example to set t
   </tr>
 </table>
 
-** Payment Schedule Frequency **
+**Payment Schedule Frequency**
 <table>
   <tr>
     <th>Field Name</th>
@@ -1832,7 +1832,7 @@ To use a value from the Contants class simply refer to it.  For example to set t
   </tr>
 </table>
 
-** Payment Schedule Frequency **
+**Payment Schedule Frequency**
 <table>
   <tr>
     <th>Field Name</th>
@@ -1852,7 +1852,7 @@ To use a value from the Contants class simply refer to it.  For example to set t
   </tr>
 </table>
 
-** Messages Resource **
+**Messages Resource**
 <table>
   <tr>
     <th>Field Name</th>
