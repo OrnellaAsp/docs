@@ -1678,6 +1678,200 @@ When implementing a service handler override class this new class should impleme
 
 There are a number of utility functions in the core Asperato ONE package that are available for use for designers and code builds that choose to extend the package.
 
+### Constants
+
+There is a utility class that contains the constant code values used throughout the Asperato ONE package.  It is recommended that you use these constants rather than the raw codes because that will make any customisations forward compatible.
+
+To use a value from the Contants class simply refer to it.  For example to set the Authorisation Status to the value of 'In Force' then refere the to constant value asp04.Constants.AUTHORISATION_STATUS_IN_FORCE.
+
+** Authorisation Status **
+<table>
+  <tr>
+    <th>Field Name</th>
+    <th>Code Value</th>
+  </tr>
+  <tr>
+    <td>AUTHORISATION_STATUS_CANCELLED</td>
+    <td>Cancelled</td>
+  </tr>
+  <tr>
+    <td>AUTHORISATION_STATUS_FAILED</td>
+    <td>Failed</td>
+  </tr>
+  <tr>
+    <td>AUTHORISATION_STATUS_IN_FORCE</td>
+    <td>In Force</td>
+  </tr>
+  <tr>
+    <td>AUTHORISATION_STATUS_PENDING</td>
+    <td>Pending</td>
+  </tr>
+</table>
+
+** Payment Route **
+<table>
+  <tr>
+    <th>Field Name</th>
+    <th>Code Value</th>
+  </tr>
+  <tr>
+    <td>PAYMENT_TYPE_CARD</td>
+    <td>Card</td>
+  </tr>
+  <tr>
+    <td>PAYMENT_TYPE_DIRECT_DEBIT</td>
+    <td>DirectDebit</td>
+  </tr>
+  <tr>
+    <td>PAYMENT_TYPE_ECHECK</td>
+    <td>Echeck</td>
+  </tr>
+  <tr>
+    <td>PAYMENT_TYPE_WALLET</td>
+    <td>PayPal</td>
+  </tr>
+</table>
+
+** Payment Source **
+<table>
+  <tr>
+    <th>Field Name</th>
+    <th>Code Value</th>
+  </tr>
+  <tr>
+    <td>PAYMENT_SOURCE_HOLDER_NOT_PRESENT</td>
+    <td>Holder not present</td>
+  </tr>
+  <tr>
+    <td>PAYMENT_SOURCE_REPEAT</td>
+    <td>Repeat</td>
+  </tr>
+  <tr>
+    <td>PAYMENT_SOURCE_WEB</td>
+    <td>Web</td>
+  </tr>
+</table>
+
+** Payment Status **
+<table>
+  <tr>
+    <th>Field Name</th>
+    <th>Code Value</th>
+  </tr>
+  <tr>
+    <td>PAYMENT_STATUS_PENDING</td>
+    <td>Submitted for collection</td>
+  </tr>
+  <tr>
+    <td>PAYMENT_STATUS_PAID</td>
+    <td>Collected from customer</td>
+  </tr>
+  <tr>
+    <td>PAYMENT_STATUS_REFUNDED</td>
+    <td>Refunded to customer</td>
+  </tr>
+  <tr>
+    <td>PAYMENT_STATUS_FAILED</td>
+    <td>Failed</td>
+  </tr>
+  <tr>
+    <td>PAYMENT_STATUS_PAYMENT_SCHEDULED</td>
+    <td>Awaiting submission</td>
+  </tr>
+</table>
+
+** Payment Type **
+<table>
+  <tr>
+    <th>Field Name</th>
+    <th>Code Value</th>
+  </tr>
+  <tr>
+    <td>PAYMENT_TYPE_PAYMENT</td>
+    <td>Payment</td>
+  </tr>
+  <tr>
+    <td>PAYMENT_TYPE_REFUND</td>
+    <td>Refund</td>
+  </tr>
+</table>
+
+** Payment Schedule Frequency **
+<table>
+  <tr>
+    <th>Field Name</th>
+    <th>Code Value</th>
+  </tr>
+  <tr>
+    <td>PAYMENT_SCHEDULE_FREQUENCY_SINGLE</td>
+    <td>Single</td>
+  </tr>
+  <tr>
+    <td>PAYMENT_SCHEDULE_FREQUENCY_DAILY</td>
+    <td>Daily</td>
+  </tr>
+  <tr>
+    <td>PAYMENT_SCHEDULE_FREQUENCY_WEEKLY</td>
+    <td>Weekly</td>
+  </tr>
+  <tr>
+    <td>PAYMENT_SCHEDULE_FREQUENCY_MONTHLY</td>
+    <td>Monthly</td>
+  </tr>
+  <tr>
+    <td>PAYMENT_SCHEDULE_FREQUENCY_QUARTERLY</td>
+    <td>Quarterly</td>
+  </tr>
+  <tr>
+    <td>PAYMENT_SCHEDULE_FREQUENCY_BIANNUALLY</td>
+    <td>Semi-annual</td>
+  </tr>
+  <tr>
+    <td>PAYMENT_SCHEDULE_FREQUENCY_ANNUALLY</td>
+    <td>Annual</td>
+  </tr>
+</table>
+
+** Payment Schedule Frequency **
+<table>
+  <tr>
+    <th>Field Name</th>
+    <th>Code Value</th>
+  </tr>
+  <tr>
+    <td>PAYMENT_SCHEDULE_STATUS_ACTIVE</td>
+    <td>Active</td>
+  </tr>
+  <tr>
+    <td>PAYMENT_SCHEDULE_STATUS_EXPIRED</td>
+    <td>Expired</td>
+  </tr>
+  <tr>
+    <td>PAYMENT_SCHEDULE_STATUS_INACTIVE</td>
+    <td>Inactive</td>
+  </tr>
+</table>
+
+** Messages Resource **
+<table>
+  <tr>
+    <th>Field Name</th>
+    <th>Code Value</th>
+  </tr>
+  <tr>
+    <td>MESSAGE_MANDATES</td>
+    <td>mandates</td>
+  </tr>
+  <tr>
+    <td>MESSAGE_PAYMENTS</td>
+    <td>payments</td>
+  </tr>
+  <tr>
+    <td>MESSAGE_REFUNDS</td>
+    <td>refunds</td>
+  </tr>
+</table>
+
 ### Resolve the payment route from text to a code
 
 Asperato uses four character codes to represent the type of transaction that is to take place.  This appears in the repeat payment process.  There is a utility function available that will resolve the text to a code.
