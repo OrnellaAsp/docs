@@ -43,6 +43,10 @@ Then the email can be pre-populated to "test@asperato.com", and the amount to £
 
 https://test.protectedpayments.net/Asperato/asp/PMWeb1?pmRef=73&campaignRef=431&DLemail=test@asperato.com&DLamount=12
 
+##Minor stylistic changes
+
+Minor stylistic changes, such as the fonts, colours and logo used can be made by Asperato. If you would like any customised changes in this regard, contact support@asperato.com with details of the changes required.
+
 ##Using the template in an iframe
 
 Many customers wish to use the template in an iframe as part of their existing site, rather than displaying it as a standalone page - this is supported by Asperato, as long as the containing site is served over TLS1.2 or newer. Please make sure your iframe element is large enough to contain the payment form without any scrollbars. We recommend a size of at least 500px width and 1000px height.
