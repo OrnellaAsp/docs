@@ -119,6 +119,41 @@
     
         <li class="first-level active"><a href="#payment-template">Payment template</a></li>
         
+            <li class="second-level"><a href="#template-features">Template features</a></li>
+            
+        
+            <li class="second-level"><a href="#passing-parameters">Passing parameters</a></li>
+            
+        
+            <li class="second-level"><a href="#using-the-template-in-an-iframe">Using the template in an iframe</a></li>
+            
+        
+            <li class="second-level"><a href="#field-names">Field names</a></li>
+            
+                <li class="third-level"><a href="#dlamount">DLamount</a></li>
+            
+                <li class="third-level"><a href="#dlemail">DLemail</a></li>
+            
+                <li class="third-level"><a href="#dlforename">DLforename</a></li>
+            
+                <li class="third-level"><a href="#dllastname">DLlastname</a></li>
+            
+                <li class="third-level"><a href="#dladdress1">DLaddress1</a></li>
+            
+                <li class="third-level"><a href="#dladdress2">DLaddress2</a></li>
+            
+                <li class="third-level"><a href="#dlcity">DLcity</a></li>
+            
+                <li class="third-level"><a href="#dlcounty">DLcounty</a></li>
+            
+                <li class="third-level"><a href="#dlcountry">DLcountry</a></li>
+            
+                <li class="third-level"><a href="#dlpostcode">DLpostcode</a></li>
+            
+        
+            <li class="second-level"><a href="#entirely-custom-payment-page">Entirely custom payment page</a></li>
+            
+        
     
     </ul>
 </div></div>
@@ -126,7 +161,64 @@
 
 <h1 id="payment-template">Payment template</h1>
 <p>The standard payment template is provided by Asperato and will look similar to the following:</p>
-<p><img alt="Asperato standard payment template" src="../unmodified_template.png" title="Asperato standard template" /></p></div>
+<p><img alt="Asperato standard payment template" src="../unmodified_template.png" title="Asperato standard template" /></p>
+<h2 id="template-features">Template features</h2>
+<p>Out of the box, the template is highly dynamic and responds to a number of different parameters that can be set either from Salesforce or from the URL:</p>
+<ul>
+<li>Amount</li>
+<li>Frequency (including one off payments)</li>
+<li>Payment types (including combinations of payment types, such as Card &amp; Direct Debit, Paypal &amp; Direct Debit, Card, Paypal &amp; eCheck, etc.)</li>
+<li>Address data (can be pre-populated)</li>
+<li>URL to navigate to on completion of the payment</li>
+</ul>
+<p>The template also has the following dynamic elements built in:</p>
+<ul>
+<li>Notification if the Salesforce webservice cannot be contacted</li>
+<li>UK postcode checker &amp; lookup</li>
+<li>Display of card type based on card number</li>
+<li>Validation of card number using Luhn algorithm</li>
+<li>Display of issue number &amp; start date fields only if the card requires it</li>
+<li>Validation of security code as 3 or 4 digits depending on the card type</li>
+<li>Ability to switch between Card, Direct debit, eCheck or Paypal on the fly</li>
+<li>Ability to enter IBAN or distinct local bank details for all BACS / SEPA European Direct Debit countries</li>
+<li>Automatic hiding / showing and labelling of local bank detail fields based on selected country</li>
+<li>Compliant to BACS and SEPA scheme rules, correct compliance labelling is determined by scheme rules in the selected country</li>
+</ul>
+<p>The template is fully responsive, works on all the latest versions of major browsers, and is routinely updated by Asperato to work with new card ranges and payment types.</p>
+<h2 id="passing-parameters">Passing parameters</h2>
+<p>Parameters may be passed to the payment page via URL parameters, as well as from Salesforce. Passing parameters in the URL is often useful for testing purposes.</p>
+<p>The parameters are simply added to the end of the URL in the normal <code>GET</code> format. For the parameter names, please see the "Field names" section below.</p>
+<p>As an example, if the normal URL to the payment page is:</p>
+<p>https://test.protectedpayments.net/Asperato/asp/PMWeb1?pmRef=73&amp;campaignRef=431</p>
+<p>Then the email can be pre-populated to "test@asperato.com", and the amount to £12 with the following URL:</p>
+<p>https://test.protectedpayments.net/Asperato/asp/PMWeb1?pmRef=73&amp;campaignRef=431&amp;DLemail=test@asperato.com&amp;DLamount=12</p>
+<h2 id="using-the-template-in-an-iframe">Using the template in an iframe</h2>
+<p>Many customers wish to use the template in an iframe as part of their existing site, rather than displaying it as a standalone page - this is supported by Asperato, as long as the containing site is served over TLS1.2 or newer. Please make sure your iframe element is large enough to contain the payment form without any scrollbars. We recommend a size of at least 500px width and 1000px height.</p>
+<p>Non-secure pages may not iframe the Asperato payment page in this way, as customers have no easy way of determining that the iframe itself is securing if the surrounding page is not.</p>
+<h2 id="field-names">Field names</h2>
+<p>These field names can be passed to the URL of the payment page to pre-populate details.</p>
+<h3 id="dlamount">DLamount</h3>
+<p>The amount to charge. One of DLamount or DLauthAmount must be provided, depending on whether this is a payment template or an authorisation template.</p>
+<h3 id="dlemail">DLemail</h3>
+<p>The email address of the customer.</p>
+<h3 id="dlforename">DLforename</h3>
+<p>The first name.</p>
+<h3 id="dllastname">DLlastname</h3>
+<p>The last name.</p>
+<h3 id="dladdress1">DLaddress1</h3>
+<p>The first line of the address.</p>
+<h3 id="dladdress2">DLaddress2</h3>
+<p>The second line of the address.</p>
+<h3 id="dlcity">DLcity</h3>
+<p>The town or city of the address.</p>
+<h3 id="dlcounty">DLcounty</h3>
+<p>The county or state of the address.</p>
+<h3 id="dlcountry">DLcountry</h3>
+<p>The country of the address.</p>
+<h3 id="dlpostcode">DLpostcode</h3>
+<p>The postcode, or zip code of the address.</p>
+<h2 id="entirely-custom-payment-page">Entirely custom payment page</h2>
+<p>It is possible, but not recommended, to design a custom payment page from scratch with the above functionality. In our experience this rarely works well due to the number of corner cases that must be covered. If you choose this route for your payment pages, it will incur an additional charge and will not be supported by Asperato.</p></div>
         
     </div>
 
