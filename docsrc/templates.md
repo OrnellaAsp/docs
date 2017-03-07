@@ -99,4 +99,4 @@ The postcode, or zip code of the address.
 
 ##Entirely custom payment page
 
-It is possible, but not recommended, to design a custom payment page from scratch with the above functionality. In our experience this rarely works well due to the number of corner cases that must be covered. If you choose this route for your payment pages, it will incur an additional charge and will not be supported by Asperato.
+It is possible, but not recommended, to design a custom payment page from scratch with the above functionality. In our experience this rarely works well due to the number of corner cases that must be covered. If you choose this route for your payment pages, it will incur an additional setup charge and will not be supported by Asperato.
