@@ -26,6 +26,7 @@ The template also has the following dynamic elements built in:
   - Ability to enter IBAN or distinct local bank details for all BACS / SEPA European Direct Debit countries
   - Automatic hiding / showing and labelling of local bank detail fields based on selected country
   - Compliant to BACS and SEPA scheme rules, correct compliance labelling is determined by scheme rules in the selected country
+  - Choice of payment type to show by default
   
 The template is fully responsive, works on all the latest versions of major browsers, and is routinely updated by Asperato to work with new card ranges and payment types.
 
@@ -96,6 +97,9 @@ The country of the address.
 ###DLpostcode
 
 The postcode, or zip code of the address.
+
+###DefaultPaymentOption
+The payment option to show by default (one of "card", "dd", "paypal" or "echeck").
 
 ##Entirely custom payment page
 
