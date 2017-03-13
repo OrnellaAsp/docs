@@ -6,7 +6,7 @@ The standard payment template is provided by Asperato and will look similar to t
 
 ## Template features
 
-Out of the box, the template is highly dynamic and responds to a number of different parameters that can be set either from Salesforce or from the URL:
+Out of the box, the template is highly dynamic and responds to a number of different parameters:
 
  - Amount
  - Frequency (including one off payments)
