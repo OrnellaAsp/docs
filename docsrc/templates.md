@@ -30,7 +30,7 @@ The template also has the following dynamic elements built in:
   
 The template is fully responsive, works on all the latest versions of major browsers, and is routinely updated by Asperato to work with new card ranges and payment types.
 
-##Passing parameters (NPSP)
+##Passing parameters in the URL (NPSP)
 
 When using the Asperato package with the NPSP, parameters may be passed to the payment page via URL parameters. Passing parameters in the URL is often useful for testing purposes.
 
