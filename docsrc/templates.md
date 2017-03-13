@@ -30,9 +30,9 @@ The template also has the following dynamic elements built in:
   
 The template is fully responsive, works on all the latest versions of major browsers, and is routinely updated by Asperato to work with new card ranges and payment types.
 
-##Passing parameters
+##Passing parameters (NPSP)
 
-Parameters may be passed to the payment page via URL parameters, as well as from Salesforce. Passing parameters in the URL is often useful for testing purposes.
+When using the Asperato package with the NPSP, parameters may be passed to the payment page via URL parameters. Passing parameters in the URL is often useful for testing purposes.
 
 The parameters are simply added to the end of the URL in the normal `GET` format. For the parameter names, please see the "Field names" section below.
 
