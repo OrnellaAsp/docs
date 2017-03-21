@@ -284,6 +284,21 @@
             "location": "/templates/#entirely-custom-payment-page", 
             "text": "It is possible, but not recommended, to design a custom payment page from scratch with the above functionality. In our experience this rarely works well due to the number of corner cases that must be covered. If you choose this route for your payment pages, it will incur an additional setup charge and will not be supported by Asperato.", 
             "title": "Entirely custom payment page"
+        }, 
+        {
+            "location": "/gatewaykeys/", 
+            "text": "Gateway Keys\n\n\nAsperato will require keys to connect to a user's payment service provider. Unfortunately, retrieving these keys is not consistent across providers. You should be able to ask customers to find the keys using the following instructions.\n\n\nAuthorize.NET", 
+            "title": "Gateway keys"
+        }, 
+        {
+            "location": "/gatewaykeys/#gateway-keys", 
+            "text": "Asperato will require keys to connect to a user's payment service provider. Unfortunately, retrieving these keys is not consistent across providers. You should be able to ask customers to find the keys using the following instructions.", 
+            "title": "Gateway Keys"
+        }, 
+        {
+            "location": "/gatewaykeys/#authorizenet", 
+            "text": "", 
+            "title": "Authorize.NET"
         }
     ]
 }
