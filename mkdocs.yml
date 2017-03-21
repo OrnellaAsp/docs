@@ -7,3 +7,4 @@ pages:
 - "Overview": 'overview.md'
 - "Asperato ONE": 'sf.md'
 - "Templates": 'templates.md'
+- "Gateway keys": 'gatewaykeys.md'
