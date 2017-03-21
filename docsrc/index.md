@@ -14,6 +14,10 @@ If you would like a general overview of how a payment works when taken through A
 
 [This page](sf.md) covers the creation of a custom Salesforce package to work with Asperato.
 
+## [Obtaining gateway keys](gatewaykeys.md)
+
+[This page](gatewaykeys.md) explains how to retrieve API keys from different payment service providers.
+
 ## Need help?
 
 If you requrie any assistance with your integration then please contact support@asperato.com, we'll aim to get back to you in a couple of working days.
