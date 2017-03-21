@@ -28,6 +28,6 @@ Asperato then needs the values of the fields marked:
 ## Worldpay Online
 You need to log onto the <a href="https://online.worldpay.com/login">Worldpay Online Dashboard</a>.
 - Ensure you are in TEST mode.
-- On the top right of the screen click on "SETTINGS".
-- Select the tab entitled "API Keys".
+- On the top right of the screen click on `SETTINGS`.
+- Select the tab entitled `API Keys`.
 - We need the Service key & Client key.
