@@ -2,7 +2,7 @@
     "docs": [
         {
             "location": "/", 
-            "text": "Asperato developer documentation\n\n\nThis documentation is designed for developers who are performing an Asperato integration.\n\n\nOverview\n\n\nIf you would like a general overview of how a payment works when taken through Asperato, this is a good place to start.\n\n\nTemplate documentation\n\n\nThis page\n covers customising a template to work with Asperato.\n\n\nSalesforce documentation\n\n\nThis page\n covers the creation of a custom Salesforce package to work with Asperato.\n\n\nNeed help?\n\n\nIf you requrie any assistance with your integration then please contact support@asperato.com, we'll aim to get back to you in a couple of working days.\n\n\nSource\n\n\nThese documents are written in Markdown and \nhosted on GitHub\n. Feel free to create an issue or submit a pull request if you spot a mistake.", 
+            "text": "Asperato developer documentation\n\n\nThis documentation is designed for developers who are performing an Asperato integration.\n\n\nOverview\n\n\nIf you would like a general overview of how a payment works when taken through Asperato, this is a good place to start.\n\n\nTemplate documentation\n\n\nThis page\n covers customising a template to work with Asperato.\n\n\nSalesforce documentation\n\n\nThis page\n covers the creation of a custom Salesforce package to work with Asperato.\n\n\nObtaining gateway keys\n\n\nThis page\n explains how to retrieve API keys from different payment service providers.\n\n\nNeed help?\n\n\nIf you requrie any assistance with your integration then please contact support@asperato.com, we'll aim to get back to you in a couple of working days.\n\n\nSource\n\n\nThese documents are written in Markdown and \nhosted on GitHub\n. Feel free to create an issue or submit a pull request if you spot a mistake.", 
             "title": "Home"
         }, 
         {
@@ -24,6 +24,11 @@
             "location": "/#salesforce-documentation", 
             "text": "This page  covers the creation of a custom Salesforce package to work with Asperato.", 
             "title": "Salesforce documentation"
+        }, 
+        {
+            "location": "/#obtaining-gateway-keys", 
+            "text": "This page  explains how to retrieve API keys from different payment service providers.", 
+            "title": "Obtaining gateway keys"
         }, 
         {
             "location": "/#need-help", 
