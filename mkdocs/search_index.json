@@ -287,7 +287,7 @@
         }, 
         {
             "location": "/gatewaykeys/", 
-            "text": "Gateway Keys\n\n\nAsperato will require keys to connect to a user's payment service provider. Unfortunately, retrieving these keys is not consistent across providers. You should be able to ask customers to find the keys using the following instructions.\n\n\nAuthorize.NET", 
+            "text": "Gateway Keys\n\n\nAsperato will require keys to connect to a user's payment service provider. Unfortunately, retrieving these keys is not consistent across providers. You should be able to ask customers to find the keys using the following instructions.\n\n\nAuthorize.NET\n\n\nIf you don't know what these values are you can create new ones, but beware that this will expire the old ones and will there affect anything that is communicating with Authroize.net via their API.\n\n\nGo to \nAccount \n Settings \n API Credentials \n Keys\n\n\nBraintree\n\n\nThe information Asperato needs can be obtained from the Braintree Dashboard.\n\n\nFor test/sandbox this is at \nhttps://sandbox.braintreegateway.com/login\n\n\nFor live/production this is at \nhttps://www.braintreegateway.com/login\n\n\nOn the top of the dashboard screen there is an Account option, and under that appears a \nMy User\n option when you hover over it.\n\n\nIn the My Account screen, towards the bottom, is a section entitled \"API Keys, Tokenization Keys, Encryption Keys\".  Click on \"View Authorizations\".\n\n\nYou need to create a new API Key.  Click on the button marked \"Generate New API Key\".  This will create a new key.  In the line that appears on the screen there is a View link under the heading \"Private Key\". Click on that.\n\n\nAsperato then needs the values of the fields marked:\n- Public Key\n- Private Key\n- Merchant ID\n\n\nWorldpay Online\n\n\nYou need to log onto the \nWorldpay Online Dashboard\n.\n- Ensure you are in TEST mode.\n- On the top right of the screen click on \"SETTINGS\".\n- Select the tab entitled \"API Keys\".\n- We need the Service key \n Client key.", 
             "title": "Gateway keys"
         }, 
         {
@@ -297,8 +297,18 @@
         }, 
         {
             "location": "/gatewaykeys/#authorizenet", 
-            "text": "", 
+            "text": "If you don't know what these values are you can create new ones, but beware that this will expire the old ones and will there affect anything that is communicating with Authroize.net via their API.  Go to  Account   Settings   API Credentials   Keys", 
             "title": "Authorize.NET"
+        }, 
+        {
+            "location": "/gatewaykeys/#braintree", 
+            "text": "The information Asperato needs can be obtained from the Braintree Dashboard.  For test/sandbox this is at  https://sandbox.braintreegateway.com/login  For live/production this is at  https://www.braintreegateway.com/login  On the top of the dashboard screen there is an Account option, and under that appears a  My User  option when you hover over it.  In the My Account screen, towards the bottom, is a section entitled \"API Keys, Tokenization Keys, Encryption Keys\".  Click on \"View Authorizations\".  You need to create a new API Key.  Click on the button marked \"Generate New API Key\".  This will create a new key.  In the line that appears on the screen there is a View link under the heading \"Private Key\". Click on that.  Asperato then needs the values of the fields marked:\n- Public Key\n- Private Key\n- Merchant ID", 
+            "title": "Braintree"
+        }, 
+        {
+            "location": "/gatewaykeys/#worldpay-online", 
+            "text": "You need to log onto the  Worldpay Online Dashboard .\n- Ensure you are in TEST mode.\n- On the top right of the screen click on \"SETTINGS\".\n- Select the tab entitled \"API Keys\".\n- We need the Service key   Client key.", 
+            "title": "Worldpay Online"
         }
     ]
 }

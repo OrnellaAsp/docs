@@ -128,6 +128,12 @@
             <li class="second-level"><a href="#authorizenet">Authorize.NET</a></li>
             
         
+            <li class="second-level"><a href="#braintree">Braintree</a></li>
+            
+        
+            <li class="second-level"><a href="#worldpay-online">Worldpay Online</a></li>
+            
+        
     
     </ul>
 </div></div>
@@ -135,7 +141,26 @@
 
 <h1 id="gateway-keys">Gateway Keys</h1>
 <p>Asperato will require keys to connect to a user's payment service provider. Unfortunately, retrieving these keys is not consistent across providers. You should be able to ask customers to find the keys using the following instructions.</p>
-<h2 id="authorizenet">Authorize.NET</h2></div>
+<h2 id="authorizenet">Authorize.NET</h2>
+<p>If you don't know what these values are you can create new ones, but beware that this will expire the old ones and will there affect anything that is communicating with Authroize.net via their API.</p>
+<p>Go to <code>Account &gt; Settings &gt; API Credentials &amp; Keys</code></p>
+<h2 id="braintree">Braintree</h2>
+<p>The information Asperato needs can be obtained from the Braintree Dashboard.</p>
+<p>For test/sandbox this is at <a href="https://sandbox.braintreegateway.com/login">https://sandbox.braintreegateway.com/login</a></p>
+<p>For live/production this is at <a href="https://www.braintreegateway.com/login">https://www.braintreegateway.com/login</a></p>
+<p>On the top of the dashboard screen there is an Account option, and under that appears a <code>My User</code> option when you hover over it.</p>
+<p>In the My Account screen, towards the bottom, is a section entitled "API Keys, Tokenization Keys, Encryption Keys".  Click on "View Authorizations".</p>
+<p>You need to create a new API Key.  Click on the button marked "Generate New API Key".  This will create a new key.  In the line that appears on the screen there is a View link under the heading "Private Key". Click on that.</p>
+<p>Asperato then needs the values of the fields marked:
+- Public Key
+- Private Key
+- Merchant ID</p>
+<h2 id="worldpay-online">Worldpay Online</h2>
+<p>You need to log onto the <a href="https://online.worldpay.com/login">Worldpay Online Dashboard</a>.
+- Ensure you are in TEST mode.
+- On the top right of the screen click on "SETTINGS".
+- Select the tab entitled "API Keys".
+- We need the Service key &amp; Client key.</p></div>
         
     </div>
 
